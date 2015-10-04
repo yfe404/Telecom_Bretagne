@@ -1,0 +1,51 @@
+#+STARTUP: overview
+#+STARTUP: hidestars
+
+
+* Question 1
+** Bruit blanc
+Un bruit blanc est aléatoire, stationnaire à l'ordre 2 centré (moyenne statistique nulle) et 
+représenté par sa fonction d'autocorrélation $\Gamma_{X}(\tau) = N_{0}\delta (\tau)$  
+** Bruit Gaussien
+Un bruit $B(t)$ est dit gaussien, si pour chaque ensemble fini d'instants $t_k$, le vecteur
+$[B(t_1), B(t_2), ..., B(t_n)]$ est gaussien.
+
+Il est défini par ses moments d'ordre 1 et 2.
+Il est SSL si $\mu$ ne dépend pas de $t$ et \Lambda ne dépend que de l'écart entre deux instants. 
+La stationnarité au sens large implique la stationnarité au sens strict. 
+
+* Question 2
+** Espérance de $X_{n+1}-X_{n}$
+\noindent
+\begin{equation*}
+\begin{align}
+$E(X_{n+1}-X_n) & = E(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n) \\
+& = E(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n)  $
+\end{aligned}
+\end{equation*}
+
+Or N est un bruit blanc, son espérance est nulle, on obtient donc : 
+
+
+\noindent
+\begin{equation*}
+\begin{align}
+$E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot 0 \\
+& = 0 \\$
+\end{aligned}
+\end{equation*}
+
+** Variance de $X_{n+1}-X_{n}$
+
+\noindent
+\begin{equation*}
+\begin{align}
+$Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
+& = Var(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \Delta t \cdot \sigma^2 \cdot Var(N_n) \\
+& = \Delta t \cdot \sigma^2 % justification p 113 
+ $
+\end{aligned}
+\end{equation*}
