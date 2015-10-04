@@ -18,7 +18,7 @@ La stationnarité au sens large implique la stationnarité au sens strict.
 ** Espérance de $X_{n+1}-X_{n}$
 \noindent
 \begin{equation*}
-\begin{align}
+\begin{aligned}
 $E(X_{n+1}-X_n) & = E(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n) \\
 & = E(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
 & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n)  $
@@ -30,7 +30,7 @@ Or N est un bruit blanc, son espérance est nulle, on obtient donc :
 
 \noindent
 \begin{equation*}
-\begin{align}
+\begin{aligned}
 $E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
 & = \sqrt{\Delta t \cdot \sigma^2} \cdot 0 \\
 & = 0 \\$
@@ -41,7 +41,7 @@ $E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
 
 \noindent
 \begin{equation*}
-\begin{align}
+\begin{aligned}
 $Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
 & = Var(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
 & = \Delta t \cdot \sigma^2 \cdot Var(N_n) \\
@@ -49,3 +49,23 @@ $Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
  $
 \end{aligned}
 \end{equation*}
+
+* Question 3
+db contient les ecarts les deplacements d'un instant à l'autre 
+
+* Question 4
+b contient les déplacements d'un instant à l'autre relativement aux précédents 
+
+
+
+
+* Question 10
+Plus le coefficient de diffusion est élevé plus les valeurs du processus entre un instant 
+$t_1$ et $t_2$ avec $t_2 \gt t_1$ pourront etre écartées. C'est ce que l'on peut déduire 
+de la formule de notre modèle puisque entre un instant et le suivant la valeur du procesus est 
+pondérée par la racine de $\sigma$ au carré.
+* Question 11
+** Observations : 
+La moyenne est très proche de 0 quelque soit l'instant considéré.
+La variance quant à elle augmente au cours du temps.
+
