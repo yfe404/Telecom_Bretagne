@@ -68,4 +68,17 @@ pondérée par la racine de $\sigma$ au carré.
 ** Observations : 
 La moyenne est très proche de 0 quelque soit l'instant considéré.
 La variance quant à elle augmente au cours du temps.
+On sait qu'un processus de Wiener n'est pas stationnaire au sens large, le fait que la variance 
+dépende a priori du temps ne nous surprend donc pas. 
 
+* Question 15
+Les observations à la questions 11 sont valables pour un coefficient de diffusion plus
+ élevé ($\sigma=50$). La variance évolue plus vite au cours du temps.
+* Question 20
+** Rappel sur les valeurs théoriques de la question 2 : 
+*** Moyenne nulle => $\mu(n,k)=0$  
+*** Variance qui ne dépend que de k (écart entre deux instants)=> $v(n,k)=k \cdot \sigma^2$
+* Question 21
+* Question 24 
+Le processus est SSL puisque sa moyenne ne dépend pas du temps et sa variance ne dépend que de 
+l'écart entre les deux instants considérés. 
