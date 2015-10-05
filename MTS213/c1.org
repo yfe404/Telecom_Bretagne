@@ -1,0 +1,12 @@
+#+STARTUP: overview
+#+TAGS: OFFICE(o) COMPUTER(c) HOME(h) PROJECT(p) READING(r) DVD(d) TELECOMBRETAGNE(t)
+#+STARTUP: hidestars
+#+LANGUAGE: fr
+
+* Chaine de communication
+** L'emetteur
+** Canal de propagation
+*** Canal AWGN (Additive White Gaussian Noise)
+*** Canal à trajets multiples
+** Reception
+* Transmission en bande de base
