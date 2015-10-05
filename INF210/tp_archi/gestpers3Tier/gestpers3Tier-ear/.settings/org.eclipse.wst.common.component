@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="gestpers3Tier-ear">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="gestpers3Tier-web.war" deploy-path="/" handle="module:/resource/gestpers3Tier-web/gestpers3Tier-web">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="gestpers3Tier-ejb.jar" deploy-path="/" handle="module:/resource/gestpers3Tier-ejb/gestpers3Tier-ejb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
