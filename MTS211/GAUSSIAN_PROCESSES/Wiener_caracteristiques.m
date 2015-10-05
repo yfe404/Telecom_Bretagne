@@ -2,7 +2,7 @@
 t = 0:0.01:10;
 
 % Coefficient de diffusion du processus
-sigma = 1;
+sigma = 50;
 
 % Nombre de processus à simuler pour le calcul expérimental de l'espérance et de la variance
 nbSim = 50;
