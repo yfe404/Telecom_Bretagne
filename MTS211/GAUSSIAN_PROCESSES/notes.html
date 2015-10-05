@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>notes</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="notes"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2015-10-04T20:12+0200"/>
+<meta name="author" content="yfe"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012-2013  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">notes</h1>
+
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Question 1</a>
+<ul>
+<li><a href="#sec-1-1">1.1 Bruit blanc</a></li>
+<li><a href="#sec-1-2">1.2 Bruit Gaussien</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 Question 2</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Espérance de \(X_{n+1}-X_{n}\)</a></li>
+<li><a href="#sec-2-2">2.2 Variance de \(X_{n+1}-X_{n}\)</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Question 3</a></li>
+<li><a href="#sec-4">4 Question 4</a></li>
+<li><a href="#sec-5">5 Question 10</a></li>
+<li><a href="#sec-6">6 Question 11</a>
+<ul>
+<li><a href="#sec-6-1">6.1 Observations :</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">7 Question 15</a></li>
+<li><a href="#sec-8">8 Question 20</a>
+<ul>
+<li><a href="#sec-8-1">8.1 Rappel sur les valeurs théoriques de la question 2 :</a>
+<ul>
+<li><a href="#sec-8-1-1">8.1.1 Moyenne nulle =&gt; \(\mu(n,k)=0\)</a></li>
+<li><a href="#sec-8-1-2">8.1.2 Variance =&gt; \(v(n,k)=k \cdot \sigma^2\)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Question 1</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Bruit blanc</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>Un bruit blanc est aléatoire, stationnaire à l'ordre 2 centré (moyenne statistique nulle) et 
+représenté par sa fonction d'autocorrélation \(\Gamma_{X}(\tau) = N_{0}\delta (\tau)\)  
+</p></div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Bruit Gaussien</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>Un bruit \(B(t)\) est dit gaussien, si pour chaque ensemble fini d'instants \(t_k\), le vecteur
+\([B(t_1), B(t_2), ..., B(t_n)]\) est gaussien.
+</p>
+<p>
+Il est défini par ses moments d'ordre 1 et 2.
+Il est SSL si \(\mu\) ne dépend pas de \(t\) et &Lambda; ne dépend que de l'écart entre deux instants. 
+La stationnarité au sens large implique la stationnarité au sens strict. 
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Question 2</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Espérance de \(X_{n+1}-X_{n}\)</h3>
+<div class="outline-text-3" id="text-2-1">
+
+<p>\noindent
+\begin{equation*}
+\begin{aligned}
+$E(X_{n+1}-X_n) & = E(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n) \\
+& = E(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n)  $
+\end{aligned}
+\end{equation*}
+
+Or N est un bruit blanc, son espérance est nulle, on obtient donc : 
+</p>
+
+<p>
+\noindent
+\begin{equation*}
+\begin{aligned}
+$E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot 0 \\
+& = 0 \\$
+\end{aligned}
+\end{equation*}
+
+</p></div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Variance de \(X_{n+1}-X_{n}\)</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+<p>
+\noindent
+\begin{equation*}
+\begin{aligned}
+$Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
+& = Var(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \Delta t \cdot \sigma^2 \cdot Var(N_n) \\
+& = \Delta t \cdot \sigma^2 % justification p 113 
+ $
+\end{aligned}
+\end{equation*}
+
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Question 3</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>db contient les ecarts les deplacements d'un instant à l'autre 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Question 4</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>b contient les déplacements d'un instant à l'autre relativement aux précédents 
+</p>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Question 10</h2>
+<div class="outline-text-2" id="text-5">
+
+<p>Plus le coefficient de diffusion est élevé plus les valeurs du processus entre un instant 
+\(t_1\) et \(t_2\) avec \(t_2 \gt t_1\) pourront etre écartées. C'est ce que l'on peut déduire 
+de la formule de notre modèle puisque entre un instant et le suivant la valeur du procesus est 
+pondérée par la racine de \(\sigma\) au carré.
+</p></div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Question 11</h2>
+<div class="outline-text-2" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-3">
+<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Observations :</h3>
+<div class="outline-text-3" id="text-6-1">
+
+<p>La moyenne est très proche de 0 quelque soit l'instant considéré.
+La variance quant à elle augmente au cours du temps.
+On sait qu'un processus de Wiener n'est pas stationnaire au sens large, le fait que la variance 
+dépende a priori du temps ne nous surprend donc pas. 
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> Question 15</h2>
+<div class="outline-text-2" id="text-7">
+
+<p>Les observations à la questions 11 sont valables pour un coefficient de diffusion plus
+ élevé (\(\sigma=50\)). La variance évolue plus vite au cours du temps.
+</p></div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> Question 20</h2>
+<div class="outline-text-2" id="text-8">
+
+
+</div>
+
+<div id="outline-container-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Rappel sur les valeurs théoriques de la question 2 :</h3>
+<div class="outline-text-3" id="text-8-1">
+
+
+</div>
+
+<div id="outline-container-8-1-1" class="outline-4">
+<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> Moyenne nulle =&gt; \(\mu(n,k)=0\)</h4>
+<div class="outline-text-4" id="text-8-1-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-8-1-2" class="outline-4">
+<h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> Variance =&gt; \(v(n,k)=k \cdot \sigma^2\)</h4>
+<div class="outline-text-4" id="text-8-1-2">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2015-10-04T20:12+0200</p>
+<p class="author">Author: yfe</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
