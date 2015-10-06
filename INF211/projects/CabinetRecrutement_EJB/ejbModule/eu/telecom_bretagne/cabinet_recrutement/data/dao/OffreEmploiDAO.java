@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
@@ -31,9 +30,7 @@ public class OffreEmploiDAO {
 	/**
 	 * Default constructor. 
 	 */
-	public OffreEmploiDAO() {
-		// TODO Auto-generated constructor stub
-	}
+	public OffreEmploiDAO() {}
 	//-----------------------------------------------------------------------------
 	public OffreEmploi findById(Integer id)
 	{
@@ -42,28 +39,34 @@ public class OffreEmploiDAO {
 	//----------------------------------------------------------------------------
 	public List<OffreEmploi> findAll()
 	{
-		Query query = entityManager.createQuery("select offre_emploi from OffreEmploi offre_emploi order by offre_emploi.id");
-		List l = query.getResultList();
+		Query query = entityManager.createNativeQuery("OffreEmploi.findAll", OffreEmploi.class);
 
-		return (List<OffreEmploi>) l;
+		@SuppressWarnings("unchecked")
+		List<OffreEmploi> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
 	public List<OffreEmploi> findByEntreprise(Entreprise entreprise) {
 		Query query = entityManager.createQuery("select offre_emploi from OffreEmploi offre_emploi order by offre_emploi.id where entreprise = ?");
 		query.setParameter(1, entreprise.getId());
-		List l = query.getResultList();
 
-		return (List<OffreEmploi>) l;
+		@SuppressWarnings("unchecked")
+		List<OffreEmploi> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
-		public List<OffreEmploi> findBy(SecteurActivite secteurActivite, NiveauQualification niveauQualification) {
-			Query query = entityManager.createQuery("select offre_emploi from OffreEmploi offre_emploi order by offre_emploi.id where secteur_activite = ? and niveau_qualification = ?");
-			query.setParameter(1, secteurActivite.getId());
-			query.setParameter(2, niveauQualification.getId());
-			List l = query.getResultList();
+	public List<OffreEmploi> findBy(SecteurActivite secteurActivite, NiveauQualification niveauQualification) {
+		Query query = entityManager.createQuery("select offre_emploi from OffreEmploi offre_emploi order by offre_emploi.id where secteur_activite = ? and niveau_qualification = ?");
+		query.setParameter(1, secteurActivite.getId());
+		query.setParameter(2, niveauQualification.getId());
 
-			return (List<OffreEmploi>) l;
-		}
+		@SuppressWarnings("unchecked")
+		List<OffreEmploi> l = query.getResultList();
+
+		return l;
+	}
 	//-----------------------------------------------------------------------------
 	public void remove(OffreEmploi offreEmploi){
 		entityManager.remove(offreEmploi);

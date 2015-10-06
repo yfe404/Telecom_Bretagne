@@ -27,9 +27,7 @@ public class SecteurActiviteDAO {
 	/**
 	 * Default constructor. 
 	 */
-	public SecteurActiviteDAO() {
-		// TODO Auto-generated constructor stub
-	}
+	public SecteurActiviteDAO() {}
 	//-----------------------------------------------------------------------------
 	public SecteurActivite findById(Integer id)
 	{
@@ -38,10 +36,12 @@ public class SecteurActiviteDAO {
 	//----------------------------------------------------------------------------
 	public List<SecteurActivite> findAll()
 	{
-		Query query = entityManager.createQuery("select secteur_activite from SecteurActivite secteur_activite order by secteur_activite.id");
-		List l = query.getResultList();
+		Query query = entityManager.createNativeQuery("SecteurActivite.findAll", SecteurActivite.class);
 
-		return (List<SecteurActivite>) l;
+		@SuppressWarnings("unchecked")
+		List<SecteurActivite> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
 	public SecteurActivite persist(SecteurActivite secteurActivite){
