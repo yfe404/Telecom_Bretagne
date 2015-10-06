@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="CabinetRecrutement">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="CabinetRecrutement_EJB.jar" deploy-path="/" handle="module:/resource/CabinetRecrutement_EJB/CabinetRecrutement_EJB">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="CabinetRecrutement_Web.war" deploy-path="/" handle="module:/resource/CabinetRecrutement_Web/CabinetRecrutement_Web">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
