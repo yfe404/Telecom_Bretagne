@@ -55,8 +55,7 @@ du BER.
 - Ajout de tests unitaires
 - Transducteur n'a pas à etre présent à cette étape ! 
 - Revoir le RZ par rapport à la spécif de la commande unique
-- Afficher le valeurs par défaut lors du parsing des arguments quand ils 
-ne sont pas renseignés. 
+- Afficher le valeurs par défaut lors du parsing des arguments quand ils ne sont pas renseignés. 
 - Bug dans le recepteur analogique RZ -nbEch 60 -seed 4 -mess 20 amplMin -1 amplMax 1   
 
 ** Pistes d'amélioration
