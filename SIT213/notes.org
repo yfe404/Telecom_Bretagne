@@ -1,17 +1,41 @@
+#+STARTUP: overview
+#+STARTUP: hidestars 
 
 
-Le transmetteur inclu le canal de transmission et les composants des extrémités.
+* Etape 3
+** Objectif
+Ajout du bruit dans le transmetteur. Le bruit modélisé dans le transmetteur correspond au bruit induit par
+- le transmetteur lui-meme
+- les composants aux extrémités
+On cherche à modéliser un bruit le plus proche possible de la réalité.
+On choisit un bruit blanc, centré, gaussien additif. 
 
-Rappel : SNR : Puissance moyenne du signal / Puissance moyenne du bruit (linéaire) 
 
-10log(Puissance moyenne du signal / Puissance moyenne du bruit)
+** Rappels 
+*** Puissance instantanée
+La puissance instantanée d'un signal est l'amplitude à l'instant considéré au carré. 
+*** Puissance moyenne
+La puissance moyenne est la somme des puissances instantanées divisée par le nombre d'échantillons 
+*** SNR 
+Puissance moyenne du signal / Puissance moyenne du bruit (linéaire)
+10log(Puissance moyenne du signal / Puissance moyenne du bruit) (logarithmique)
 
-La puissance instantanée d'un signal est l'amplitude à 
-l'instant considéré au carré. 
-La puissance moyenne est la somme des puissances instantanées 
-divisée par le nombre d'échantillons 
+$SNR = \frac{P_{signal}}{P_{noise}} = \frac{\sigma^{2}_{signal}}{\sigma^{2}_{noise}}$
 
-Dans le rapport fournir un graphique BER(SNR) et log_10(BER)(SNR_{dB})
-BER donné par le nombre de bits erronés / nombre de bits total 
 
-Il faut montrer que les échantillons générés suivent une loi gaussienne
+*** BER
+Donné par le nombre de bits erronés / nombre de bits total 
+
+
+** Travail à effectuer
+*** Modéliser le bruit (Matlab/Octave)
+*** Implémenter le modèle (Java)
+*** Vérifier que le bruit est gaussien (histogramme)
+*** Réaliser les graphiques du BER en fonction du SNR (linéaire et logarithmique).
+
+
+
+    
+
+
+
