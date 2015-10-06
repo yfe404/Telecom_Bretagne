@@ -10,28 +10,46 @@ Ajout du bruit dans le transmetteur. Le bruit modélisé dans le transmetteur co
 On cherche à modéliser un bruit le plus proche possible de la réalité.
 On choisit un bruit blanc, centré, gaussien additif. 
 
-
 ** Rappels 
 *** Puissance instantanée
-La puissance instantanée d'un signal est l'amplitude à l'instant considéré au carré. 
+    La puissance instantanée d'un signal est l'amplitude à l'instant considéré au carré. 
 *** Puissance moyenne
 La puissance moyenne est la somme des puissances instantanées divisée par le nombre d'échantillons 
 *** SNR 
+
+Rapport entre la puissance moyenne du signal sur la puissance moyenne du bruit. 
+
 Puissance moyenne du signal / Puissance moyenne du bruit (linéaire)
 10log(Puissance moyenne du signal / Puissance moyenne du bruit) (logarithmique)
 
 $SNR = \frac{P_{signal}}{P_{noise}} = \frac{\sigma^{2}_{signal}}{\sigma^{2}_{noise}}$
 
-
 *** BER
 Donné par le nombre de bits erronés / nombre de bits total 
+Dans le graphique présenté en début de séance, le BER était de 10e-7.
+*** TODO Bruit Blanc
+*** TODO Bruit Gaussien
+*** TODO stationnarité et ergodicité (1er et second ordre)
+*** TODO Notes extraites du mail de Yann M. à mettre en forme 
+L'hypothèse d'ergodicité implique la definition d'un histogramme  
+- utilisation de la méthode de MONTE CARLO pour estimer la nature gaussienne du bruit.
+- verifier l'histogramme une seule fois en début de processus
 
+** Guidelines
+- Penser à optimiser le code de manière à générer un nombre intéressant de bits pour l'observation 
+du BER. 
+- Vérifier que le bruit généré est bien gaussien (à l'aide d'un histogramme par exemple).
 
 ** Travail à effectuer
 *** Modéliser le bruit (Matlab/Octave)
 *** Implémenter le modèle (Java)
 *** Vérifier que le bruit est gaussien (histogramme)
 *** Réaliser les graphiques du BER en fonction du SNR (linéaire et logarithmique).
+** Feedbacks étapes précédentes
+ Ajouter des détails sur la modélisation (passage du numérique à l'analogique et inversement).
+ Référencer les figures dans le texte (\ref).
+ Interprétation des chiffres.
+ Changer Synthèse par Conclusion et étoffer !
 
 
 
