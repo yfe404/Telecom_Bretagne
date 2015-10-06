@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>notes</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="notes"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2015-10-05T10:45+0200"/>
+<meta name="generated" content="2015-10-05T09:57+0200"/>
 <meta name="author" content="yfe"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -209,42 +209,20 @@ for the JavaScript code below.
 
 
 
+
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1 Question 1</a>
-<ul>
-<li><a href="#sec-1-1">1.1 Bruit blanc</a></li>
-<li><a href="#sec-1-2">1.2 Bruit Gaussien</a></li>
-</ul>
-</li>
+<li><a href="#sec-1">1 Question 1</a></li>
 <li><a href="#sec-2">2 Question 2</a>
 <ul>
-<li><a href="#sec-2-1">2.1 Espérance de \(X_{n+1}-X_{n}\)</a></li>
-<li><a href="#sec-2-2">2.2 Variance de \(X_{n+1}-X_{n}\)</a></li>
+<li><a href="#sec-2-1">2.1 Justification par le calcul</a></li>
 </ul>
 </li>
 <li><a href="#sec-3">3 Question 3</a></li>
 <li><a href="#sec-4">4 Question 4</a></li>
-<li><a href="#sec-5">5 Question 10</a></li>
-<li><a href="#sec-6">6 Question 11</a>
-<ul>
-<li><a href="#sec-6-1">6.1 Observations :</a></li>
-</ul>
-</li>
-<li><a href="#sec-7">7 Question 15</a></li>
-<li><a href="#sec-8">8 Question 20</a>
-<ul>
-<li><a href="#sec-8-1">8.1 Rappel sur les valeurs théoriques de la question 2 :</a>
-<ul>
-<li><a href="#sec-8-1-1">8.1.1 Moyenne nulle =&gt; \(\mu(n,k)=0\)</a></li>
-<li><a href="#sec-8-1-2">8.1.2 Variance qui ne dépend que de k (écart entre deux instants)=&gt; \(v(n,k)=k \cdot \sigma^2\)</a></li>
-</ul></li>
-</ul>
-</li>
-<li><a href="#sec-9">9 Question 21</a></li>
-<li><a href="#sec-10">10 Question 24</a></li>
+<li><a href="#sec-5">5 Question 5</a></li>
 </ul>
 </div>
 </div>
@@ -254,31 +232,9 @@ for the JavaScript code below.
 <div class="outline-text-2" id="text-1">
 
 
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Bruit blanc</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p>Un bruit blanc est aléatoire, stationnaire à l'ordre 2 centré (moyenne statistique nulle) et 
-représenté par sa fonction d'autocorrélation \(\Gamma_{X}(\tau) = N_{0}\delta (\tau)\)  
-</p></div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Bruit Gaussien</h3>
-<div class="outline-text-3" id="text-1-2">
-
-<p>Un bruit \(B(t)\) est dit gaussien, si pour chaque ensemble fini d'instants \(t_k\), le vecteur
-\([B(t_1), B(t_2), ..., B(t_n)]\) est gaussien.
-</p>
 <p>
-Il est défini par ses moments d'ordre 1 et 2.
-Il est SSL si \(\mu\) ne dépend pas de \(t\) et &Lambda; ne dépend que de l'écart entre deux instants. 
-La stationnarité au sens large implique la stationnarité au sens strict. 
+??
 </p>
-</div>
 </div>
 
 </div>
@@ -288,56 +244,40 @@ La stationnarité au sens large implique la stationnarité au sens strict.
 <div class="outline-text-2" id="text-2">
 
 
+
+<p>
+La loi suivie par les durées inter-événements dans un processus 
+suivent une loi exponentielle de paramètre lambda. 
+</p>
+<p>
+On utilise pour cela 
+</p>
+<p>
+dt = -log(rand(1, n<sub>evt</sub>)) / lambda;
+</p>
+<p>
+Génère un vecteur contenant les durées inter événements, ces durées suivent bien une loi 
+exponentielle de paramètre lambda.
+</p>
+
 </div>
 
 <div id="outline-container-2-1" class="outline-3">
-<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Espérance de \(X_{n+1}-X_{n}\)</h3>
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Justification par le calcul</h3>
 <div class="outline-text-3" id="text-2-1">
 
-<p>\noindent
-\begin{equation*}
-\begin{aligned}
-$E(X_{n+1}-X_n) & = E(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n) \\
-& = E(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
-& = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n)  $
-\end{aligned}
-\end{equation*}
 
-Or N est un bruit blanc, son espérance est nulle, on obtient donc : 
+<p>
+On part de l'expression de la fonction de répartition
+</p>
+<p>
+\(F_{T_n}(t) = 1-\exp{- \lambda \cdot t}\) 
 </p>
 
 <p>
-\noindent
-\begin{equation*}
-\begin{aligned}
-$E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
-& = \sqrt{\Delta t \cdot \sigma^2} \cdot 0 \\
-& = 0 \\$
-\end{aligned}
-\end{equation*}
-
-</p></div>
-
+ à partir de laquelle on 
+</p>
 </div>
-
-<div id="outline-container-2-2" class="outline-3">
-<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Variance de \(X_{n+1}-X_{n}\)</h3>
-<div class="outline-text-3" id="text-2-2">
-
-
-<p>
-\noindent
-\begin{equation*}
-\begin{aligned}
-$Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
-& = Var(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
-& = \Delta t \cdot \sigma^2 \cdot Var(N_n) \\
-& = \Delta t \cdot \sigma^2 % justification p 113 
- $
-\end{aligned}
-\end{equation*}
-
-</p></div>
 </div>
 
 </div>
@@ -346,8 +286,9 @@ $Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
 <h2 id="sec-3"><span class="section-number-2">3</span> Question 3</h2>
 <div class="outline-text-2" id="text-3">
 
-<p>db contient les ecarts les deplacements d'un instant à l'autre 
+<p>temps d'arrivée de chaque événement 
 </p>
+
 </div>
 
 </div>
@@ -356,112 +297,23 @@ $Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
 <h2 id="sec-4"><span class="section-number-2">4</span> Question 4</h2>
 <div class="outline-text-2" id="text-4">
 
-<p>b contient les déplacements d'un instant à l'autre relativement aux précédents 
+<p>La valeur du processus de comptage en chaque instant sur l'intervalle [0,t]
 </p>
-
-
 
 </div>
 
 </div>
 
 <div id="outline-container-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Question 10</h2>
+<h2 id="sec-5"><span class="section-number-2">5</span> Question 5</h2>
 <div class="outline-text-2" id="text-5">
-
-<p>Plus le coefficient de diffusion est élevé plus les valeurs du processus entre un instant 
-\(t_1\) et \(t_2\) avec \(t_2 \gt t_1\) pourront etre écartées. C'est ce que l'on peut déduire 
-de la formule de notre modèle puisque entre un instant et le suivant la valeur du procesus est 
-pondérée par la racine de \(\sigma\) au carré.
-</p></div>
-
-</div>
-
-<div id="outline-container-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Question 11</h2>
-<div class="outline-text-2" id="text-6">
-
-
-</div>
-
-<div id="outline-container-6-1" class="outline-3">
-<h3 id="sec-6-1"><span class="section-number-3">6.1</span> Observations :</h3>
-<div class="outline-text-3" id="text-6-1">
-
-<p>La moyenne est très proche de 0 quelque soit l'instant considéré.
-La variance quant à elle augmente au cours du temps.
-On sait qu'un processus de Wiener n'est pas stationnaire au sens large, le fait que la variance 
-dépende a priori du temps ne nous surprend donc pas. 
-</p>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Question 15</h2>
-<div class="outline-text-2" id="text-7">
-
-<p>Les observations à la questions 11 sont valables pour un coefficient de diffusion plus
- élevé (\(\sigma=50\)). La variance évolue plus vite au cours du temps.
-</p></div>
-
-</div>
-
-<div id="outline-container-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Question 20</h2>
-<div class="outline-text-2" id="text-8">
-
-
-</div>
-
-<div id="outline-container-8-1" class="outline-3">
-<h3 id="sec-8-1"><span class="section-number-3">8.1</span> Rappel sur les valeurs théoriques de la question 2 :</h3>
-<div class="outline-text-3" id="text-8-1">
-
-
-</div>
-
-<div id="outline-container-8-1-1" class="outline-4">
-<h4 id="sec-8-1-1"><span class="section-number-4">8.1.1</span> Moyenne nulle =&gt; \(\mu(n,k)=0\)</h4>
-<div class="outline-text-4" id="text-8-1-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-8-1-2" class="outline-4">
-<h4 id="sec-8-1-2"><span class="section-number-4">8.1.2</span> Variance qui ne dépend que de k (écart entre deux instants)=&gt; \(v(n,k)=k \cdot \sigma^2\)</h4>
-<div class="outline-text-4" id="text-8-1-2">
-
-</div>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> Question 21</h2>
-<div class="outline-text-2" id="text-9">
-
-</div>
-
-</div>
-
-<div id="outline-container-10" class="outline-2">
-<h2 id="sec-10"><span class="section-number-2">10</span> Question 24</h2>
-<div class="outline-text-2" id="text-10">
-
-<p>Le processus est SSL puisque sa moyenne ne dépend pas du temps et sa variance ne dépend que de 
-l'écart entre les deux instants considérés. 
-</p>
 
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2015-10-05T10:45+0200</p>
+<p class="date">Date: 2015-10-05T09:57+0200</p>
 <p class="author">Author: yfe</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>

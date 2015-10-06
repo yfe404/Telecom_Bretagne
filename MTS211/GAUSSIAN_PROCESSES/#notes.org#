@@ -1,0 +1,86 @@
+#+STARTUP: overview
+#+STARTUP: hidestars
+
+
+* Question 1
+** Bruit blanc
+Un bruit blanc est aléatoire, stationnaire à l'ordre 2 centré (moyenne statistique nulle) et 
+représenté par sa fonction d'autocorrélation $\Gamma_{X}(\tau) = N_{0}\delta (\tau)$  
+** Bruit Gaussien
+Un bruit $B(t)$ est dit gaussien, si pour chaque ensemble fini d'instants $t_k$, le vecteur
+$[B(t_1), B(t_2), ..., B(t_n)]$ est gaussien.
+
+Il est défini par ses moments d'ordre 1 et 2.
+Il est SSL si $\mu$ ne dépend pas de $t$ et \Lambda ne dépend que de l'écart entre deux instants. 
+La stationnarité au sens large implique la stationnarité au sens strict. 
+
+* Question 2
+** Espérance de $X_{n+1}-X_{n}$
+\noindent
+\begin{equation*}
+\begin{aligned}
+$E(X_{n+1}-X_n) & = E(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n) \\
+& = E(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n)  $
+\end{aligned}
+\end{equation*}
+
+Or N est un bruit blanc, son espérance est nulle, on obtient donc : 
+
+
+\noindent
+\begin{equation*}
+\begin{aligned}
+$E(X_{n+1}-X_n) & = \sqrt{\Delta t \cdot \sigma^2} \cdot E(N_n) \\
+& = \sqrt{\Delta t \cdot \sigma^2} \cdot 0 \\
+& = 0 \\$
+\end{aligned}
+\end{equation*}
+
+** Variance de $X_{n+1}-X_{n}$
+
+\noindent
+\begin{equation*}
+\begin{aligned}
+$Var(X_{n+1}-X_n) & = Var(X_n + \sqrt{\Delta t \cdot \sigma^2}\cdot N_n - X_n)\\
+& = Var(\sqrt{\Delta t \cdot \sigma^2}\cdot N_n) \\
+& = \Delta t \cdot \sigma^2 \cdot Var(N_n) \\
+& = \Delta t \cdot \sigma^2 % justification p 113 
+ $
+\end{aligned}
+\end{equation*}
+
+* Question 3
+db contient les ecarts les deplacements d'un instant à l'autre 
+
+* Question 4
+b contient les déplacements d'un instant à l'autre relativement aux précédents 
+
+
+
+
+* Question 10
+Plus le coefficient de diffusion est élevé plus les valeurs du processus entre un instant 
+$t_1$ et $t_2$ avec $t_2 \gt t_1$ pourront etre écartées. C'est ce que l'on peut déduire 
+de la formule de notre modèle puisque entre un instant et le suivant la valeur du procesus est 
+pondérée par la racine de $\sigma$ au carré.
+* Question 11
+** Observations : 
+La moyenne est très proche de 0 quelque soit l'instant considéré.
+La variance quant à elle augmente au cours du temps.
+On sait qu'un processus de Wiener n'est pas stationnaire au sens large, le fait que la variance 
+dépende a priori du temps ne nous surprend donc pas. 
+
+* Question 15
+Les observations à la questions 11 sont valables pour un coefficient de diffusion plus
+ élevé ($\sigma=50$). La variance évolue plus vite au cours du temps.
+* Question 20
+** Rappel sur les valeurs théoriques de la question 2 : 
+*** Moyenne nulle => $\mu(n,k)=0$  
+*** Variance qui ne dépend que de k (écart entre deux instants)=> $v(n,k)=k \cdot \sigma^2$
+* Question 21
+* Question 24 
+Le processus est SSL puisque sa moyenne ne dépend pas du temps et sa variance ne dépend que de 
+l'écart entre les deux instants considérés. 
+
+

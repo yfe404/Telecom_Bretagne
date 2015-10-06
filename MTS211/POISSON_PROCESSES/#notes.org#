@@ -1,0 +1,33 @@
+#+STARTUP: overview
+#+TAGS: OFFICE(o) COMPUTER(c) HOME(h) PROJECT(p) READING(r) DVD(d) TELECOMBRETAGNE(t)
+#+STARTUP: hidestars
+#+LANGUAGE: fr
+
+
+
+Simulation d'une trajectoire 
+
+plot ici 
+
+
+La loi suivie par les durées inter-événements dans un processus 
+suivent une loi exponentielle de paramètre lambda. 
+
+On utilise pour cela 
+
+dt = -log(rand(1, n_evt)) / lambda;
+
+Génère un vecteur contenant les durées inter événements, ces durées suivent bien une loi 
+exponentielle de paramètre lambda.
+
+Justification par le calcul 
+
+On part de l'expression de la fonction de répartition
+
+$F_{T_n}(t) = 1-e^{- \lambda \cdot t}$ 
+
+En recherchant $t$ on obtient $t = \frac{-1}{\lambda} \cdot \ln(\frac{F_{T_n}}{\lambda})$
+
+
+
+
