@@ -16,8 +16,8 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
  */
 @Stateless
 @LocalBean
-public class EntrepriseDAO
-{
+public class EntrepriseDAO {
+
 	//-----------------------------------------------------------------------------
 	/**
 	 * Référence vers le gestionnaire de persistance.
@@ -28,10 +28,7 @@ public class EntrepriseDAO
 	/**
 	 * Default constructor.
 	 */
-	public EntrepriseDAO()
-	{
-		// TODO Auto-generated constructor stub
-	}
+	public EntrepriseDAO() {}
 	//-----------------------------------------------------------------------------
 	public Entreprise findById(Integer id)
 	{
@@ -40,10 +37,12 @@ public class EntrepriseDAO
 	//----------------------------------------------------------------------------
 	public List<Entreprise> findAll()
 	{
-		Query query = entityManager.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
-		List l = query.getResultList();
+		Query query = entityManager.createNativeQuery("Entreprise.findAll", Entreprise.class);
 
-		return (List<Entreprise>) l;
+		@SuppressWarnings("unchecked")
+		List<Entreprise> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
 	public void remove(Entreprise entreprise){
@@ -59,6 +58,5 @@ public class EntrepriseDAO
 		return entityManager.merge(entreprise);
 	}
 	//-----------------------------------------------------------------------------
-	
 
 }

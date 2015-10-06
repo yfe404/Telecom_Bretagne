@@ -27,9 +27,7 @@ public class NiveauQualificationDAO {
 	/**
 	 * Default constructor. 
 	 */
-	public NiveauQualificationDAO() {
-		// TODO Auto-generated constructor stub
-	}
+	public NiveauQualificationDAO() {}
 	//-----------------------------------------------------------------------------
 	public NiveauQualification findById(Integer id)
 	{
@@ -38,10 +36,12 @@ public class NiveauQualificationDAO {
 	//----------------------------------------------------------------------------
 	public List<NiveauQualification> findAll()
 	{
-		Query query = entityManager.createQuery("select niveau_qualification from  NiveauQualification niveau_qualification order by niveau_qualification.id");
-		List l = query.getResultList();
+		Query query = entityManager.createNativeQuery("NiveauQualification.findAll", NiveauQualification.class);
 
-		return (List<NiveauQualification>) l;
+		@SuppressWarnings("unchecked")
+		List<NiveauQualification> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
 	public NiveauQualification persist(NiveauQualification niveauQualification){

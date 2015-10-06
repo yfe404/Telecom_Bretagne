@@ -29,9 +29,7 @@ public class CandidatureDAO {
 	/**
 	 * Default constructor. 
 	 */
-	public CandidatureDAO() {
-		// TODO Auto-generated constructor stub
-	}
+	public CandidatureDAO() {}
 	//-----------------------------------------------------------------------------
 	public Candidature findById(Integer id)
 	{
@@ -40,21 +38,24 @@ public class CandidatureDAO {
 	//----------------------------------------------------------------------------
 	public List<Candidature> findAll()
 	{
-		Query query = entityManager.createQuery("select candidature from Candidature candidature order by candidature.id");
-		List l = query.getResultList();
+		Query query = entityManager.createNativeQuery("Candidature.findAll", Candidature.class);
 
-		return (List<Candidature>) l;
+		@SuppressWarnings("unchecked")
+		List<Candidature> l = query.getResultList();
+
+		return l;
 	}
 	//-----------------------------------------------------------------------------
 	public List<Candidature> findBy(SecteurActivite secteurActivite, NiveauQualification niveauQualification) {
 		Query query = entityManager.createQuery("select candidature from Candidature candidature order by candidature.id where secteur_activite = ? and niveau_qualification = ?");
 		query.setParameter(1, secteurActivite.getId());
 		query.setParameter(2, niveauQualification.getId());
-		List l = query.getResultList();
 
-		return (List<Candidature>) l;
+		@SuppressWarnings("unchecked")
+		List<Candidature> l = query.getResultList();
+
+		return l;
 	}
-
 	//-----------------------------------------------------------------------------
 	public void remove(Candidature candidature){
 		entityManager.remove(candidature);
