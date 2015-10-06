@@ -1,0 +1,17 @@
+
+
+Le transmetteur inclu le canal de transmission et les composants des extrémités.
+
+Rappel : SNR : Puissance moyenne du signal / Puissance moyenne du bruit (linéaire) 
+
+10log(Puissance moyenne du signal / Puissance moyenne du bruit)
+
+La puissance instantanée d'un signal est l'amplitude à 
+l'instant considéré au carré. 
+La puissance moyenne est la somme des puissances instantanées 
+divisée par le nombre d'échantillons 
+
+Dans le rapport fournir un graphique BER(SNR) et log_10(BER)(SNR_{dB})
+BER donné par le nombre de bits erronés / nombre de bits total 
+
+Il faut montrer que les échantillons générés suivent une loi gaussienne
