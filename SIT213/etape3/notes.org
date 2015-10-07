@@ -12,9 +12,9 @@ On choisit un bruit blanc, centré, gaussien additif.
 
 ** Rappels 
 *** Puissance instantanée
-    La puissance instantanée d'un signal est l'amplitude à l'instant considéré au carré. 
+    La puissance instantanée d'un signal est l'amplitude en cet instant élevé au carré. 
 *** Puissance moyenne
-La puissance moyenne est la somme des puissances instantanées divisée par le nombre d'échantillons 
+La puissance moyenne est la somme des puissances instantanées divisée par le nombre d'échantillons.
 *** SNR 
 
 Rapport entre la puissance moyenne du signal sur la puissance moyenne du bruit. 
@@ -65,6 +65,7 @@ du BER.
 
 ** Pistes d'amélioration
  - Faire des "tests clients" (réalisés par l'équipe modélisation) post intgration    
+ - Ajouter des diagrammes UML (classe et séquence) 
 
 
 
