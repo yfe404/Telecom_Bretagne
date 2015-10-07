@@ -46,17 +46,22 @@ du BER.
 *** Vérifier que le bruit est gaussien (histogramme)
 *** Réaliser les graphiques du BER en fonction du SNR (linéaire et logarithmique).
 ** Feedbacks étapes précédentes
-
-- Ajouter des détails sur la modélisation (passage du numérique à l'analogique et inversement).
-- Référencer les figures dans le texte (\ref).
-- Interprétation des chiffres.
-- Changer Synthèse par Conclusion et étoffer !
-- Mettre à jour le README 
+*** Développement informatique Java
 - Ajout de tests unitaires
-- Transducteur n'a pas à etre présent à cette étape ! 
 - Revoir le RZ par rapport à la spécif de la commande unique
+- Transducteur n'a pas à etre présent à cette étape ! 
 - Afficher le valeurs par défaut lors du parsing des arguments quand ils ne sont pas renseignés. 
 - Bug dans le recepteur analogique RZ -nbEch 60 -seed 4 -mess 20 amplMin -1 amplMax 1   
+*** Modélisation MATLAB
+- Revoir le RZ par rapport à la spécif de la commande unique
+*** Étude des résultats expérimentaux
+- Interprétation des chiffres.
+- Changer Synthèse par Conclusion et étoffer !
+*** Rapport et documentation
+- Ajouter des détails sur la modélisation (passage du numérique à l'analogique et inversement).
+- Référencer les figures dans le texte (\ref).
+- Mettre à jour le README 
+
 
 ** Pistes d'amélioration
  - Faire des "tests clients" (réalisés par l'équipe modélisation) post intgration    
