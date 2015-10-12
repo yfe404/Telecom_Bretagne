@@ -5,6 +5,7 @@
 - Améliorer le réception (moyennage pour le bruit, ?? pour les multi-trajets)
 - Implémenter un filtre adapté ?
 - Prendre en compte la variation des parametres, voir tracer plusieurs courbes dynamiquement pour comparer.
+- Faire un zoom sur la partie entre 0 et 10/15dB pour le TEB/SNR.
 
 ** Retour des étapes précédentes
 
