@@ -3,6 +3,7 @@
 ** Améliorations
 
 - Améliorer le réception (moyennage pour le bruit, ?? pour les multi-trajets)
+- Implémenter un filtre adapté ?
 
 ** Retour des étapes précédentes
 
