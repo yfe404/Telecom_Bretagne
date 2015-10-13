@@ -1,5 +1,8 @@
-﻿-- INF210 / Version 1
+﻿-- INF210 / Version 1.1
 -- Yann Feunteun, Maxime Mouchet
+--
+-- 1.0 : Version initiale
+-- 1.1 : Correction des donnees de test
 
 --
 -- Creation des tables
@@ -87,12 +90,14 @@ INSERT INTO entreprise (nom, descriptif, adresse_postale) VALUES ('Boston Dynami
 INSERT INTO entreprise (nom, descriptif, adresse_postale) VALUES ('Tesla Motors', 'Constructeur automobile de voitures électriques.', '3500 Deer Creek Road. Palo Alto, CA 94304');
 INSERT INTO entreprise (nom, descriptif, adresse_postale) VALUES ('Theranos', 'Analyse sanguine automatisée.', '1701 Page Mill Road. Palo Alto, CA 94304');
 
-INSERT INTO niveau_qualification (intitule) VALUES ('Technicien');
-INSERT INTO niveau_qualification (intitule) VALUES ('Ingénieur');
-INSERT INTO niveau_qualification (intitule) VALUES ('Chercheur');
+INSERT INTO niveau_qualification (intitule) VALUES ('CAP/BEP');
+INSERT INTO niveau_qualification (intitule) VALUES ('Bac');
+INSERT INTO niveau_qualification (intitule) VALUES ('Bac+3');
+INSERT INTO niveau_qualification (intitule) VALUES ('Bac+5');
+INSERT INTO niveau_qualification (intitule) VALUES ('Doctorat');
 
+INSERT INTO secteur_activite (intitule) VALUES ('Marketing');
 INSERT INTO secteur_activite (intitule) VALUES ('Informatique');
-INSERT INTO secteur_activite (intitule) VALUES ('Automobile');
-INSERT INTO secteur_activite (intitule) VALUES ('Pharmaceutique');
+INSERT INTO secteur_activite (intitule) VALUES ('Telecoms/Reseaux');
 
 INSERT INTO offre_emploi (titre, description_mission, profil_recherche, date_depot, entreprise, niveau_qualification) VALUES ('Expert systemes embarqués', 'blablabla', 'blublublu', '2015-09-01', 2, 2);
