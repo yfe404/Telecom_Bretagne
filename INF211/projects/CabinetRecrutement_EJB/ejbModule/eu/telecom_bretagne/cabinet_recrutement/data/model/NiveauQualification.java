@@ -11,7 +11,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name="niveau_qualification")
-@NamedQuery(name="NiveauQualification.findAll", query="SELECT n FROM NiveauQualification n")
 public class NiveauQualification implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -11,7 +11,6 @@ import java.util.Set;
  */
 @Entity
 @Table(name="secteur_activite")
-@NamedQuery(name="SecteurActivite.findAll", query="SELECT s FROM SecteurActivite s")
 public class SecteurActivite implements Serializable {
 	private static final long serialVersionUID = 1L;
 

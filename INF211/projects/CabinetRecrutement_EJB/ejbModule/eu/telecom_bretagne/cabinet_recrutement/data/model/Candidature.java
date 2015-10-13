@@ -11,7 +11,6 @@ import java.util.Set;
  * 
  */
 @Entity
-@NamedQuery(name="Candidature.findAll", query="SELECT c FROM Candidature c")
 public class Candidature implements Serializable {
 	private static final long serialVersionUID = 1L;
 

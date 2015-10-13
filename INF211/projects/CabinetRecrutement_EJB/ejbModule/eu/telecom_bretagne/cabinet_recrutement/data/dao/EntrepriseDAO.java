@@ -12,51 +12,46 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 
 /**
  * Session Bean implementation class EntrepriseDAO
+ * 
  * @author Philippe TANGUY
  */
 @Stateless
 @LocalBean
 public class EntrepriseDAO {
 
-	//-----------------------------------------------------------------------------
-	/**
-	 * Référence vers le gestionnaire de persistance.
-	 */
 	@PersistenceContext
 	EntityManager entityManager;
-	//-----------------------------------------------------------------------------
-	/**
-	 * Default constructor.
-	 */
+
 	public EntrepriseDAO() {}
-	//-----------------------------------------------------------------------------
-	public Entreprise findById(Integer id)
-	{
-		return entityManager.find(Entreprise.class, id);
-	}
-	//----------------------------------------------------------------------------
-	public List<Entreprise> findAll()
-	{
-		Query query = entityManager.createNativeQuery("Entreprise.findAll", Entreprise.class);
+
+	public List<Entreprise> findAll() {
+		final Query query = entityManager
+				.createQuery("select entreprise from Entreprise entreprise order by entreprise.id");
 
 		@SuppressWarnings("unchecked")
-		List<Entreprise> l = query.getResultList();
+		final List<Entreprise> l = query.getResultList();
 
 		return l;
 	}
-	//-----------------------------------------------------------------------------
-	public void remove(Entreprise entreprise){
-		entityManager.remove(entreprise);
+	
+	public Entreprise findById(Integer id) {
+		return entityManager.find(Entreprise.class, id);
 	}
-	//-----------------------------------------------------------------------------
-	public Entreprise persist(Entreprise entreprise){
+
+	public Entreprise persist(Entreprise entreprise) {
 		entityManager.persist(entreprise);
 		return entreprise;
 	}
-	//-----------------------------------------------------------------------------
-	public Entreprise update(Entreprise entreprise){
+	
+	public Entreprise update(Entreprise entreprise) {
 		return entityManager.merge(entreprise);
 	}
-	//-----------------------------------------------------------------------------
+	
+	public void remove(Entreprise entreprise) {
+		if (!entityManager.contains(entreprise)) {
+			entreprise = entityManager.merge(entreprise);
+		}
+		entityManager.remove(entreprise);
+	}
 
 }

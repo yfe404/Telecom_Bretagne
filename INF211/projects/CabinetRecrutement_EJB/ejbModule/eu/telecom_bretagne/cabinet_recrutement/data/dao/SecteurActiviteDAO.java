@@ -17,41 +17,32 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 @LocalBean
 public class SecteurActiviteDAO {
 
-	//-----------------------------------------------------------------------------
-	/**
-	 * Référence vers le gestionnaire de persistance.
-	 */
 	@PersistenceContext
 	EntityManager entityManager;
-	//-----------------------------------------------------------------------------
-	/**
-	 * Default constructor. 
-	 */
+
 	public SecteurActiviteDAO() {}
-	//-----------------------------------------------------------------------------
-	public SecteurActivite findById(Integer id)
-	{
-		return entityManager.find(SecteurActivite.class, id);
-	}
-	//----------------------------------------------------------------------------
-	public List<SecteurActivite> findAll()
-	{
-		Query query = entityManager.createNativeQuery("SecteurActivite.findAll", SecteurActivite.class);
+
+	public List<SecteurActivite> findAll() {
+		final Query query = entityManager.createQuery(
+				"select secteur_activite from SecteurActivite secteur_activite order by secteur_activite.id");
 
 		@SuppressWarnings("unchecked")
-		List<SecteurActivite> l = query.getResultList();
+		final List<SecteurActivite> l = query.getResultList();
 
 		return l;
 	}
-	//-----------------------------------------------------------------------------
-	public SecteurActivite persist(SecteurActivite secteurActivite){
+
+	public SecteurActivite findById(Integer id) {
+		return entityManager.find(SecteurActivite.class, id);
+	}
+	
+	public SecteurActivite update(SecteurActivite secteurActivite) {
+		return entityManager.merge(secteurActivite);
+	}
+	
+	public SecteurActivite persist(SecteurActivite secteurActivite) {
 		entityManager.persist(secteurActivite);
 		return secteurActivite;
 	}
-	//-----------------------------------------------------------------------------
-	public SecteurActivite update(SecteurActivite secteurActivite){
-		return entityManager.merge(secteurActivite);
-	}
-	//-----------------------------------------------------------------------------
 
 }

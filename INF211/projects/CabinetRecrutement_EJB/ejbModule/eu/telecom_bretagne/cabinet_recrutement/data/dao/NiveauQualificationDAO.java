@@ -17,41 +17,32 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 @LocalBean
 public class NiveauQualificationDAO {
 
-	//-----------------------------------------------------------------------------
-	/**
-	 * Référence vers le gestionnaire de persistance.
-	 */
 	@PersistenceContext
 	EntityManager entityManager;
-	//-----------------------------------------------------------------------------
-	/**
-	 * Default constructor. 
-	 */
+
 	public NiveauQualificationDAO() {}
-	//-----------------------------------------------------------------------------
-	public NiveauQualification findById(Integer id)
-	{
-		return entityManager.find(NiveauQualification.class, id);
-	}
-	//----------------------------------------------------------------------------
-	public List<NiveauQualification> findAll()
-	{
-		Query query = entityManager.createNativeQuery("NiveauQualification.findAll", NiveauQualification.class);
+	
+	public List<NiveauQualification> findAll() {
+		final Query query = entityManager
+				.createQuery("select niveau_qualification from NiveauQualification niveau_qualification order by niveau_qualification.id");
 
 		@SuppressWarnings("unchecked")
-		List<NiveauQualification> l = query.getResultList();
+		final List<NiveauQualification> l = query.getResultList();
 
 		return l;
 	}
-	//-----------------------------------------------------------------------------
-	public NiveauQualification persist(NiveauQualification niveauQualification){
+	
+	public NiveauQualification findById(Integer id) {
+		return entityManager.find(NiveauQualification.class, id);
+	}
+	
+	public NiveauQualification persist(NiveauQualification niveauQualification) {
 		entityManager.persist(niveauQualification);
 		return niveauQualification;
 	}
-	//-----------------------------------------------------------------------------
-	public NiveauQualification update(NiveauQualification niveauQualification){
+	
+	public NiveauQualification update(NiveauQualification niveauQualification) {
 		return entityManager.merge(niveauQualification);
 	}
-	//-----------------------------------------------------------------------------
 
 }
