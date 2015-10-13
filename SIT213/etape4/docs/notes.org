@@ -1,0 +1,22 @@
+* Étape 4
+
+** Améliorations
+
+- Améliorer le réception (moyennage pour le bruit, ?? pour les multi-trajets)
+- Implémenter un filtre adapté ?
+- Prendre en compte la variation des parametres, voir tracer plusieurs courbes dynamiquement pour comparer.
+- Faire un zoom sur la partie entre 0 et 10/15dB pour le TEB/SNR.
+
+** Retour des étapes précédentes
+
+*** Problèmes avec la forme d'onde 
+- Pour le RZ et le NRZT on doit avoir une forme gaussienne (1/3 et 3/3).
+- Le NRZ/NRZT devrait rester à un niveau haut quand on as des 1 à la suite (et pas redescendre à zéro à chaque fois).
+- Le RZ est plus resistant au bruit que les autres et c'est pas normal. Peut-etre que c'est du a la forme des ondes. A voir quand on aura corriger.
+
+*** Amélioration du recepteur
+- Faire un moyennage pour limiter les effets du bruit. Plus on a d'echantillons, mieux la reception devrait etre.
+
+*** Problème avec le calcul de la puissance du bruit ?
+TEB constant alors que devrait pas : -mess 1000 -form NRZT -nbEch 20 -ampl MIN MAX -snr SNRFIXE
+-> pe. pb. au niveau de la calcul de la puissance
