@@ -35,7 +35,7 @@ public class OffreEmploiDAO {
 	public List<OffreEmploi> findByEntreprise(int idEntreprise) {
 		final Query query = entityManager
 				.createQuery("select offre_emploi from OffreEmploi offre_emploi"
-						+ " where ofrreEmploi.entreprise.id = :idE order by offre_emploi.id");
+						+ " where offre_emploi.entrepriseBean.id = :idE order by offre_emploi.id");
 
 		query.setParameter("idE", idEntreprise);
 
@@ -53,7 +53,7 @@ public class OffreEmploiDAO {
 		final Query query = entityManager.createQuery(
 				"select offre_emploi from OffreEmploi offre_emploi"
 						+ " join offre_emploi.secteurActivites secteur"
-						+ " where secteur.id = :idSA and offre_emploi.niveauQualification.id = :idNQ"
+						+ " where secteur.id = :idSA and offre_emploi.niveauQualificationBean.id = :idNQ"
 						+ " order by offre_emploi.id desc");
 
 		query.setParameter("idSA", idSecteurActivite);
