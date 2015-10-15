@@ -14,6 +14,7 @@
     
     <ul>
       <li><a href="liste_entreprises.jsp">Liste des entreprises référencées</a></li>
+      <li><a href="ajout_entreprises.jsp">Ajouter une entreprise</a></li>
     </ul>
   
   </body>

@@ -29,6 +29,7 @@
 		    <th>Identifiant</th>
 		    <th>Nom</th>
 		    <th>Adresse postale (ville)</th>
+		    <th>Action</th>
 		  </tr>
 		  <%
 		  for(Entreprise entreprise : entreprises)
@@ -38,6 +39,7 @@
 		     <td>ENT_<%=entreprise.getId()%></td>
 		     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
 		     <td><%=entreprise.getAdressePostale()%></td>
+		     <td><a href="ajout_entreprises.jsp?id=<%=entreprise.getId()%>">Modifier</a>/<a href="SupprimerEntrepriseServlet?id=<%=entreprise.getId()%>">Supprimer</a></td>
 		    </tr>
 		    <%
 		  }
