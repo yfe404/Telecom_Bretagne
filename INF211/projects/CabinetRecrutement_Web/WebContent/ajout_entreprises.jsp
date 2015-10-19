@@ -28,7 +28,7 @@
 
 <%@include file="index.jsp"%>
 
-<div class="container main">
+<div class="container main-container">
 	<div class="row">
 		<div class="col-md-6">
 

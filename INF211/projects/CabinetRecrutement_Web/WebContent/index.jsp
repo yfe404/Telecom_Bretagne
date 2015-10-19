@@ -17,9 +17,9 @@
     <script src="assets/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body class="gradient-endless-river main-body">
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-fixed-top main-navbar">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -29,15 +29,13 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Recru3000</a>
+				<a class="navbar-brand" href="index.jsp">Recru3000</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="index.jsp">Accueil<span
-							class="sr-only"> (current)</span></a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Entreprises <span class="caret"></span></a>
+						aria-expanded="false">Entreprises <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="liste_entreprises.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
 							<li><a href="ajout_entreprises.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
@@ -45,7 +43,7 @@
 						
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Offres d'emploi <span class="caret"></span></a>
+						aria-expanded="false">Offres d'emploi <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="liste_offre_emploi.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
 							<li><a href="ajout_offre_emploi.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
@@ -53,7 +51,7 @@
 						
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Candidatures <span class="caret"></span></a>
+						aria-expanded="false">Candidatures <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="liste_candidatures.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
 							<li><a href="ajout_candidatures.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
