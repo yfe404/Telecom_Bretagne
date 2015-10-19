@@ -16,11 +16,18 @@
 }
 
 .main-navbar .dropdown-toggle {
-	color: #F012BE;
+	color: #E26A6A;
 }
 
 .main-navbar .navbar-brand {
-	color: black;
+	color: #111111;
+	margin-top: -4px;
+}
+
+.main-navbar .logo {
+	display: inline;
+	height: 25px;
+	vertical-align: -5px;
 }
 
 .gradient-endless-river {

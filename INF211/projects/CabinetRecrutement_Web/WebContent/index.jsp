@@ -29,7 +29,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp">Recru3000</a>
+				<a class="navbar-brand" href="index.jsp"> <img class="logo" alt="" src="assets/images/logo.png"> CoffeeJobs</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
