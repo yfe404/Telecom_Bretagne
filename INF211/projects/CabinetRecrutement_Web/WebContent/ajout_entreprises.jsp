@@ -26,16 +26,12 @@
 	}
 %>
 
+<%@include file="index.jsp" %>
 
-<html>
+	<div class="container main">
+		<div class="row">
+			<div class="col-md-6">
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Cabinet de recrutement - Ajout d'une entreprise</title>
-<link rel="stylesheet" href="styles.css" type="text/css" />
-</head>
-
-<body>
 	<h2><%=isUpdate ? "Mise à jour " : "Ajout "%>
 		d'une entreprise :
 	</h2>
@@ -49,6 +45,8 @@
 		postale : <input type='text' name='adresse_postale' value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" /> <br />
 		<button type='submit'>Envoyer</button>
 	</form>
+	
+	</div></div></div>
 
 </body>
 
