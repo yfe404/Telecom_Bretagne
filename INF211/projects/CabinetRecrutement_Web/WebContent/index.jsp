@@ -42,6 +42,14 @@
 							<li><a href="liste_entreprises.jsp">Liste</a></li>
 							<li><a href="ajout_entreprises.jsp">Ajout</a></li>
 						</ul></li>
+						
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Candidature <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="liste_candidatures.jsp">Liste</a></li>
+							<li><a href="ajout_candidatures.jsp">Ajout</a></li>
+						</ul></li>
 				</ul>
 
 				<form class="navbar-form navbar-right"></form>
