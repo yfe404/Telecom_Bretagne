@@ -37,18 +37,26 @@
 							class="sr-only"> (current)</span></a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Entreprises <span class="caret"></span></a>
+						aria-expanded="false"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Entreprises <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="liste_entreprises.jsp">Liste</a></li>
-							<li><a href="ajout_entreprises.jsp">Ajout</a></li>
+							<li><a href="liste_entreprises.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
+							<li><a href="ajout_entreprises.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
 						</ul></li>
 						
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Candidature <span class="caret"></span></a>
+						aria-expanded="false"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> Offres d'emploi <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="liste_candidatures.jsp">Liste</a></li>
-							<li><a href="ajout_candidatures.jsp">Ajout</a></li>
+							<li><a href="liste_offre_emploi.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
+							<li><a href="ajout_offre_emploi.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
+						</ul></li>
+						
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Candidatures <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="liste_candidatures.jsp"><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> Liste</a></li>
+							<li><a href="ajout_candidatures.jsp"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajout</a></li>
 						</ul></li>
 				</ul>
 
