@@ -26,26 +26,30 @@
 	}
 %>
 
-<%@include file="index.jsp" %>
+<%@include file="index.jsp"%>
 
-	<div class="container main">
-		<div class="row">
-			<div class="col-md-6">
+<div class="container main">
+	<div class="row">
+		<div class="col-md-6">
 
-	<h2><%=isUpdate ? "Mise à jour " : "Ajout "%>
-		d'une entreprise :
-	</h2>
+			<h2><%=isUpdate ? "Mise à jour " : "Ajout "%>
+				d'une entreprise :
+			</h2>
 
 
-	<form method='post' action='AjoutEntrepriseServlet'>
-		<input type='hidden' value="<%=id%>" name='id'> 
-		Nom : <input type='text'
-			name='nom' value="<%=isUpdate ? entreprise.getNom() : ""%>" /> <br />
-		Descriptif : <input type='text' name='descriptif' value="<%=isUpdate ? entreprise.getDescriptif() : ""%>"/> <br /> Adresse
-		postale : <input type='text' name='adresse_postale' value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" /> <br />
-		<button type='submit'>Envoyer</button>
-	</form>
-	
-	</div></div></div>
+			<form method='post' action='AjoutEntrepriseServlet'>
+				<input type='hidden' value="<%=id%>" name='id'> Nom : <input
+					type='text' name='nom'
+					value="<%=isUpdate ? entreprise.getNom() : ""%>" /> <br />
+				Descriptif : <input type='text' name='descriptif'
+					value="<%=isUpdate ? entreprise.getDescriptif() : ""%>" /> <br />
+				Adresse postale : <input type='text' name='adresse_postale'
+					value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" /> <br />
+				<button type='submit'>Envoyer</button>
+			</form>
 
-<%@include file="footer.jsp" %>
+		</div>
+	</div>
+</div>
+
+<%@include file="footer.jsp"%>
