@@ -41,3 +41,16 @@
 	/* Opera 11.10+ */
 	background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%); /* W3C */
 }
+
+.table a {
+	color: white;
+	border-bottom: 1px dashed #FFFFFF;
+}
+
+.icon-action {
+	border-bottom: none !important;
+}
+
+.table a:hover {
+	text-decoration: none;
+}
