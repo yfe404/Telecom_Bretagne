@@ -1,7 +1,7 @@
 % appel Lambda = estimateurExponentielle( data)
-% estimateur du paramètre \lambda d'une loi exponentielle
+% estimateur du paramtre \lambda d'une loi exponentielle
 function Lambda = estimateurExponentielle( data)
-    N = size(data,1);
+    N = length(data);
     
     Lambda = N / sum(data);
 end
