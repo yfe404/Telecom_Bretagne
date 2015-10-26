@@ -1,0 +1,56 @@
+.main-body {
+	color: white;
+	height: 100%;
+}
+
+.main-navbar {
+	background-color: rgba(255, 255, 255, 1.0);
+	-webkit-box-shadow: 0px 1px 13px 0px rgba(105, 105, 105, 1);
+	-moz-box-shadow: 0px 1px 13px 0px rgba(105, 105, 105, 1);
+	box-shadow: 0px 1px 13px 0px rgba(105, 105, 105, 1);
+}
+
+.main-container {
+	margin-top: 60px;
+	text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.main-navbar .dropdown-toggle {
+	color: #E26A6A;
+}
+
+.main-navbar .navbar-brand {
+	color: #111111;
+	margin-top: -4px;
+}
+
+.main-navbar .logo {
+	display: inline;
+	height: 25px;
+	vertical-align: -5px;
+}
+
+.gradient-endless-river {
+	background: -webkit-linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+	/* Chrome 10+, Saf5.1+ */
+	background: -moz-linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+	/* FF3.6+ */
+	background: -ms-linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+	/* IE10 */
+	background: -o-linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
+	/* Opera 11.10+ */
+	background: linear-gradient(90deg, #43cea2 10%, #185a9d 90%); /* W3C */
+}
+
+.table a {
+	color: white;
+	border-bottom: 1px dashed #FFFFFF;
+}
+
+.icon-action {
+	border-bottom: none !important;
+}
+
+.table a:hover {
+	text-decoration: none;
+}

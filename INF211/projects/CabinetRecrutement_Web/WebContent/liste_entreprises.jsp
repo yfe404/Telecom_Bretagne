@@ -1,51 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator,
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator,
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise,
                 java.util.List"%>
 
 <%
-  // Récupération du service (bean session)
-	IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
-// Appel de la fonctionnalité désirée auprès du service
-	List<Entreprise> entreprises = serviceEntreprise.listeDesEntreprises();
+	// Récupération du service (bean session)
+	IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator
+			.getInstance().getRemoteInterface("ServiceEntreprise");
+	// Appel de la fonctionnalité désirée auprès du service
+	List<Entreprise> entreprises = serviceEntreprise
+			.listeDesEntreprises();
 %>
 
-<html>
+<%@include file="index.jsp"%>
 
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Cabinet de recrutement : liste des entreprises référencées</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
-  </head>
+<div class="container main-container">
 
-  <body>
-  
-		<h2>Liste des entreprises référencées :</h2>
+	<div class="row">
+		<h3 class="col-sm-offset-4">Liste des entreprises référencées</h3>
+		<br />
+	</div>
 
-		<table id="affichage">
-		  <tr>
-		    <th>Identifiant</th>
-		    <th>Nom</th>
-		    <th>Adresse postale (ville)</th>
-		  </tr>
-		  <%
-		  for(Entreprise entreprise : entreprises)
-		  {
-		    %>
-		    <tr>
-		     <td>ENT_<%=entreprise.getId()%></td>
-		     <td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
-		     <td><%=entreprise.getAdressePostale()%></td>
-		    </tr>
-		    <%
-		  }
-		  %>
-		</table>
+	<div class="row">
+		<div class="col-md-offset-2 col-md-8">
+			<table class="table">
+				<tr>
+					<th>Identifiant</th>
+					<th>Nom</th>
+					<th>Adresse postale (ville)</th>
+					<th>Action</th>
+				</tr>
+				<%
+					for (Entreprise entreprise : entreprises) {
+				%>
+				<tr>
+					<td>ENT_<%=entreprise.getId()%></td>
+					<td><a
+						href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
+					<td><%=entreprise.getAdressePostale()%></td>
+					<td><a class="icon-action"
+						href="ajout_entreprises.jsp?id=<%=entreprise.getId()%>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+						<a class="icon-action" href="SupprimerEntrepriseServlet?id=<%=entreprise.getId()%>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+				</tr>
+				<%
+					}
+				%>
+			</table>
+		</div>
+	</div>
 
-    <a href="index.jsp">Retour au menu</a>
+</div>
 
-  </body>
-  
-</html>
+<%@include file="footer.jsp"%>

@@ -27,4 +27,8 @@ public interface IServiceEntreprise
 	 */
 	public List<Entreprise> listeDesEntreprises();
 	//-----------------------------------------------------------------------------
+	void ajoutEntreprise(String nom, String descriptif, String adresse_postale);
+	public void miseAJourEntreprise(String id, String nom, String descriptif,
+			String adresse_postale);
+	public void supprimerEntreprise(String id);
 }
