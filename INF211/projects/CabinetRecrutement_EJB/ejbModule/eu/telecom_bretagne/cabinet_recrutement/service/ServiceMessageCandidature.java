@@ -1,15 +1,20 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.MessageCandidatureDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 
+@Stateless
+@LocalBean
 public class ServiceMessageCandidature implements IServiceMessageCandidature {
 
 	@EJB
@@ -27,6 +32,32 @@ public class ServiceMessageCandidature implements IServiceMessageCandidature {
 	@Override
 	public List<MessageCandidature> listeDesMessagesCandidature() {
 		return messageCandidatureDAO.findAll();
+	}
+	
+	@Override
+	public List<MessageCandidature> listeDesMessagesCandidatureByCandidat(int idCandidat) {
+		List<MessageCandidature> messages = new ArrayList<>();
+		
+		for (MessageCandidature message : messageCandidatureDAO.findAll()) {
+			if (message.getCandidatureBean().getId().equals(idCandidat)) {
+				messages.add(message);
+			}
+		}
+		
+		return messages;
+	}
+
+	@Override
+	public List<MessageCandidature> listeDesMessagesCandidatureByEntreprise(int idEntreprise) {
+		List<MessageCandidature> messages = new ArrayList<>();
+		
+		for (MessageCandidature message : messageCandidatureDAO.findAll()) {
+			if (message.getOffreEmploiBean().getEntrepriseBean().getId().equals(idEntreprise)) {
+				messages.add(message);
+			}
+		}
+		
+		return messages;
 	}
 	
 	@Override
@@ -60,4 +91,5 @@ public class ServiceMessageCandidature implements IServiceMessageCandidature {
 			messageCandidatureDAO.remove(messCand);
 		}	
 	}
+
 }

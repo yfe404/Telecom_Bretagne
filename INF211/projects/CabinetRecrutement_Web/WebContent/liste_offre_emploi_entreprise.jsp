@@ -1,5 +1,7 @@
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -23,13 +25,13 @@
 		return;
 	}
 
-	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceOffreEmploi");
+	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance()
+			.getRemoteInterface("ServiceOffreEmploi");
 	List<OffreEmploi> offresEmploi = serviceOffreEmploi
 			.listeDesOffresEmploi((Integer) session.getAttribute("userId"));
-	
-	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceIndexation");
+
+	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance()
+			.getRemoteInterface("ServiceIndexation");
 %>
 
 <div class="container main-container">
@@ -53,18 +55,26 @@
 				</tr>
 				<%
 					for (OffreEmploi offreEmploi : offresEmploi) {
-						List<Candidature> matchingCandidatures = serviceIndexation.getMatchingCandidaturesForOffreEmploi(offreEmploi.getId());
+						List<Candidature> matchingCandidatures = serviceIndexation
+								.getMatchingCandidaturesForOffreEmploi(offreEmploi.getId());
 				%>
 				<tr>
-				<td><%=offreEmploi.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy")
-						.format(offreEmploi.getDateDepot())%></td>
+					<td><%=offreEmploi.getId()%></td>
+					<td><%=new SimpleDateFormat("dd MMM yyyy").format(offreEmploi.getDateDepot())%></td>
 					<td><a
 						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
 					<td><a
 						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
 					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
-					<td><%=matchingCandidatures.size()%></td>
+					<td>
+						<%
+							for (Candidature candidature : matchingCandidatures) {
+						%> <a
+						href="message_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
+						<%
+							}
+						%>
+					</td>
 					<td><a class="icon-action"
 						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a

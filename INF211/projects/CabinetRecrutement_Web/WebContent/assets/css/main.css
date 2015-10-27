@@ -71,3 +71,12 @@
 .modal {
 	color: #2c3e50;
 }
+
+.above-table-title {
+	font-size: 16pt;
+}
+
+.above-table-row {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}

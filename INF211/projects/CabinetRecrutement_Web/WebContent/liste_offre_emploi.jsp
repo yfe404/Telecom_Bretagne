@@ -14,20 +14,20 @@
 
 <%
 	// Récupération du service (bean session)
-	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceOffreEmploi");
+	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance()
+			.getRemoteInterface("ServiceOffreEmploi");
 
-	List<OffreEmploi> offresEmploi = serviceOffreEmploi
-			.listeDesOffresEmploi();
+	List<OffreEmploi> offresEmploi = serviceOffreEmploi.listeDesOffresEmploi();
 %>
 
 <%@include file="header.jsp"%>
 
 <div class="container main-container">
 
-	<div class="row">
-		<h3 class="col-sm-offset-5">Liste des offres d'emploi</h3>
-		<br />
+	<div class="row above-table-row">
+		<span class="col-md-11 above-table-title">Liste des offres
+			d'emploi</span> <span class="col-md-1"><a
+			href="ajout_offre_emploi.jsp" class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
@@ -44,9 +44,8 @@
 					for (OffreEmploi offreEmploi : offresEmploi) {
 				%>
 				<tr>
-				<td><%=offreEmploi.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy")
-						.format(offreEmploi.getDateDepot())%></td>
+					<td><%=offreEmploi.getId()%></td>
+					<td><%=new SimpleDateFormat("dd MMM yyyy").format(offreEmploi.getDateDepot())%></td>
 					<td><a
 						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
 					<td><a

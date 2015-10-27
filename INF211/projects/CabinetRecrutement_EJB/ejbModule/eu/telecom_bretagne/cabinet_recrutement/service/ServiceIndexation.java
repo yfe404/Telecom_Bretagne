@@ -79,7 +79,6 @@ public class ServiceIndexation implements IServiceIndexation{
 			}
 		}
 
-
 		return matchingCandidatures;
 	}
 

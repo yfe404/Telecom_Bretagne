@@ -2,9 +2,9 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%
-boolean isLogged = session.getAttribute("userId") != null;
-boolean isCandidat = isLogged && session.getAttribute("userType").equals("candidat");
-boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entreprise");
+	boolean isLogged = session.getAttribute("userId") != null;
+	boolean isCandidat = isLogged && session.getAttribute("userType").equals("candidat");
+	boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entreprise");
 %>
 
 <!DOCTYPE html>
@@ -41,46 +41,26 @@ boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entr
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Entreprises <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="liste_entreprises.jsp"><span
-									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-									Liste</a></li>
-							<li><a href="ajout_entreprises.jsp"><span
-									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-									Ajout</a></li>
-						</ul></li>
+					<li><a class="navlink" href="liste_entreprises.jsp"><span
+							class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+							Entreprises</a></li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Offres d'emploi <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="liste_offre_emploi.jsp"><span
-									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-									Liste</a></li>
-							<li><a href="ajout_offre_emploi.jsp"><span
-									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-									Ajout</a></li>
-						</ul></li>
+					<li><a class="navlink" href="liste_offre_emploi.jsp"><span
+							class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+							Offres d'Emploi</a></li>
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Candidatures <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="liste_candidatures.jsp"><span
-									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
-									Liste</a></li>
-							<li><a href="ajout_candidatures.jsp"><span
-									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-									Ajout</a></li>
-						</ul></li>
+					<li><a class="navlink" href="liste_candidatures.jsp"><span
+							class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							Candidatures</a></li>
 
-					<% if (isEntreprise) { %>
+					<%
+						if (isEntreprise) {
+					%>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Mon espace <span class="caret"></span></a>
+						aria-expanded="false"><span
+							class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+							Mon Espace <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="mon_entreprise.jsp"><span
 									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
@@ -88,29 +68,57 @@ boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entr
 							<li><a href="liste_offre_emploi_entreprise.jsp"><span
 									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 									Mes offres d'emploi</a></li>
+							<li><a
+								href="inbox_entreprise.jsp?id=<%=session.getAttribute("userId")%>"><span
+									class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+									Messages</a></li>
 						</ul></li>
-					<% } %>
-
-					<% if (isLogged) { %>
-					<li><a class="navlink" href="todo.jsp"><span
-							class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-							Messages</a></li>
-					<% } %>
+					<%
+						} else if (isCandidat) {
+					%>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false"><span
+							class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+							Mon Espace <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a
+								href="inbox_candidat.jsp?id=<%=session.getAttribute("userId")%>"><span
+									class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+									Messages</a></li>
+						</ul></li>
+					<%
+						}
+					%>
 				</ul>
 
-
+				<%
+					if (isLogged) {
+				%>
+				<!-- 		TODO		<li><a class="navlink"><span -->
+				<!-- 						class="glyphicon glyphicon-user" aria-hidden="true"></span> Tesla -->
+				<!-- 						Motors</a></li> -->
+				<%
+					}
+				%>
 				<form class="navbar-form navbar-right" method="post"
 					action="LoginServlet">
-					<% if (isLogged) { %>
+					<%
+						if (isLogged) {
+					%>
 					<input type="hidden" name="logout" value="true">
 					<button type="submit" class="btn btn-coffee">Déconnexion</button>
-					<% } else { %>
+					<%
+						} else {
+					%>
 					<div class="form-group">
 						<input type="text" name="loginId" class="form-control"
 							placeholder="Identifiant">
 					</div>
 					<button type="submit" class="btn btn-coffee">Connexion</button>
-					<% } %>
+					<%
+						}
+					%>
 				</form>
 
 			</div>

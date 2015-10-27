@@ -9,19 +9,19 @@
                 java.util.List"%>
 
 <%
-	IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceCandidature");
-	List<Candidature> candidatures = serviceCandidature
-			.listeDesCandidatures();
+	IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance()
+			.getRemoteInterface("ServiceCandidature");
+	List<Candidature> candidatures = serviceCandidature.listeDesCandidatures();
 %>
 
 <%@include file="header.jsp"%>
 
 <div class="container main-container">
 
-	<div class="row">
-		<h3 class="col-sm-offset-4">Liste des candidatures</h3>
-		<br />
+	<div class="row above-table-row">
+		<span class="col-md-11 above-table-title">Liste des
+			candidatures</span> <span class="col-md-1"><a
+			href="ajout_candidatures.jsp" class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
@@ -41,8 +41,7 @@
 				%>
 				<tr>
 					<td><%=candidature.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy")
-					.format(candidature.getDateDepot())%></td>
+					<td><%=new SimpleDateFormat("dd MMM yyyy").format(candidature.getDateDepot())%></td>
 					<td><a
 						href="infos_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getNom()%></a></td>
 					<td><a

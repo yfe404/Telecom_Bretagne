@@ -20,20 +20,19 @@
 
 <div class="container main-container">
 
-	<div class="row">
-		<h3 class="col-sm-offset-4">Liste des entreprises référencées</h3>
-		<br />
+	<div class="row above-table-row">
+		<span class="col-md-11 above-table-title">Liste des entreprises référencées</span>
+		<span class="col-md-1"><a href="ajout_entreprises.jsp" class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
-		<div class="col-md-offset-2 col-md-8">
+		<div class="col-md-12">
 			<table class="table">
 				<tr>
 					<th>Identifiant</th>
 					<th>Nom</th>
 					<th>Adresse Postale</th>
 					<th>Nombre d'Offres</th>
-					<th>Action</th>
 				</tr>
 				<%
 					for (Entreprise entreprise : entreprises) {
@@ -43,9 +42,6 @@
 					<td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
 					<td><%=entreprise.getAdressePostale()%></td>
 					<td><%=entreprise.getOffreEmplois().size()%></td>
-					<td><a class="icon-action" href="#"><span
-							class="glyphicon glyphicon-map-marker" data-toggle="modal"
-							data-target="#modalMap" aria-hidden="true"></span>
 				</tr>
 				<%
 					}
