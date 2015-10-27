@@ -23,7 +23,7 @@
 	boolean isUpdate = (id != null);
 
 	// Récupération de l'offre d'emploi si màj.
-	if (id != null) {
+	if (isUpdate) {
 		IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
 				.getInstance().getRemoteInterface("ServiceOffreEmploi");
 		offreEmploi = serviceOffreEmploi.getOffreEmploi(Integer
@@ -154,6 +154,7 @@
 						%>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-default">Envoyer</button>
@@ -162,7 +163,10 @@
 			</form>
 
 		</div>
+		<!-- /.col -->
 	</div>
+	<!-- /.row -->
 </div>
+<!-- /.container -->
 
 <%@include file="footer.jsp"%>

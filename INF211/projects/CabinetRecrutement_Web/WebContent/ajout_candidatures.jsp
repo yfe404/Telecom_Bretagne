@@ -28,7 +28,7 @@
 	boolean isUpdate = (id != null);
 
 	// Récupération de la candidature si màj.
-	if (id != null) {
+	if (isUpdate) {
 		IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator
 				.getInstance().getRemoteInterface("ServiceCandidature");
 		candidature = serviceCandidature.getCandidature(Integer
@@ -156,6 +156,7 @@
 						%>
 					</div>
 				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-default">Envoyer</button>
@@ -164,7 +165,10 @@
 			</form>
 
 		</div>
+		<!-- /.col -->
 	</div>
+	<!-- /.row -->
 </div>
+<!-- /.container -->
 
 <%@include file="footer.jsp"%>

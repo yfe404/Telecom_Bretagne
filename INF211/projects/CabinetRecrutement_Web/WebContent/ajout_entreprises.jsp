@@ -8,19 +8,14 @@
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise"%>
 <%
+	Entreprise entreprise = null;
+
 	String id = request.getParameter("id");
 	boolean isUpdate = (id != null);
 
-	Entreprise entreprise = null;
-	// Test en cas d'appel incorrect
-	if (id == null) {
-		/* todo : remplir ce todo */
-	} else // C'est à priori correct...
-	{
-		// Récupération du service (bean session)
+	if (isUpdate) {
 		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator
 				.getInstance().getRemoteInterface("ServiceEntreprise");
-		// Appel de la fonctionnalité désirée auprès du service
 		entreprise = serviceEntreprise.getEntreprise(Integer
 				.parseInt(id));
 	}
@@ -39,23 +34,13 @@
 
 			<form class="form-horizontal" method='post'
 				action='AjoutEntrepriseServlet'>
-				<%-- 				<input type='hidden' value="<%=id%>" name='id'> Nom : <input --%>
-				<!-- 					type='text' name='nom' -->
-				<%-- 					value="<%=isUpdate ? entreprise.getNom() : ""%>" /> <br /> --%>
-				<!-- 				Descriptif : <input type='text' name='descriptif' -->
-				<%-- 					value="<%=isUpdate ? entreprise.getDescriptif() : ""%>" /> <br /> --%>
-				<!-- 				Adresse postale : <input type='text' name='adresse_postale' -->
-				<%-- 					value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" /> <br /> --%>
 				<%
 					if (isUpdate) {
 				%>
-				<input type='hidden' value="<%=id%>" name='id'>
+				<input type='hidden' value="<%=isUpdate ? id : ""%>" name='id'>
 				<%
 					}
 				%>
-
-
-
 
 				<div class="form-group">
 					<label for="inputNom" class="col-sm-4 control-label">Nom</label>
@@ -92,7 +77,10 @@
 			</form>
 
 		</div>
+		<!-- /.col -->
 	</div>
+	<!-- /.row -->
 </div>
+<!-- /.container -->
 
 <%@include file="footer.jsp"%>
