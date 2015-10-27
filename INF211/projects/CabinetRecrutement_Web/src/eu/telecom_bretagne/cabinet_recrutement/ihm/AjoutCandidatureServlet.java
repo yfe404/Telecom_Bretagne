@@ -53,7 +53,6 @@ public class AjoutCandidatureServlet extends HttpServlet {
 		} catch (ServicesLocatorException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		} finally {
 			response.sendRedirect("liste_candidatures.jsp");
 		}
 
