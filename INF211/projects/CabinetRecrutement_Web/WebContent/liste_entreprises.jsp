@@ -16,7 +16,7 @@
 			.listeDesEntreprises();
 %>
 
-<%@include file="index.jsp"%>
+<%@include file="header.jsp"%>
 
 <div class="container main-container">
 

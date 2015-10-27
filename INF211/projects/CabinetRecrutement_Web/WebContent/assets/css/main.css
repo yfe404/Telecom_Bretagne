@@ -30,6 +30,10 @@
 	vertical-align: -5px;
 }
 
+.btn-coffee {
+	background-color: #E26A6A;
+}
+
 .gradient-endless-river {
 	background: -webkit-linear-gradient(90deg, #43cea2 10%, #185a9d 90%);
 	/* Chrome 10+, Saf5.1+ */
