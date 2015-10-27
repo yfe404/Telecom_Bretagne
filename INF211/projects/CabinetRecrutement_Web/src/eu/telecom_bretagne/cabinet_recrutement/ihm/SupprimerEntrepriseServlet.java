@@ -40,7 +40,7 @@ public class SupprimerEntrepriseServlet extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("liste_entreprises.jsp");
 			}
 		}
 	}
