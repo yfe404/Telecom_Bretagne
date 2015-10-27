@@ -13,7 +13,7 @@ public interface IServiceMessageOffreEmploi {
 
 	public List<MessageOffreEmploi> listeDesMessageOffreEmploi();
 
-	public void ajoutMessageOffreEmploie(OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi);
+	public void ajoutMessageOffreEmploi(OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi);
 
 	public void miseAJourMessageOffreEmploi(String id, OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi);
 

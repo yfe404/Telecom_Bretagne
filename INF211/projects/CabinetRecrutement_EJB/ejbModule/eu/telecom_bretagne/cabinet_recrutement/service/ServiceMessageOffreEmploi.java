@@ -32,7 +32,7 @@ public class ServiceMessageOffreEmploi implements IServiceMessageOffreEmploi {
 	}
 
 	@Override
-	public void ajoutMessageOffreEmploie(OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi) {
+	public void ajoutMessageOffreEmploi(OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi) {
 		MessageOffreEmploi messageOffreEmploi = new MessageOffreEmploi();
 		messageOffreEmploi.setOffreEmploiBean(offreEmploiBean);
 		messageOffreEmploi.setCandidatureBean(candidature);
