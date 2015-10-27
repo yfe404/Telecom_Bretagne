@@ -42,7 +42,11 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 	public List<OffreEmploi> listeDesOffresEmploi() {
 		return offreEmploiDAO.findAll();
 	}
-
+	
+	@Override
+	public List<OffreEmploi> listeDesOffresEmploi(int idEntreprise) {
+		return offreEmploiDAO.findByEntreprise(idEntreprise);
+	}
 
 	@Override
 	public void supprimerOffreEmploi(String id) {

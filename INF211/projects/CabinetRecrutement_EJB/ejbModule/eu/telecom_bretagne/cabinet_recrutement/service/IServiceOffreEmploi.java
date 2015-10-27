@@ -1,6 +1,5 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +16,8 @@ public interface IServiceOffreEmploi {
 	OffreEmploi getOffreEmploi(int id);
 
 	List<OffreEmploi> listeDesOffresEmploi();
+	
+	List<OffreEmploi> listeDesOffresEmploi(int idEntreprise);
 
 	public void supprimerOffreEmploi(String id);
 	

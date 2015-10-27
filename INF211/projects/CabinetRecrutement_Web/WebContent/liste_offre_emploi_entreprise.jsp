@@ -12,21 +12,26 @@
                 eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi,
                 java.util.List"%>
 
+<%@include file="header.jsp"%>
+
 <%
-	// Récupération du service (bean session)
+	if (!isEntreprise) {
+		session.setAttribute("errorMessage", "Accès non autorisé.");
+		response.sendRedirect("index.jsp");
+		return;
+	}
+
 	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceOffreEmploi");
 
 	List<OffreEmploi> offresEmploi = serviceOffreEmploi
-			.listeDesOffresEmploi();
+			.listeDesOffresEmploi((Integer) session.getAttribute("userId"));
 %>
-
-<%@include file="header.jsp"%>
 
 <div class="container main-container">
 
 	<div class="row">
-		<h3 class="col-sm-offset-5">Liste des offres d'emploi</h3>
+		<h3 class="col-sm-offset-5">Liste de mes offres d'emploi</h3>
 		<br />
 	</div>
 
@@ -39,6 +44,8 @@
 					<th>Entreprise</th>
 					<th>Titre</th>
 					<th>Niveau Qualification</th>
+					<th>Candidatures Potentielles</th>
+					<th>Action</th>
 				</tr>
 				<%
 					for (OffreEmploi offreEmploi : offresEmploi) {
@@ -52,6 +59,14 @@
 					<td><a
 						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
 					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
+					<td>TODO</td>
+					</td>
+					<td><a class="icon-action"
+						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span
+							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
+						class="icon-action"
+						href="SupprimerOffreEmploiServlet?id=<%=offreEmploi.getId()%>"><span
+							class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				</tr>
 				<%
 					}

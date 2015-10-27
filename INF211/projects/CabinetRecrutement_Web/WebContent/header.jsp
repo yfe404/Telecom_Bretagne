@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
+<%
+boolean isLogged = session.getAttribute("userId") != null;
+boolean isCandidat = isLogged && session.getAttribute("userType").equals("candidat");
+boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entreprise");
+%>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -70,20 +76,31 @@
 									class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 									Ajout</a></li>
 						</ul></li>
+
+					<% if (isEntreprise) { %>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Mon espace <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="liste_offre_emploi_entreprise.jsp"><span
+									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+									Mes offres d'emploi</a></li>
+						</ul></li>
+					<% } %>
 				</ul>
 
 
 				<form class="navbar-form navbar-right" method="post"
 					action="LoginServlet">
-					<% if (session.getAttribute("userId") == null) { %>
+					<% if (isLogged) { %>
+					<input type="hidden" name="logout" value="true">
+					<button type="submit" class="btn btn-coffee">Déconnexion</button>
+					<% } else { %>
 					<div class="form-group">
 						<input type="text" name="loginId" class="form-control"
 							placeholder="Identifiant">
 					</div>
 					<button type="submit" class="btn btn-coffee">Connexion</button>
-					<% } else { %>
-					<input type="hidden" name="logout" value="true">
-					<button type="submit" class="btn btn-coffee">Déconnexion</button>
 					<% } %>
 				</form>
 
