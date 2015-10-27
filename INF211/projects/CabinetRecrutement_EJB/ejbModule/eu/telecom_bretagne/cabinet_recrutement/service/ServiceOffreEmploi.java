@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.OffreEmploiDAO;
+import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 
 /**
@@ -36,6 +37,17 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 	public List<OffreEmploi> listeDesOffresEmploi() {
 		return offreEmploiDAO.findAll();
 	}
+
+
+	@Override
+	public void supprimerOffreEmploi(String id) {
+		OffreEmploi offre = offreEmploiDAO.findById(Integer.parseInt(id));
+		if (offre != null){
+			offreEmploiDAO.remove(offre);
+		}	
+	}
+
+
 	
 	
 //	public Candidature getCandidature(int id) {

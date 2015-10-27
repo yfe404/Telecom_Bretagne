@@ -13,4 +13,6 @@ public interface IServiceOffreEmploi {
 
 	List<OffreEmploi> listeDesOffresEmploi();
 
+	public void supprimerOffreEmploi(String id);
+	
 }
