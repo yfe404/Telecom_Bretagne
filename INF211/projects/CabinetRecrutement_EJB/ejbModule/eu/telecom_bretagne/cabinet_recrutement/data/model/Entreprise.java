@@ -1,7 +1,9 @@
 package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Set;
 
 
@@ -26,7 +28,7 @@ public class Entreprise implements Serializable {
 	private String nom;
 
 	//bi-directional many-to-one association to OffreEmploi
-	@OneToMany(mappedBy="entrepriseBean")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="entrepriseBean")
 	private Set<OffreEmploi> offreEmplois;
 
 	public Entreprise() {

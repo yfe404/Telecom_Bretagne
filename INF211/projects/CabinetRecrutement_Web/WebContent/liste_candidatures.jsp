@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -28,35 +29,27 @@
 			<table class="table">
 				<tr>
 					<th>Identifiant</th>
+					<th>Date de Depôt</th>
 					<th>Nom</th>
 					<th>Prénom</th>
-					<th>Date de naissance</th>
-					<th>Adresse mail</th>
-					<th>Adresse postale (ville)</th>
-					<th>CV</th>
-					<th>Date depôt</th>
-					<th>Niveau qualification</th>
-					<th>Secteur d'activités</th>
+					<th>Adresse Postale</th>
+					<th>Courriel</th>
+					<th>Niveau Qualification</th>
 				</tr>
 				<%
 					for (Candidature candidature : candidatures) {
 				%>
 				<tr>
-					<td>ENT_<%=candidature.getId()%></td>
+					<td>CAND_<%=candidature.getId()%></td>
+					<td><%=new SimpleDateFormat("dd MMM yyyy")
+					.format(candidature.getDateDepot())%></td>
 					<td><a
 						href="infos_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getNom()%></a></td>
-					<td><%=candidature.getNom()%>Nom</td>
-					<td><%=candidature.getPrenom()%>Prénom</td>
-					<td><%=candidature.getDateNaissance().toString()%>Date de
-						naissance</td>
-					<td><%=candidature.getAdresseEmail()%>Adresse mail</td>
-					<td><%=candidature.getAdressePostale()%>Adresse postale</td>
-					<td><%=candidature.getCv()%>CV</td>
-					<td><%=candidature.getDateDepot().toString()%>Date dépôt</td>
-					<td><%=candidature.getNiveauQualificationBean().toString()%>Niveau
-						de qualification</td>
-					<td><%=candidature.getSecteurActivites().toString()%>Secteur
-						d'activité</td>
+					<td><a
+						href="infos_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getPrenom()%></a></td>
+					<td><%=candidature.getAdressePostale()%></td>
+					<td><%=candidature.getAdresseEmail()%></td>
+					<td><%=candidature.getNiveauQualificationBean().getIntitule()%></td>
 				</tr>
 				<%
 					}

@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
 <%@page
@@ -33,30 +34,27 @@
 		<div class="col-md-12">
 			<table class="table">
 				<tr>
-					<th>Date dépôt</th>
+					<th>Identifiant</th>
+					<th>Date de Dépôt</th>
 					<th>Entreprise</th>
 					<th>Titre</th>
-					<th>Description mission</th>
-					<th>Profil recherche</th>
-					<th>Secteurs d'activité</th>
+					<th>Niveau Qualification</th>
+					<th>Candidatures Potentielles</th>
 					<th>Action</th>
 				</tr>
 				<%
 					for (OffreEmploi offreEmploi : offresEmploi) {
 				%>
 				<tr>
-					<td><%=offreEmploi.getDateDepot().toLocaleString()%></td>
-					<td><a href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
-					<td><a href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
-					<td><%=offreEmploi.getDescriptionMission()%></td>
-					<td><%=offreEmploi.getProfilRecherche()%></td>
-					<td>
-						<%
-							for (SecteurActivite secteurActivite : offreEmploi
-										.getSecteurActivites()) {
-						%> <span><%=secteurActivite.getIntitule()%>&nbsp;</span> <%
- 	}
- %>
+				<td>OFF_<%=offreEmploi.getId()%></td>
+					<td><%=new SimpleDateFormat("dd MMM yyyy")
+						.format(offreEmploi.getDateDepot())%></td>
+					<td><a
+						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
+					<td><a
+						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
+					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
+					<td>TODO</td>
 					</td>
 					<td><a class="icon-action"
 						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span

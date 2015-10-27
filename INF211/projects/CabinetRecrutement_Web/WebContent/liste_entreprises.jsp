@@ -31,7 +31,8 @@
 				<tr>
 					<th>Identifiant</th>
 					<th>Nom</th>
-					<th>Adresse postale (ville)</th>
+					<th>Adresse Postale</th>
+					<th>Nombre d'Offres</th>
 					<th>Action</th>
 				</tr>
 				<%
@@ -39,12 +40,18 @@
 				%>
 				<tr>
 					<td>ENT_<%=entreprise.getId()%></td>
-					<td><a
-						href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
+					<td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
 					<td><%=entreprise.getAdressePostale()%></td>
-					<td><a class="icon-action"
-						href="ajout_entreprises.jsp?id=<%=entreprise.getId()%>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-						<a class="icon-action" href="SupprimerEntrepriseServlet?id=<%=entreprise.getId()%>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+					<td><%=entreprise.getOffreEmplois().size()%></td>
+					<td><a class="icon-action" href="#"><span
+							class="glyphicon glyphicon-map-marker" data-toggle="modal"
+							data-target="#modalMap" aria-hidden="true"></span> <a
+							class="icon-action"
+							href="ajout_entreprises.jsp?id=<%=entreprise.getId()%>"><span
+								class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
+							class="icon-action"
+							href="SupprimerEntrepriseServlet?id=<%=entreprise.getId()%>"><span
+								class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				</tr>
 				<%
 					}
@@ -54,5 +61,26 @@
 	</div>
 
 </div>
+<!-- /.container -->
+
+<div class="modal fade" id="modalMap" tabIndex="">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Localisation</h4>
+			</div>
+			<div class="modal-body">
+				<!-- TODO: Mapbox ou OSM -->
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <%@include file="footer.jsp"%>

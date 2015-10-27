@@ -33,11 +33,11 @@ public class OffreEmploi implements Serializable {
 	private String titre;
 
 	//bi-directional many-to-one association to MessageCandidature
-	@OneToMany(mappedBy="offreEmploiBean")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="offreEmploiBean")
 	private Set<MessageCandidature> messageCandidatures;
 
 	//bi-directional many-to-one association to MessageOffreEmploi
-	@OneToMany(mappedBy="offreEmploiBean")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy="offreEmploiBean")
 	private Set<MessageOffreEmploi> messageOffreEmplois;
 
 	//bi-directional many-to-one association to Entreprise
