@@ -34,7 +34,7 @@
 		<div class="col-md-12">
 			<table class="table">
 				<tr>
-					<th>Identifiant</th>
+					<th>Numéro</th>
 					<th>Date de Dépôt</th>
 					<th>Entreprise</th>
 					<th>Titre</th>
@@ -46,7 +46,7 @@
 					for (OffreEmploi offreEmploi : offresEmploi) {
 				%>
 				<tr>
-				<td>OFF_<%=offreEmploi.getId()%></td>
+				<td><%=offreEmploi.getId()%></td>
 					<td><%=new SimpleDateFormat("dd MMM yyyy")
 						.format(offreEmploi.getDateDepot())%></td>
 					<td><a

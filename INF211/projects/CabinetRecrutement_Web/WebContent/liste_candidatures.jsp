@@ -28,7 +28,7 @@
 		<div class="col-md-12">
 			<table class="table">
 				<tr>
-					<th>Identifiant</th>
+					<th>Numéro</th>
 					<th>Date de Depôt</th>
 					<th>Nom</th>
 					<th>Prénom</th>
@@ -40,7 +40,7 @@
 					for (Candidature candidature : candidatures) {
 				%>
 				<tr>
-					<td>CAND_<%=candidature.getId()%></td>
+					<td><%=candidature.getId()%></td>
 					<td><%=new SimpleDateFormat("dd MMM yyyy")
 					.format(candidature.getDateDepot())%></td>
 					<td><a

@@ -72,25 +72,40 @@
 						</ul></li>
 				</ul>
 
-				<form class="navbar-form navbar-right">
+
+				<form class="navbar-form navbar-right" method="post"
+					action="LoginServlet">
+					<% if (session.getAttribute("userId") == null) { %>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Identifiant">
+						<input type="text" name="loginId" class="form-control"
+							placeholder="Identifiant">
 					</div>
 					<button type="submit" class="btn btn-coffee">Connexion</button>
+					<% } else { %>
+					<input type="hidden" name="logout" value="true">
+					<button type="submit" class="btn btn-coffee">Déconnexion</button>
+					<% } %>
 				</form>
+
 			</div>
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
 
-	<% session.setAttribute("errorMessage", "test"); if (session.getAttribute("errorMessage") != null) { %>
+	<%
+		if (session.getAttribute("errorMessage") != null) {
+	%>
 	<div class="alert alert-danger main-alert" role="alert">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-7">
-				<span class="glyphicon glyphicon-exclamation" aria-hidden="true"></span> <%= session.getAttribute("errorMessage") %>
+					<span class="glyphicon glyphicon-exclamation" aria-hidden="true"></span>
+					<%=session.getAttribute("errorMessage")%>
 				</div>
 			</div>
 		</div>
 	</div>
-	<% } %>
+	<%
+		}
+		session.removeAttribute("errorMessage");
+	%>
