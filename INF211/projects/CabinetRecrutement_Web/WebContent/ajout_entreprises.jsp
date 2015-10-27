@@ -18,10 +18,11 @@
 	} else // C'est à priori correct...
 	{
 		// Récupération du service (bean session)
-		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
-				.getRemoteInterface("ServiceEntreprise");
+		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator
+				.getInstance().getRemoteInterface("ServiceEntreprise");
 		// Appel de la fonctionnalité désirée auprès du service
-		entreprise = serviceEntreprise.getEntreprise(Integer.parseInt(id));
+		entreprise = serviceEntreprise.getEntreprise(Integer
+				.parseInt(id));
 	}
 %>
 
@@ -45,7 +46,13 @@
 				<%-- 					value="<%=isUpdate ? entreprise.getDescriptif() : ""%>" /> <br /> --%>
 				<!-- 				Adresse postale : <input type='text' name='adresse_postale' -->
 				<%-- 					value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" /> <br /> --%>
+				<%
+					if (isUpdate) {
+				%>
 				<input type='hidden' value="<%=id%>" name='id'>
+				<%
+					}
+				%>
 
 
 
@@ -61,16 +68,19 @@
 				<div class="form-group">
 					<label for="inputDescriptif" class="col-sm-4 control-label">Descriptif</label>
 					<div class="col-sm-8">
-						<input class="form-control" type='text' name='descriptif' id="inputDescriptif"
-					value="<%=isUpdate ? entreprise.getDescriptif() : ""%>" />
+						<input class="form-control" type='text' name='descriptif'
+							id="inputDescriptif"
+							value="<%=isUpdate ? entreprise.getDescriptif() : ""%>" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputAdresse" class="col-sm-4 control-label">Adresse postale</label>
+					<label for="inputAdresse" class="col-sm-4 control-label">Adresse
+						postale</label>
 					<div class="col-sm-8">
-						<input class="form-control" type='text' name='adresse_postale' id="inputAdresse"
-					value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" />
+						<input class="form-control" type='text' name='adresse_postale'
+							id="inputAdresse"
+							value="<%=isUpdate ? entreprise.getAdressePostale() : ""%>" />
 					</div>
 				</div>
 

@@ -1,4 +1,5 @@
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
 <%@page
@@ -52,7 +53,13 @@
 
 			<form class="form-horizontal" method='post'
 				action='AjoutOffreEmploiServlet'>
+				<%
+					if (isUpdate) {
+				%>
 				<input type='hidden' value="<%=id%>" name='id'>
+				<%
+					}
+				%>
 
 				<div class="form-group">
 					<label for="inputEntreprise" class="col-sm-4 control-label">Entreprise</label>
