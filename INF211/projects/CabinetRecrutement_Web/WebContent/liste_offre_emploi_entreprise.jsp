@@ -1,3 +1,5 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -23,9 +25,11 @@
 
 	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceOffreEmploi");
-
 	List<OffreEmploi> offresEmploi = serviceOffreEmploi
 			.listeDesOffresEmploi((Integer) session.getAttribute("userId"));
+	
+	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator
+			.getInstance().getRemoteInterface("ServiceIndexation");
 %>
 
 <div class="container main-container">
@@ -49,6 +53,7 @@
 				</tr>
 				<%
 					for (OffreEmploi offreEmploi : offresEmploi) {
+						List<Candidature> matchingCandidatures = serviceIndexation.getMatchingCandidaturesForOffreEmploi(offreEmploi.getId());
 				%>
 				<tr>
 				<td><%=offreEmploi.getId()%></td>
@@ -59,8 +64,7 @@
 					<td><a
 						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
 					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
-					<td>TODO</td>
-					</td>
+					<td><%=matchingCandidatures.size()%></td>
 					<td><a class="icon-action"
 						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a

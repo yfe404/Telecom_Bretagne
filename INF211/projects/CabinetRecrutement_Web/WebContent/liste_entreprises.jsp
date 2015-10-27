@@ -45,13 +45,7 @@
 					<td><%=entreprise.getOffreEmplois().size()%></td>
 					<td><a class="icon-action" href="#"><span
 							class="glyphicon glyphicon-map-marker" data-toggle="modal"
-							data-target="#modalMap" aria-hidden="true"></span> <a
-							class="icon-action"
-							href="ajout_entreprises.jsp?id=<%=entreprise.getId()%>"><span
-								class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
-							class="icon-action"
-							href="SupprimerEntrepriseServlet?id=<%=entreprise.getId()%>"><span
-								class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
+							data-target="#modalMap" aria-hidden="true"></span>
 				</tr>
 				<%
 					}
