@@ -1,3 +1,13 @@
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -5,6 +15,19 @@
 	boolean isLogged = session.getAttribute("userId") != null;
 	boolean isCandidat = isLogged && session.getAttribute("userType").equals("candidat");
 	boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entreprise");
+	String displayName = "";
+
+	if (isCandidat) {
+		IServiceCandidature _serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance()
+				.getRemoteInterface("ServiceCandidature");
+		Candidature _candidature = _serviceCandidature.getCandidature((Integer) session.getAttribute("userId"));
+		displayName = _candidature.getPrenom() + _candidature.getNom();
+	} else if (isEntreprise) {
+		IServiceEntreprise _serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
+				.getRemoteInterface("ServiceEntreprise");
+		Entreprise _entreprise = _serviceEntreprise.getEntreprise((Integer) session.getAttribute("userId"));
+		displayName = _entreprise.getNom();
+	}
 %>
 
 <!DOCTYPE html>
@@ -92,21 +115,13 @@
 					%>
 				</ul>
 
-				<%
-					if (isLogged) {
-				%>
-				<!-- 		TODO		<li><a class="navlink"><span -->
-				<!-- 						class="glyphicon glyphicon-user" aria-hidden="true"></span> Tesla -->
-				<!-- 						Motors</a></li> -->
-				<%
-					}
-				%>
 				<form class="navbar-form navbar-right" method="post"
 					action="LoginServlet">
 					<%
 						if (isLogged) {
 					%>
-					<input type="hidden" name="logout" value="true">
+					<a class="displayname"><%=displayName%></a> &nbsp; <input
+						type="hidden" name="logout" value="true">
 					<button type="submit" class="btn btn-coffee">Déconnexion</button>
 					<%
 						} else {
