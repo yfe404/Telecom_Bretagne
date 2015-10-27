@@ -62,7 +62,7 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("liste_entreprises.jsp");
 		}
 
 
