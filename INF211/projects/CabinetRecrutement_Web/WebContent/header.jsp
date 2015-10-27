@@ -84,8 +84,17 @@ boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entr
 						<ul class="dropdown-menu">
 							<li><a href="liste_offre_emploi_entreprise.jsp"><span
 									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+									Mon entreprise</a></li>
+							<li><a href="liste_offre_emploi_entreprise.jsp"><span
+									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 									Mes offres d'emploi</a></li>
 						</ul></li>
+					<% } %>
+
+					<% if (isLogged) { %>
+					<li><a class="navlink" href="todo.jsp"><span
+							class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+							Messages</a></li>
 					<% } %>
 				</ul>
 
