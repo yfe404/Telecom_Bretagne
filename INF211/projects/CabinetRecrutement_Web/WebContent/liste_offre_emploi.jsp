@@ -59,10 +59,10 @@
  %>
 					</td>
 					<td><a class="icon-action"
-						href="ajout_entreprises.jsp?id=<%=offreEmploi.getId()%>"><span
+						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
 						class="icon-action"
-						href="SupprimerEntrepriseServlet?id=<%=offreEmploi.getId()%>"><span
+						href="SupprimerOffreEmploiServlet?id=<%=offreEmploi.getId()%>"><span
 							class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				</tr>
 				<%
