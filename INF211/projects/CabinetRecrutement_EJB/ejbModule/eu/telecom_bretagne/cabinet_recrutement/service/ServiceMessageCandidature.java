@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.EJB;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.MessageCandidatureDAO;
+import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 
@@ -29,9 +30,10 @@ public class ServiceMessageCandidature implements IServiceMessageCandidature {
 	}
 	
 	@Override
-	public void ajoutMessageCandidature(OffreEmploi offreEmploiBean, String corpsMessage, Date dateEnvoi) {
+	public void ajoutMessageCandidature(OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi) {
 		MessageCandidature messageCandidature = new MessageCandidature();
 		messageCandidature.setOffreEmploiBean(offreEmploiBean);
+		messageCandidature.setCandidatureBean(candidature);
 		messageCandidature.setCorpsMessage(corpsMessage);
 		messageCandidature.setDateEnvoi(dateEnvoi);
 		
@@ -39,10 +41,11 @@ public class ServiceMessageCandidature implements IServiceMessageCandidature {
 	}
 
 	@Override
-	public void miseAJourMessageCandidature(String id, OffreEmploi offreEmploiBean, String corpsMessage, Date dateEnvoi) {
+	public void miseAJourMessageCandidature(String id, OffreEmploi offreEmploiBean, Candidature candidature, String corpsMessage, Date dateEnvoi) {
 		MessageCandidature messageCandidature = messageCandidatureDAO.findById(Integer.parseInt(id));
 		if (messageCandidature != null){
 			messageCandidature.setOffreEmploiBean(offreEmploiBean);
+			messageCandidature.setCandidatureBean(candidature);
 			messageCandidature.setCorpsMessage(corpsMessage);
 			messageCandidature.setDateEnvoi(dateEnvoi);
 			messageCandidatureDAO.update(messageCandidature);

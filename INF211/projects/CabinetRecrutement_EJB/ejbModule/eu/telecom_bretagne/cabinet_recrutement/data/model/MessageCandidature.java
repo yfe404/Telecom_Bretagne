@@ -1,7 +1,9 @@
 package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Date;
 
 
@@ -25,6 +27,11 @@ public class MessageCandidature implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="date_envoi")
 	private Date dateEnvoi;
+
+	//bi-directional many-to-one association to Candidature
+	@ManyToOne
+	@JoinColumn(name="candidature")
+	private Candidature candidatureBean;
 
 	//bi-directional many-to-one association to OffreEmploi
 	@ManyToOne
@@ -64,6 +71,14 @@ public class MessageCandidature implements Serializable {
 
 	public void setOffreEmploiBean(OffreEmploi offreEmploiBean) {
 		this.offreEmploiBean = offreEmploiBean;
+	}
+
+	public Candidature getCandidatureBean() {
+		return this.candidatureBean;
+	}
+
+	public void setCandidatureBean(Candidature candidatureBean) {
+		this.candidatureBean = candidatureBean;
 	}
 
 }
