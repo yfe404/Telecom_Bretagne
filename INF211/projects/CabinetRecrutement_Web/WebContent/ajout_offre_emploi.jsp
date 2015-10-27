@@ -14,6 +14,7 @@
                 eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi,
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise,
+                eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification,
                 java.util.List"%>
 <%
 	OffreEmploi offreEmploi = null;
@@ -35,9 +36,13 @@
 	List<Entreprise> entreprises = serviceEntreprise
 			.listeDesEntreprises();
 
-	// Liste des secteurs d'activité
-	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
-	List<SecteurActivite> secteursActivite = serviceIndexation.listeDesSecteursActivite();
+	// Liste des secteurs d'activité et des niveaux de qualification
+	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator
+			.getInstance().getRemoteInterface("ServiceIndexation");
+	List<SecteurActivite> secteursActivite = serviceIndexation
+			.listeDesSecteursActivite();
+	List<NiveauQualification> niveauxQualification = serviceIndexation
+			.listeDesNiveauxQualification();
 %>
 
 <%@include file="index.jsp"%>
@@ -117,14 +122,32 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputSecteurActivites" class="col-sm-4 control-label">Secteurs
+					<label for="inputNiveauQualification"
+						class="col-sm-4 control-label">Niveau de Qualification</label>
+					<div class="col-sm-8">
+						<select class="form-control" name="niveauQualification"
+							id="inputNiveauQualification">
+							<%
+								for (NiveauQualification niveauQualification : niveauxQualification) {
+							%>
+							<option value=<%=niveauQualification.getId()%>><%=niveauQualification.getIntitule()%></option>
+							<%
+								}
+							%>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="inputSecteursActivite" class="col-sm-4 control-label">Secteurs
 						d'Activité</label>
 					<div class="col-sm-8">
 						<%
 							for (SecteurActivite secteurActivite : secteursActivite) {
 						%>
 						<label class="checkbox-inline"> <input type="checkbox"
-							id="inputSecteurActivites"> <%=secteurActivite.getIntitule()%>
+							name="secteursActivite" value="<%=secteurActivite.getId()%>">
+							<%=secteurActivite.getIntitule()%>
 						</label>
 						<%
 							}

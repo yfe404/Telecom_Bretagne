@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.OffreEmploiDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
+import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
@@ -54,7 +55,7 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 
 	@Override
 	public void ajoutOffreEmploi(String titre, String descriptionMission,
-			String profilRecherche,
+			String profilRecherche, Entreprise entreprise,
 			NiveauQualification niveauQualificationBean,
 			Set<SecteurActivite> secteurActivites) {
 
@@ -63,8 +64,10 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 		offreEmploi.setTitre(titre);
 		offreEmploi.setDescriptionMission(descriptionMission);
 		offreEmploi.setProfilRecherche(profilRecherche);
+		offreEmploi.setEntrepriseBean(entreprise);
 		offreEmploi.setNiveauQualificationBean(niveauQualificationBean);
 		offreEmploi.setSecteurActivites(secteurActivites);
+		offreEmploi.setDateDepot(new Date());
 
 
 		offreEmploiDAO.persist(offreEmploi);		
@@ -74,7 +77,7 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 
 	@Override
 	public void miseAJourOffreEmploi(String id, String titre,
-			String descriptionMission, String profilRecherche,
+			String descriptionMission, String profilRecherche, Entreprise entreprise,
 			NiveauQualification niveauQualificationBean,
 			Set<SecteurActivite> secteurActivites) {
 
@@ -85,8 +88,10 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 			offreEmploi.setTitre(titre);
 			offreEmploi.setDescriptionMission(descriptionMission);
 			offreEmploi.setProfilRecherche(profilRecherche);
+			offreEmploi.setEntrepriseBean(entreprise);
 			offreEmploi.setNiveauQualificationBean(niveauQualificationBean);
 			offreEmploi.setSecteurActivites(secteurActivites);
+			offreEmploi.setDateDepot(new Date());
 
 			offreEmploiDAO.update(offreEmploi);
 		}
