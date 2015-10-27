@@ -82,3 +82,15 @@
 			<!--/.navbar-collapse -->
 		</div>
 	</nav>
+
+	<% session.setAttribute("errorMessage", "test"); if (session.getAttribute("errorMessage") != null) { %>
+	<div class="alert alert-danger main-alert" role="alert">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+				<span class="glyphicon glyphicon-exclamation" aria-hidden="true"></span> <%= session.getAttribute("errorMessage") %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% } %>

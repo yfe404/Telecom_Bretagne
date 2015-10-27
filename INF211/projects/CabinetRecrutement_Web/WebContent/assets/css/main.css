@@ -30,6 +30,11 @@
 	vertical-align: -5px;
 }
 
+.main-alert {
+	margin-top: 51px;
+	border-radius: 0px;
+}
+
 .btn-coffee {
 	background-color: #E26A6A;
 }
