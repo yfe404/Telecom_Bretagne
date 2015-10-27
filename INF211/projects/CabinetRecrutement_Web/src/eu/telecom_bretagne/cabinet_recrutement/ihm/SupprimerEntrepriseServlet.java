@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
@@ -32,17 +33,22 @@ public class SupprimerEntrepriseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		IServiceEntreprise serviceEntreprise =  null;
+		HttpSession session = request.getSession();
 
-		if(id != null){
+		if(id != null && ((Integer) session.getAttribute("userId")).equals(Integer.parseInt(id)) && session.getAttribute("userType").equals("entreprise")){
 			try {
 				serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 				serviceEntreprise.supprimerEntreprise(id);
-			}catch(Exception e){
-				e.printStackTrace();
-			}finally{
-				response.sendRedirect("liste_entreprises.jsp");
+				session.removeAttribute("userType");
+				session.removeAttribute("userId");
+			} catch(Exception e) {
+				session.setAttribute("errorMessage", e.getLocalizedMessage());
 			}
+		} else {
+			session.setAttribute("errorMessage", "Accès non autorisé.");
 		}
+
+		response.sendRedirect("index.jsp");
 	}
 
 	/**

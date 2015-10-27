@@ -82,7 +82,7 @@ boolean isEntreprise = isLogged && session.getAttribute("userType").equals("entr
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Mon espace <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="liste_offre_emploi_entreprise.jsp"><span
+							<li><a href="mon_entreprise.jsp"><span
 									class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
 									Mon entreprise</a></li>
 							<li><a href="liste_offre_emploi_entreprise.jsp"><span
