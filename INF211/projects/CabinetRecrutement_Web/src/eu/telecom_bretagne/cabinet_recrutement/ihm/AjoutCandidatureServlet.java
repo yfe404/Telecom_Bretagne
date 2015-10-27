@@ -3,7 +3,6 @@ package eu.telecom_bretagne.cabinet_recrutement.ihm;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
