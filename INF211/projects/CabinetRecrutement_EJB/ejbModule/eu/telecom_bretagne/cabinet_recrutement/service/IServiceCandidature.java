@@ -42,8 +42,10 @@ public interface IServiceCandidature {
 			String prenom, NiveauQualification niveauQualificationBean,
 			Set<SecteurActivite> secteurActivites);
 
-	public void miseAJourCandidature(String id, String nom, String descriptif,
-			String adresse_postale);
+	public void miseAJourCandidature(String id, String adresseEmail, String adressePostale,
+			String cv, Date dateNaissance, String nom,
+			String prenom, NiveauQualification niveauQualificationBean,
+			Set<SecteurActivite> secteurActivites);
 
 	public void supprimerCandidature(String id);
 }
