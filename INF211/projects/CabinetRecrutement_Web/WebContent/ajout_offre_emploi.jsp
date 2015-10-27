@@ -1,7 +1,6 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
-<%@page
-	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceSecteurActivite"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -36,10 +35,8 @@
 			.listeDesEntreprises();
 
 	// Liste des secteurs d'activité
-	IServiceSecteurActivite serviceSecteurActivite = (IServiceSecteurActivite) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceSecteurActivite");
-	List<SecteurActivite> secteursActivite = serviceSecteurActivite
-			.listeDesSecteursActivite();
+	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
+	List<SecteurActivite> secteursActivite = serviceIndexation.listeDesSecteursActivite();
 %>
 
 <%@include file="index.jsp"%>
