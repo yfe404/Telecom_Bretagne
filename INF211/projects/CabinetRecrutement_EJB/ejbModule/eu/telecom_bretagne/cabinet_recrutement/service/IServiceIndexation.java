@@ -11,4 +11,6 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 public interface IServiceIndexation {
 	public List<SecteurActivite> listeDesSecteursActivite();
 	public List<NiveauQualification> listeDesNiveauxQualification();
+	SecteurActivite getSecteurActiviteById(int id);
+	NiveauQualification getNiveauQualification(int id);
 }

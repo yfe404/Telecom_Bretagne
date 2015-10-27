@@ -63,7 +63,13 @@
 
 			<form class="form-horizontal" method='post'
 				action='AjoutCandidatureServlet'>
+				<%
+					if (isUpdate) {
+				%>
 				<input type='hidden' value="<%=id%>" name='id'>
+				<%
+					}
+				%>
 
 				<div class="form-group">
 					<label for="inputNom" class="col-sm-4 control-label">Nom</label>
@@ -83,7 +89,8 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputDateNaissance" class="col-sm-4 control-label">Date de Naissance</label>
+					<label for="inputDateNaissance" class="col-sm-4 control-label">Date
+						de Naissance</label>
 					<div class="col-sm-8">
 						<input class="form-control" type='date' name='dateNaissance'
 							id="inputDateNaissance"
@@ -134,14 +141,15 @@
 				</div>
 
 				<div class="form-group">
-					<label for="inputSecteurActivites" class="col-sm-4 control-label">Secteurs
+					<label for="inputSecteursActivite" class="col-sm-4 control-label">Secteurs
 						d'Activité</label>
 					<div class="col-sm-8">
 						<%
 							for (SecteurActivite secteurActivite : secteursActivite) {
 						%>
 						<label class="checkbox-inline"> <input type="checkbox"
-							id="inputSecteurActivites"> <%=secteurActivite.getIntitule()%>
+							name="secteursActivite" value="<%=secteurActivite.getId()%>">
+							<%=secteurActivite.getIntitule()%>
 						</label>
 						<%
 							}

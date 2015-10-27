@@ -36,12 +36,12 @@ public class SupprimerOffreEmploiServlet extends HttpServlet {
 
 		if(id != null){
 			try {
-				serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmloi");
+				serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmploi");
 				serviceOffreEmploi.supprimerOffreEmploi(id);
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("liste_offre_emploi.jsp");
 			}
 		}
 	}

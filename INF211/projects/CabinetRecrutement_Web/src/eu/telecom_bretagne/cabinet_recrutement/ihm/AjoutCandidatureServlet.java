@@ -2,6 +2,8 @@ package eu.telecom_bretagne.cabinet_recrutement.ihm;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -15,7 +17,7 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
-import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
+import eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation;
 
 /**
  * Servlet implementation class AjoutCandidatureServlet
@@ -43,36 +45,50 @@ public class AjoutCandidatureServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		String id = request.getParameter("id");
-		IServiceCandidature serviceCandidature =  null;
+		IServiceIndexation serviceIndexation = null;
+		
+		try {
+			serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
+		} catch (ServicesLocatorException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			response.sendRedirect("liste_candidatures.jsp");
+		}
 
-
+		IServiceCandidature serviceCandidature = null;
 		try {
 			serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidature");
 
-			String adresseEmail = request.getParameter("adresseMail");
+			String adresseEmail = request.getParameter("courriel");
 			String adressePostale = request.getParameter("adressePostale");
 			String cv = request.getParameter("cv");
-			Date dateDepot = null;  /** @todo : get parameter from jsp **/
-			Date dateNaissance = null;   /** @todo : get parameter from jsp **/
+			Date dateDepot = new Date();
+			Date dateNaissance = new Date(request.getParameter("dateNaissance"));
 			String nom = request.getParameter("nom");
 			String prenom = request.getParameter("prenom");
-			NiveauQualification niveauQualificationBean = null;  /** @todo : get parameter from jsp **/
-			Set<SecteurActivite> secteurActivites = null;  /** @todo : get parameter from jsp **/
+			NiveauQualification niveauQualificationBean = serviceIndexation.getNiveauQualification(Integer.parseInt(request.getParameter("niveauQualification")));
+			
+			Set<SecteurActivite> secteursActivite = new HashSet<>();
+			for (String secteurActiviteId : request.getParameterValues("secteursActivite")) {
+				secteursActivite.add(serviceIndexation.getSecteurActiviteById(Integer.parseInt(secteurActiviteId)));
+			}
+			
+			// TODO: Bidirectionnal association
 
 			if (id == null)
 			{
-				serviceCandidature.ajoutCandidature(adresseEmail, adressePostale, cv, dateDepot, dateNaissance, nom, prenom, niveauQualificationBean, secteurActivites);
+				serviceCandidature.ajoutCandidature(adresseEmail, adressePostale, cv, dateDepot, dateNaissance, nom, prenom, niveauQualificationBean, secteursActivite);
 			}else{
-				serviceCandidature.miseAJourCandidature(id, adresseEmail, adressePostale, cv, dateNaissance, nom, prenom, niveauQualificationBean, secteurActivites);
+				serviceCandidature.miseAJourCandidature(id, adresseEmail, adressePostale, cv, dateNaissance, nom, prenom, niveauQualificationBean, secteursActivite);
 			}
 
 		} catch (ServicesLocatorException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			response.sendRedirect("index.jsp");
+		} finally {
+			response.sendRedirect("liste_candidatures.jsp");
 		}
 
 	}
