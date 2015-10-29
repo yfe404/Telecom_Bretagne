@@ -2,22 +2,57 @@ Fs = 1000;            % Sampling frequency
 T = 1/Fs;             % Sampling period
 L = 100;             % Length of signal
 t = (1:L)*T;        % Time vector
-tau = 400;
+tau = 60;
 alpha = 0.2;
+k = 2;
 
 
-% Form a signal containing a 50 Hz sinusoid of amplitude 0.7...  
-e = sin(2*pi*50*t) ;
+nSamplesPerBit = 30; % number of samples per bit 
+numericSignalLength = 10000; % length of the numerical signal 
 
-%plot(1000*t(1:50),e(1:50))
+amplMin = 0; % min ampl of the NRZ signal 
+amplMax = 1.2; % max ampl of the NRZ signal 
 
-% and a 50 Hz sinusoid 
-s_tau =  alpha * sin(2*pi*50*(t-tau)) ;
+numericalSignal = floor(mod((randn(1,numericSignalLength)), 2)); % Generate a random numerical signal
+
+NRZSignal = nrz(numericalSignal, nSamplesPerBit, numericSignalLength, amplMin, amplMax);
+
+%plot(NRZSignal)
+r =  zeros(1, length(NRZSignal)+tau) ;
+
+for i=1:(tau + length(NRZSignal))
+  if i <= tau  
+    r(1,i) = NRZSignal(1,i);
+  elseif i > length(NRZSignal)
+    r(1,i) = NRZSignal(1,i-tau);
+  else
+    r(1,i) = NRZSignal(1,i);
+    r(1,i) +=  NRZSignal(1,i-tau);
+  endif
+end
+
+
+%plot(r);
+
+
+%% Reconstruction d'un signal numérique
+numericRecu = zeros(1, length(r)/nSamplesPerBit);
+for i=1:length(numericRecu)
+  val = (sum(r((i-1)*30+1:i*30)))/30;
+  
+  if val > (abs(amplMax) - abs(amplMin))/2
+    numericRecu(i) = amplMax;
+  else  
+    numericRecu(i) = amplMin;
+  endif
+ end
+ 
+ 
+
+%r = s_tau + e;
 
 % Corrupt the signal with zero-mean white noise with a variance of 4.
-%X = S + 2*randn(size(t));
-
-r = s_tau + e;
+%r = r + randn(size(t));
 
 %plot(t, e, 'b');
 %hold on ;
@@ -25,18 +60,28 @@ r = s_tau + e;
 
 
 R = fft(r);
- 
-H = 1 + alpha * exp(-2 * i *  pi * (1./(t) * tau));
-%H_1 = (1 ./ abs(H)) .* exp(-i.*arg(H));
+ t = 1:1:300060;
+H = 1 + alpha * exp(-2 * i *  pi * (1./t) * tau);
+H_1 = (1 ./ abs(H)) .* exp(-i.*arg(H));
 
 
 
+y = ifft(R./H);
+
+%for i=2:length(y)-1
+% y(i) = (1/9)*(4*y(i-1) + y(i) + 4*y(i+1));
+%end
+
+s_filtre = ifft(R.*H_1);
+%plot(t,s_filtre );
+%plot(t,y , 'b');
+%hold on;
+%plot(t, e, 'r'); 
 
 
+s_filtre_n = moyennage (s_filtre, nSamplesPerBit, 0.5);
 
-%plot(t, ifft(R.*H_1));
-plot(t, ifft(R./H));
-hold on;
-plot(t, e, 'r');
+
+TEB=  sum(s_filtre_n != numericalSignal) / numericSignalLength
 
 

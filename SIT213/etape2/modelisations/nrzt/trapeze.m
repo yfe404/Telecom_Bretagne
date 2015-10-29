@@ -6,8 +6,8 @@ s2Length = nSamples - s1Length - s3Length;
 
 
 s1 = zeros(1,s1Length);
-a1 = ((amplMax-amplMin)/s1Length)/(1-(1/s1Length))
-b1 = amplMin 
+a1 = ((amplMax-amplMin)/s1Length)/(1-(1/s1Length));
+b1 = amplMin ;
 
 x = 0;
 
@@ -17,8 +17,8 @@ for i=1:s1Length
 end;
 
 s3 = zeros(1,s3Length);
-a3 = (amplMin-amplMax)/(nSamples-(s1Length+s2Length))
-b3 = amplMax-a3*(s1Length+s2Length)
+a3 = (amplMin-amplMax)/(nSamples-(s1Length+s2Length));
+b3 = amplMax-a3*(s1Length+s2Length);
 
 
 x = s1Length+s2Length+1;
