@@ -70,6 +70,8 @@
 		        </td>
 		      </tr>
 		    </table>
+		    
+		    SHOW MAP
         
         <a href="liste_entreprises.jsp">Retour à la liste des entreprises</a>
 

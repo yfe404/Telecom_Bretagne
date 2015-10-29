@@ -43,6 +43,7 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		IServiceEntreprise serviceEntreprise =  null;
 
+		// TODO CHECK userId and userType in session if update
 
 		try {
 			serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
@@ -61,8 +62,12 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 		} catch (ServicesLocatorException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
-			response.sendRedirect("index.jsp");
+		} finally {
+			if (id == null) {
+				response.sendRedirect("liste_entreprises.jsp");
+			} else {
+				response.sendRedirect("mon_entreprise.jsp");
+			}
 		}
 
 

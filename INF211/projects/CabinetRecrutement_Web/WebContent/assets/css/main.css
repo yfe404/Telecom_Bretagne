@@ -20,7 +20,7 @@
 }
 
 .main-navbar .navbar-brand {
-	color: #111111;
+	color: #2c3e50;
 	margin-top: -4px;
 }
 
@@ -28,6 +28,19 @@
 	display: inline;
 	height: 25px;
 	vertical-align: -5px;
+}
+
+.main-alert {
+	margin-top: 51px;
+	border-radius: 0px;
+}
+
+.navlink {
+	color: #E26A6A;
+}
+
+.btn-coffee {
+	background-color: #E26A6A;
 }
 
 .gradient-endless-river {
@@ -53,4 +66,21 @@
 
 .table a:hover {
 	text-decoration: none;
+}
+
+.modal {
+	color: #2c3e50;
+}
+
+.above-table-title {
+	font-size: 16pt;
+}
+
+.above-table-row {
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.displayname {
+	color: #2c3e50;
 }

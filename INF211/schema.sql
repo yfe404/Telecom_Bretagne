@@ -66,7 +66,8 @@ CREATE TABLE message_candidature (
   id            serial PRIMARY KEY,
   date_envoi    date   NOT NULL,
   corps_message text   NOT NULL,
-  offre_emploi  int    REFERENCES offre_emploi ON UPDATE CASCADE ON DELETE CASCADE
+  offre_emploi  int    REFERENCES offre_emploi ON UPDATE CASCADE ON DELETE CASCADE,
+  candidature   int    REFERENCES candidature  ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS secteur_activite_offre_emploi CASCADE;
