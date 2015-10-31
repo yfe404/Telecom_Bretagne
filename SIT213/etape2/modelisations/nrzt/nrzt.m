@@ -2,7 +2,7 @@ function [signalNRZ] = nrzt(numericalSignal, nSamplesPerBit, numericSignalLength
 
 signalNRZ = zeros(1,length(numericalSignal) * nSamplesPerBit); % Initialize NRZ signal with 0s.
 
-x=0
+x=0;
 for i=1:numericSignalLength
   COND = (numericalSignal(i) == 0); % Boolean, 1 if current bit equals 0, 1 else
   % Add "nSamplesPerBit" samples to the NRZ analogic signal times "amplMin" if the current bit equals 0 or times "amplMax" else.
