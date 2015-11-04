@@ -3,6 +3,7 @@ package eu.telecom_bretagne.cabinet_recrutement.ihm;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -45,8 +46,8 @@ public class AjoutCandidatureServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		IServiceIndexation serviceIndexation = null;
 		
+		IServiceIndexation serviceIndexation = null;
 		try {
 			serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
 		} catch (ServicesLocatorException e1) {
@@ -67,13 +68,7 @@ public class AjoutCandidatureServlet extends HttpServlet {
 			String nom = request.getParameter("nom");
 			String prenom = request.getParameter("prenom");
 			NiveauQualification niveauQualificationBean = serviceIndexation.getNiveauQualification(Integer.parseInt(request.getParameter("niveauQualification")));
-			
-			Set<SecteurActivite> secteursActivite = new HashSet<>();
-			for (String secteurActiviteId : request.getParameterValues("secteursActivite")) {
-				secteursActivite.add(serviceIndexation.getSecteurActiviteById(Integer.parseInt(secteurActiviteId)));
-			}
-			
-			// TODO: Bidirectionnal association
+			String[] secteursActivite = request.getParameterValues("secteursActivite");
 
 			if (id == null)
 			{

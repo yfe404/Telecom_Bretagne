@@ -1,6 +1,7 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -9,6 +10,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.CandidatureDAO;
+import eu.telecom_bretagne.cabinet_recrutement.data.dao.SecteurActiviteDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
@@ -26,6 +28,9 @@ public class ServiceCandidature implements IServiceCandidature
 	//-----------------------------------------------------------------------------
 	@EJB
 	private CandidatureDAO candidatureDAO;
+	
+	@EJB
+	private SecteurActiviteDAO secteurActiviteDAO;
 
 	public ServiceCandidature() {
 		// Default constructor
@@ -47,7 +52,7 @@ public class ServiceCandidature implements IServiceCandidature
 	public void ajoutCandidature(String adresseEmail, String adressePostale,
 			String cv, Date dateDepot, Date dateNaissance, String nom,
 			String prenom, NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites) {
+			String[] secteurActivites) {
 		
 		Candidature candidature = new Candidature();
 		candidature.setAdresseEmail(adresseEmail);
@@ -58,20 +63,33 @@ public class ServiceCandidature implements IServiceCandidature
 		candidature.setNom(nom);
 		candidature.setPrenom(prenom);
 		candidature.setNiveauQualificationBean(niveauQualificationBean);
-		candidature.setSecteurActivites(secteurActivites);
 		
-		candidatureDAO.persist(candidature);		
+		candidature.setSecteurActivites(new HashSet<SecteurActivite>());
+		
+		for (String secteurActiviteId : secteurActivites) {
+			SecteurActivite secteurActivite = secteurActiviteDAO.findById(new Integer(secteurActiviteId));
+			candidature.getSecteurActivites().add(secteurActivite);
+			secteurActivite.getCandidatures().add(candidature);
+			secteurActiviteDAO.update(secteurActivite);
+		}
+		
+		candidatureDAO.persist(candidature);
 	}
 
 	@Override
 	public void miseAJourCandidature(String id, String adresseEmail, String adressePostale,
 			String cv, Date dateNaissance, String nom,
 			String prenom, NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites) {
+			String[] secteurActivites) {
 		
 		
 		Candidature candidature = candidatureDAO.findById(Integer.parseInt(id));
 		if (candidature != null){
+			for (SecteurActivite secteurActivite : candidature.getSecteurActivites()) {
+				secteurActivite.getCandidatures().remove(candidature);
+				secteurActiviteDAO.update(secteurActivite);
+			}
+			
 			candidature.setAdresseEmail(adresseEmail);
 			candidature.setAdressePostale(adressePostale);
 			candidature.setCv(cv);
@@ -79,7 +97,13 @@ public class ServiceCandidature implements IServiceCandidature
 			candidature.setNom(nom);
 			candidature.setPrenom(prenom);
 			candidature.setNiveauQualificationBean(niveauQualificationBean);
-			candidature.setSecteurActivites(secteurActivites);
+			
+			for (String secteurActiviteId : secteurActivites) {
+				SecteurActivite secteurActivite = secteurActiviteDAO.findById(new Integer(secteurActiviteId));
+				candidature.getSecteurActivites().add(secteurActivite);
+				secteurActivite.getCandidatures().add(candidature);
+				secteurActiviteDAO.update(secteurActivite);
+			}
 			
 			candidatureDAO.update(candidature);
 		}

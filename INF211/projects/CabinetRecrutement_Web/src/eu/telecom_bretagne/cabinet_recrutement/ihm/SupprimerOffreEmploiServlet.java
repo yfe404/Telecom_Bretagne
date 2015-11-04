@@ -41,7 +41,7 @@ public class SupprimerOffreEmploiServlet extends HttpServlet {
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{
-				response.sendRedirect("liste_offre_emploi.jsp");
+				response.sendRedirect("liste_offre_emploi_entreprise.jsp");
 			}
 		}
 	}

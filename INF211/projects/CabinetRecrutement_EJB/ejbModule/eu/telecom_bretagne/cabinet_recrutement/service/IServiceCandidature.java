@@ -40,12 +40,12 @@ public interface IServiceCandidature {
 	public void ajoutCandidature(String adresseEmail, String adressePostale,
 			String cv, Date dateDepot, Date dateNaissance, String nom,
 			String prenom, NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites);
+			String[] secteurActivites);
 
 	public void miseAJourCandidature(String id, String adresseEmail, String adressePostale,
 			String cv, Date dateNaissance, String nom,
 			String prenom, NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites);
+			String[] secteurActivites);
 
 	public void supprimerCandidature(String id);
 }

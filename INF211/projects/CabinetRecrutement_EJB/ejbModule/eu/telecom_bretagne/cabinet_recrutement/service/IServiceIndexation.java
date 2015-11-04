@@ -15,4 +15,5 @@ public interface IServiceIndexation {
 	SecteurActivite getSecteurActiviteById(int id);
 	NiveauQualification getNiveauQualification(int id);
 	List<Candidature> getMatchingCandidaturesForOffreEmploi(int idOffreEmploi);
+	Boolean isCandidatureMatchingOffreEmploi(int idCandidature, int idOffreEmploi);
 }
