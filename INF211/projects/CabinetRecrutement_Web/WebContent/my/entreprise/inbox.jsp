@@ -1,4 +1,7 @@
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreEmploi"%>
@@ -58,7 +61,7 @@
 				%>
 				<tr>
 					<td><%=message.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(message.getDateEnvoi())%></td>
+					<td><%=Utils.date2String(message.getDateEnvoi())%></td>
 					<td><%=message.getCandidatureBean().getPrenom()%> <%=message.getCandidatureBean().getNom()%></td>
 					<td><%=message.getOffreEmploiBean().getTitre()%>
 					<td><%=message.getCorpsMessage()%></td>
@@ -90,7 +93,7 @@
 				%>
 				<tr>
 					<td><%=message.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(message.getDateEnvoi())%></td>
+					<td><%=Utils.date2String(message.getDateEnvoi())%></td>
 					<td><%=message.getCandidatureBean().getPrenom()%> <%=message.getCandidatureBean().getNom()%></td>
 					<td><%=message.getOffreEmploiBean().getTitre()%>
 					<td><%=message.getCorpsMessage()%></td>

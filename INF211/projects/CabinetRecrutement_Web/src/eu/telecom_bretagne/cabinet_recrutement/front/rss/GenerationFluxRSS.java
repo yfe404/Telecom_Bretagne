@@ -15,8 +15,10 @@ import javax.xml.bind.Marshaller;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmploi;
 
@@ -78,12 +80,12 @@ public class GenerationFluxRSS
 		// A compléter : les infos du channel
 		channel.setTitle("Cabinet de recrutement : les offres d'emploi");
 		channel.setDescription("Trouvez le job de vos reves");
-		channel.setLink("http://localhost:8080/CabinetRecrutement_Web");
-		channel.setPubDate(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
+		channel.setLink(AssetsLocator.urlForJSP("offres/all"));
+		channel.setPubDate(Utils.date2StringRSS(new Date()));
 
 		Image image = new Image();
-		image.setUrl("http://localhost:8080/CabinetRecrutement_Web/assets/images/icone_offre_emploi.png");
-		image.setLink("http://localhost:8080/CabinetRecrutement_Web");
+		image.setUrl(AssetsLocator.urlForImage("icone_offre_emploi.png"));
+		image.setLink(AssetsLocator.urlForJSP("offres/all"));
 		image.setTitle("Cabinet de recrutement : les offres d'emploi");
 
 		channel.setImage(image);
@@ -105,8 +107,8 @@ public class GenerationFluxRSS
 			Item item = new Item();
 			item.setTitle(offreEmploi.getTitre());
 			item.setDescription(offreEmploi.getDescriptionMission());
-			item.setLink("http://localhost:8080/CabinetRecrutement_Web/infos_offre_emploi.jsp?id=" + offreEmploi.getId());
-			item.setPubDate(new SimpleDateFormat("dd MMM yyyy").format(offreEmploi.getDateDepot()));
+			item.setLink(AssetsLocator.urlForJSP("offres/info", offreEmploi.getId()));
+			item.setPubDate(Utils.date2StringRSS(offreEmploi.getDateDepot()));
 			channel.item.add(item);
 		}
 
@@ -160,12 +162,12 @@ public class GenerationFluxRSS
 		// A compléter : les infos du channel
 		channel.setTitle("Cabinet de recrutement : les candidatures");
 		channel.setDescription("Trouvez le job de vos reves");
-		channel.setLink("http://localhost:8080/CabinetRecrutement_Web");
-		channel.setPubDate(new SimpleDateFormat("dd MMM yyyy").format(new Date()));
+		channel.setLink(AssetsLocator.urlForJSP("candidatures/all"));
+		channel.setPubDate(Utils.date2StringRSS(new Date()));
 
 		Image image = new Image();
-		image.setUrl("http://localhost:8080/CabinetRecrutement_Web/assets/images/icone_candidature.png");
-		image.setLink("http://localhost:8080/CabinetRecrutement_Web");
+		image.setUrl(AssetsLocator.urlForImage("icone_candidature.png"));
+		image.setLink(AssetsLocator.urlForJSP("candidatures/all"));
 		image.setTitle("Cabinet de recrutement : les candidatures");
 
 		channel.setImage(image);
@@ -189,14 +191,14 @@ public class GenerationFluxRSS
 			String description = "Niveau de qualification : ";
 			description += candidature.getNiveauQualificationBean().getIntitule();
 			description += ". Secteurs :";
-			
+
 			for (SecteurActivite secteurActivite : candidature.getSecteurActivites()) {
 				description += " " + secteurActivite.getIntitule();
 			}
-			
+
 			item.setDescription(description);
-			item.setLink("http://localhost:8080/CabinetRecrutement_Web/infos_candidature.jsp?id=" + candidature.getId());
-			item.setPubDate(new SimpleDateFormat("dd MMM yyyy").format(candidature.getDateDepot()));
+			item.setLink(AssetsLocator.urlForJSP("candidatures/info", candidature.getId()));
+			item.setPubDate(Utils.date2StringRSS(candidature.getDateDepot()));
 			channel.item.add(item);
 		}
 

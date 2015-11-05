@@ -37,7 +37,7 @@
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='EnvoiMessageCandidature'>
+				action='<%=AssetsLocator.urlForServlet("EnvoyerMessageCandidature") %>'>
 				<input type='hidden' value="<%=idCandidature%>" name='idCandidature'>
 				<input type='hidden' value="<%=idOffreEmploi%>" name='idOffreEmploi'>
 

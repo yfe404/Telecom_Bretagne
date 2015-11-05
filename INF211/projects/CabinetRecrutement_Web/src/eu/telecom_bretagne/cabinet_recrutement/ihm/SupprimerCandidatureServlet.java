@@ -7,7 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
 
@@ -27,18 +30,24 @@ public class SupprimerCandidatureServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		IServiceCandidature serviceCandidature =  null;
-
-		if(id != null){
+    	HttpSession session = request.getSession();
+		
+    	String id = request.getParameter("id");
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		if (id != null && userId != null && session.getAttribute("userType").equals("candidat") && userId == Integer.parseInt(id)) {
 			try {
-				serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidature");
+				IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidature");
 				serviceCandidature.supprimerCandidature(id);
-			}catch(Exception e){
-				e.printStackTrace();
-			}finally{
-				response.sendRedirect("index.jsp");
+				session.removeAttribute("userType");
+				session.removeAttribute("userId");
+			} catch (Exception e){
+				session.setAttribute("errorMessage", "Identifiant inconnu.");
+			} finally {
+				response.sendRedirect(AssetsLocator.urlForJSP("index"));
 			}
+		} else {
+			RedirectionHelper.redirectUnauthorized(session, response);
 		}
 	}
 

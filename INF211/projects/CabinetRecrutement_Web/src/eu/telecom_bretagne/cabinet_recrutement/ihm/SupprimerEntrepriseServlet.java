@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
 
@@ -28,24 +30,25 @@ public class SupprimerEntrepriseServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		IServiceEntreprise serviceEntreprise =  null;
 		HttpSession session = request.getSession();
-
-		if(id != null && ((Integer) session.getAttribute("userId")).equals(Integer.parseInt(id)) && session.getAttribute("userType").equals("entreprise")){
+		
+		String id = request.getParameter("id");
+		Integer userId = (Integer) session.getAttribute("userId");
+		
+		if(id != null && userId == Integer.parseInt(id) && session.getAttribute("userType").equals("entreprise")){
 			try {
-				serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
+				IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 				serviceEntreprise.supprimerEntreprise(id);
 				session.removeAttribute("userType");
 				session.removeAttribute("userId");
 			} catch(Exception e) {
 				session.setAttribute("errorMessage", e.getLocalizedMessage());
+			} finally {
+				response.sendRedirect(AssetsLocator.urlForJSP("index"));
 			}
 		} else {
-			session.setAttribute("errorMessage", "Accès non autorisé.");
+			RedirectionHelper.redirectUnauthorized(session, response);
 		}
-
-		response.sendRedirect("index.jsp");
 	}
 
 	/**

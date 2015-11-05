@@ -1,4 +1,6 @@
 <%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
+<%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
@@ -39,7 +41,8 @@
 	<div class="row above-table-row">
 		<span class="col-md-11 above-table-title">Liste de mes offres
 			d'emploi</span> <span class="col-md-1"><a
-			href="ajout_offre_emploi.jsp" class="btn btn-default">Ajouter</a></span>
+			href="<%=AssetsLocator.urlForJSP("offres/add")%>"
+			class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
@@ -61,25 +64,26 @@
 				%>
 				<tr>
 					<td><%=offreEmploi.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(offreEmploi.getDateDepot())%></td>
+					<td><%=Utils.date2String(offreEmploi.getDateDepot())%></td>
 					<td><a
-						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("entreprises/info", offreEmploi.getEntrepriseBean().getId())%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
 					<td><a
-						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("offres/info", offreEmploi.getId())%>"><%=offreEmploi.getTitre()%></a></td>
 					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
 					<td>
 						<%
 							for (Candidature candidature : matchingCandidatures) {
-						%> <a href="message_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
+						%> <a
+						href="<%=AssetsLocator.urlForJSP("candidatures/message")%>?idCandidature=<%=candidature.getId()%>%idOffreEmploi=<%=offreEmploi.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
 						<%
 							}
 						%>
 					</td>
 					<td><a class="icon-action"
-						href="ajout_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><span
+						href="<%=AssetsLocator.urlForJSP("offres/add", offreEmploi.getId())%>"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
 						class="icon-action"
-						href="SupprimerOffreEmploiServlet?id=<%=offreEmploi.getId()%>"><span
+						href="<%=AssetsLocator.urlForServlet("SupprimerOffre", offreEmploi.getId())%>"><span
 							class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				</tr>
 				<%

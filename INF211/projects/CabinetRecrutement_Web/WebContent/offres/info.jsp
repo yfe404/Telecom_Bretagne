@@ -78,7 +78,7 @@
 				if (isCandidat && serviceIndexation.isCandidatureMatchingOffreEmploi(idCandidature, idOffreEmploi)) {
 			%>
 			<a class="btn"
-				href="message_candidature.jsp?idCandidature=<%=idCandidature%>&=idOffreEmploi=<%=idOffreEmploi%>">Candidater</a>
+				href="<%=AssetsLocator.urlForJSP("candidatures/message")%>?idCandidature=<%=idCandidature%>&=idOffreEmploi=<%=idOffreEmploi%>">Candidater</a>
 			<%
 				}
 			%>

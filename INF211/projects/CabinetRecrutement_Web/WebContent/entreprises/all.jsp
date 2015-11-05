@@ -9,11 +9,10 @@
 
 <%
 	// Récupération du service (bean session)
-	IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator
-			.getInstance().getRemoteInterface("ServiceEntreprise");
+	IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
+			.getRemoteInterface("ServiceEntreprise");
 	// Appel de la fonctionnalité désirée auprès du service
-	List<Entreprise> entreprises = serviceEntreprise
-			.listeDesEntreprises();
+	List<Entreprise> entreprises = serviceEntreprise.listeDesEntreprises();
 %>
 
 <%@include file="../header.jsp"%>
@@ -21,8 +20,10 @@
 <div class="container main-container">
 
 	<div class="row above-table-row">
-		<span class="col-md-11 above-table-title">Liste des entreprises référencées</span>
-		<span class="col-md-1"><a href="ajout_entreprises.jsp" class="btn btn-default">Ajouter</a></span>
+		<span class="col-md-11 above-table-title">Liste des entreprises
+			référencées</span> <span class="col-md-1"><a
+			href="<%=AssetsLocator.urlForJSP("entreprises/add")%>"
+			class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
@@ -39,7 +40,7 @@
 				%>
 				<tr>
 					<td>ENT_<%=entreprise.getId()%></td>
-					<td><a href="infos_entreprise.jsp?id=<%=entreprise.getId()%>"><%=entreprise.getNom()%></a></td>
+					<td><a href="<%=AssetsLocator.urlForJSP("entreprises/info", entreprise.getId()) %>"><%=entreprise.getNom()%></a></td>
 					<td><%=entreprise.getAdressePostale()%></td>
 					<td><%=entreprise.getOffreEmplois().size()%></td>
 				</tr>

@@ -1,3 +1,5 @@
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreEmploi"%>
@@ -24,8 +26,10 @@
 	IServiceMessageOffreEmploi serviceMessageOffreEmploi = (IServiceMessageOffreEmploi) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceMessageOffreEmploi");
 
-	List<MessageCandidature> messagesCandidature = serviceMessageCandidature.listeDesMessagesCandidatureByCandidat(Integer.parseInt(id));
-	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi.listeDesMessageOffreEmploiByCandidat(Integer.parseInt(id));
+	List<MessageCandidature> messagesCandidature = serviceMessageCandidature
+			.listeDesMessagesCandidatureByCandidat(Integer.parseInt(id));
+	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi
+			.listeDesMessageOffreEmploiByCandidat(Integer.parseInt(id));
 %>
 
 <%@include file="../../header.jsp"%>
@@ -52,7 +56,7 @@
 				%>
 				<tr>
 					<td><%=message.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(message.getDateEnvoi())%></td>
+					<td><%=Utils.date2String(message.getDateEnvoi())%></td>
 					<td><%=message.getCandidatureBean().getPrenom()%> <%=message.getCandidatureBean().getNom()%></td>
 					<td><%=message.getOffreEmploiBean().getTitre()%>
 					<td><%=message.getCorpsMessage()%></td>
@@ -84,7 +88,7 @@
 				%>
 				<tr>
 					<td><%=message.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(message.getDateEnvoi())%></td>
+					<td><%=Utils.date2String(message.getDateEnvoi())%></td>
 					<td><%=message.getCandidatureBean().getPrenom()%> <%=message.getCandidatureBean().getNom()%></td>
 					<td><%=message.getOffreEmploiBean().getTitre()%>
 					<td><%=message.getCorpsMessage()%></td>

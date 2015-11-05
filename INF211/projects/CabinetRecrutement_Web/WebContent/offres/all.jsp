@@ -47,9 +47,9 @@
 					<td><%=offreEmploi.getId()%></td>
 					<td><%=Utils.date2String(offreEmploi.getDateDepot())%></td>
 					<td><a
-						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("entreprises/info", offreEmploi.getEntrepriseBean().getId()) %>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
 					<td><a
-						href="infos_offre_emploi.jsp?id=<%=offreEmploi.getId()%>"><%=offreEmploi.getTitre()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("offres/info", offreEmploi.getId()) %>"><%=offreEmploi.getTitre()%></a></td>
 					<td><%=offreEmploi.getNiveauQualificationBean().getIntitule()%></td>
 				</tr>
 				<%

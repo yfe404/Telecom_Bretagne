@@ -31,5 +31,8 @@ public class AssetsLocator {
 		return APP_PATH + name + "Servlet";
 	}
 	
-
+	public static String urlForServlet(String name, Integer id) {
+		return APP_PATH + name + "Servlet" + "?id=" + id.toString();
+	}
+	
 }

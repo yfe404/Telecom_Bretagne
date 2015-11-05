@@ -21,8 +21,6 @@
 	Entreprise entreprise = serviceEntreprise.getEntreprise(idEntreprise);
 %>
 
-
-
 <div class="container main-container">
 
 	<div class="row above-table-row">

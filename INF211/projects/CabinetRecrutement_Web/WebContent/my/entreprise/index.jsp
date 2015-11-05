@@ -31,7 +31,7 @@
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='AjoutEntrepriseServlet'>
+				action='<%=AssetsLocator.urlForServlet("AjoutEntreprise")%>'>
 				<input type='hidden' name='id' value="<%=userId%>">
 
 				<div class="form-group">
