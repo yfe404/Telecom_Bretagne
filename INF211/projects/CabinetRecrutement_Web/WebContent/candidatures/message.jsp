@@ -12,18 +12,18 @@
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise"%>
 <%
-	String idCandidature = request.getParameter("idCandidature");
-	String idOffreEmploi = request.getParameter("idOffreEmploi");
-	String idMessage = request.getParameter("idMessage");
+	int idCandidature = Integer.parseInt(request.getParameter("idCandidature"));
+	int idOffreEmploi = Integer.parseInt(request.getParameter("idOffreEmploi"));
+	int idMessage = Integer.parseInt(request.getParameter("idMessage"));
 	
 	// TODO CHECK if idMessage and display instead
 	
 	IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance()
 			.getRemoteInterface("ServiceCandidature");
-	Candidature candidature = serviceCandidature.getCandidature(Integer.parseInt(idCandidature));
+	Candidature candidature = serviceCandidature.getCandidature(idCandidature);
 %>
 
-<%@include file="header.jsp"%>
+<%@include file="../header.jsp"%>
 
 <div class="container main-container">
 	<div class="row">
@@ -62,4 +62,4 @@
 </div>
 <!-- /.container -->
 
-<%@include file="footer.jsp"%>
+<%@include file="../footer.jsp"%>

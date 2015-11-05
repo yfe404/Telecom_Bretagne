@@ -16,7 +16,7 @@
                 eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi,
                 java.util.List"%>
 
-<%@include file="header.jsp"%>
+<%@include file="../../header.jsp"%>
 
 <%
 	if (!isEntreprise) {
@@ -36,9 +36,10 @@
 
 <div class="container main-container">
 
-	<div class="row">
-		<h3 class="col-sm-offset-5">Liste de mes offres d'emploi</h3>
-		<br />
+	<div class="row above-table-row">
+		<span class="col-md-11 above-table-title">Liste de mes offres
+			d'emploi</span> <span class="col-md-1"><a
+			href="ajout_offre_emploi.jsp" class="btn btn-default">Ajouter</a></span>
 	</div>
 
 	<div class="row">
@@ -69,8 +70,7 @@
 					<td>
 						<%
 							for (Candidature candidature : matchingCandidatures) {
-						%> <a
-						href="message_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
+						%> <a href="message_candidature.jsp?id=<%=candidature.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
 						<%
 							}
 						%>
@@ -91,4 +91,4 @@
 
 </div>
 
-<%@include file="footer.jsp"%>
+<%@include file="../../footer.jsp"%>

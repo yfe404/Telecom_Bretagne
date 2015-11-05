@@ -45,11 +45,9 @@ public class EnvoyerMessageCandidatureServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		IServiceMessageCandidature serviceMessageCandidature =  null;
 		IServiceCandidature serviceCandidature = null;
 		IServiceOffreEmploi serviceOffreEmploi = null;
-
 
 		try {
 			serviceMessageCandidature = (IServiceMessageCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceMessageCandidature");

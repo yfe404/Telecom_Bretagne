@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
@@ -47,6 +48,7 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String id = request.getParameter("id");
 
 		IServiceIndexation serviceIndexation = null;
@@ -75,7 +77,7 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 			String descriptionMission = request.getParameter("descriptionMission");
 			String profilRecherche = request.getParameter("profilRecherche");
 			
-			Entreprise entreprise = serviceEntreprise.getEntreprise(Integer.parseInt(request.getParameter("entreprise")));
+			Entreprise entreprise = serviceEntreprise.getEntreprise((Integer) session.getAttribute("userId"));
 
 			NiveauQualification niveauQualificationBean = serviceIndexation.getNiveauQualification(Integer.parseInt(request.getParameter("niveauQualification")));
 

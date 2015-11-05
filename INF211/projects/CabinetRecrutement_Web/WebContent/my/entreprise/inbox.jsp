@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.SecurityHelper"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreEmploi"%>
@@ -16,19 +17,24 @@
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise,
                 java.util.List"%>
 
+<%@include file="../../header.jsp"%>
+
 <%
-	String id = request.getParameter("id");
+	if (!isEntreprise) {
+		SecurityHelper.redirectUnauthorized(session, response);
+		return;
+	}
 
 	IServiceMessageCandidature serviceMessageCandidature = (IServiceMessageCandidature) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceMessageCandidature");
 	IServiceMessageOffreEmploi serviceMessageOffreEmploi = (IServiceMessageOffreEmploi) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceMessageOffreEmploi");
 
-	List<MessageCandidature> messagesCandidature = serviceMessageCandidature.listeDesMessagesCandidatureByCandidat(Integer.parseInt(id));
-	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi.listeDesMessageOffreEmploiByCandidat(Integer.parseInt(id));
+	List<MessageCandidature> messagesCandidature = serviceMessageCandidature
+			.listeDesMessagesCandidatureByEntreprise(userId);
+	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi
+			.listeDesMessageOffreEmploiByEntreprise(userId);
 %>
-
-<%@include file="header.jsp"%>
 
 <div class="container main-container">
 
@@ -99,4 +105,4 @@
 </div>
 <!-- /.container -->
 
-<%@include file="footer.jsp"%>
+<%@include file="../../footer.jsp"%>

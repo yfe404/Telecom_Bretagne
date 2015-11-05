@@ -46,15 +46,6 @@ public class AjoutCandidatureServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
-		
-		IServiceIndexation serviceIndexation = null;
-		try {
-			serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
-		} catch (ServicesLocatorException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-			response.sendRedirect("liste_candidatures.jsp");
-		}
 
 		IServiceCandidature serviceCandidature = null;
 		try {
@@ -67,14 +58,14 @@ public class AjoutCandidatureServlet extends HttpServlet {
 			Date dateNaissance = new Date(request.getParameter("dateNaissance"));
 			String nom = request.getParameter("nom");
 			String prenom = request.getParameter("prenom");
-			NiveauQualification niveauQualificationBean = serviceIndexation.getNiveauQualification(Integer.parseInt(request.getParameter("niveauQualification")));
-			String[] secteursActivite = request.getParameterValues("secteursActivite");
+			Integer idNiveauQualification = Integer.parseInt(request.getParameter("niveauQualification"));
+			String[] idSecteursActivite = request.getParameterValues("secteursActivite");
 
 			if (id == null)
 			{
-				serviceCandidature.ajoutCandidature(adresseEmail, adressePostale, cv, dateDepot, dateNaissance, nom, prenom, niveauQualificationBean, secteursActivite);
+				serviceCandidature.ajoutCandidature(adresseEmail, adressePostale, cv, dateDepot, dateNaissance, nom, prenom, idNiveauQualification, idSecteursActivite);
 			}else{
-				serviceCandidature.miseAJourCandidature(id, adresseEmail, adressePostale, cv, dateNaissance, nom, prenom, niveauQualificationBean, secteursActivite);
+				serviceCandidature.miseAJourCandidature(id, adresseEmail, adressePostale, cv, dateNaissance, nom, prenom, idNiveauQualification, idSecteursActivite);
 			}
 
 		} catch (ServicesLocatorException e) {

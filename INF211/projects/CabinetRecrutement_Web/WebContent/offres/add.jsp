@@ -1,10 +1,4 @@
 <%@page
-	import="eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification"%>
-<%@page
-	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature"%>
-<%@page
-	import="eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature"%>
-<%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -20,18 +14,19 @@
                 eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi,
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise,
+                eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification,
                 java.util.List"%>
 <%
-	Candidature candidature = null;
+	OffreEmploi offreEmploi = null;
 
 	String id = request.getParameter("id");
 	boolean isUpdate = (id != null);
 
-	// Récupération de la candidature si màj.
+	// Récupération de l'offre d'emploi si màj.
 	if (isUpdate) {
-		IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator
-				.getInstance().getRemoteInterface("ServiceCandidature");
-		candidature = serviceCandidature.getCandidature(Integer
+		IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator
+				.getInstance().getRemoteInterface("ServiceOffreEmploi");
+		offreEmploi = serviceOffreEmploi.getOffreEmploi(Integer
 				.parseInt(id));
 	}
 
@@ -50,19 +45,19 @@
 			.listeDesNiveauxQualification();
 %>
 
-<%@include file="header.jsp"%>
+<%@include file="../header.jsp"%>
 
 <div class="container main-container">
 	<div class="row">
 		<div class="col-md-offset-1 col-md-8">
 
 			<h3 class="col-sm-offset-4"><%=isUpdate ? "Mise à jour " : "Ajout "%>
-				d'une candidature
+				d'une offre d'emploi
 			</h3>
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='AjoutCandidatureServlet'>
+				action='AjoutOffreEmploiServlet'>
 				<%
 					if (isUpdate) {
 				%>
@@ -72,54 +67,29 @@
 				%>
 
 				<div class="form-group">
-					<label for="inputNom" class="col-sm-4 control-label">Nom</label>
+					<label for="inputNom" class="col-sm-4 control-label">Titre</label>
 					<div class="col-sm-8">
-						<input class="form-control" type='text' name='nom' id="inputNom"
-							value="<%=isUpdate ? candidature.getNom() : ""%>" />
+						<input class="form-control" type='text' name='titre'
+							id="inputTitre"
+							value="<%=isUpdate ? offreEmploi.getTitre() : ""%>" />
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputPrenom" class="col-sm-4 control-label">Prenom</label>
+					<label for="inputDescriptionMission" class="col-sm-4 control-label">Description
+						Mission</label>
 					<div class="col-sm-8">
-						<input class="form-control" type='text' name='prenom'
-							id="inputPrenom"
-							value="<%=isUpdate ? candidature.getPrenom() : ""%>" />
+						<textarea class="form-control" name='descriptionMission'
+							id="inputDescriptionMission"><%=isUpdate ? offreEmploi.getDescriptionMission() : ""%></textarea>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="inputDateNaissance" class="col-sm-4 control-label">Date
-						de Naissance</label>
+					<label for="inputProfilRecherche" class="col-sm-4 control-label">Profil
+						Recherché</label>
 					<div class="col-sm-8">
-						<input class="form-control" type='date' name='dateNaissance'
-							id="inputDateNaissance"
-							value="<%=isUpdate ? candidature.getDateNaissance() : ""%>" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="inputCourriel" class="col-sm-4 control-label">Courriel</label>
-					<div class="col-sm-8">
-						<input class="form-control" type='email' name='courriel'
-							id="inputCourriel"
-							value="<%=isUpdate ? candidature.getAdresseEmail() : ""%>" />
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="inputAdressePostale" class="col-sm-4 control-label">Adresse
-						Postale</label>
-					<div class="col-sm-8">
-						<textarea class="form-control" name='adressePostale'
-							id="inputAdressePostale"><%=isUpdate ? candidature.getAdressePostale() : ""%></textarea>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="inputCV" class="col-sm-4 control-label">CV</label>
-					<div class="col-sm-8">
-						<textarea class="form-control" name='cv' id="inputCV"><%=isUpdate ? candidature.getCv() : ""%></textarea>
+						<textarea class="form-control" name='profilRecherche'
+							id="inputProfilRecherche"><%=isUpdate ? offreEmploi.getProfilRecherche() : ""%></textarea>
 					</div>
 				</div>
 
@@ -171,4 +141,4 @@
 </div>
 <!-- /.container -->
 
-<%@include file="footer.jsp"%>
+<%@include file="../footer.jsp"%>

@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite"%>
@@ -20,14 +21,13 @@
 	List<OffreEmploi> offresEmploi = serviceOffreEmploi.listeDesOffresEmploi();
 %>
 
-<%@include file="header.jsp"%>
+<%@include file="../header.jsp"%>
 
 <div class="container main-container">
 
 	<div class="row above-table-row">
 		<span class="col-md-11 above-table-title">Liste des offres
-			d'emploi</span> <span class="col-md-1"><a
-			href="ajout_offre_emploi.jsp" class="btn btn-default">Ajouter</a></span>
+			d'emploi</span>
 	</div>
 
 	<div class="row">
@@ -45,7 +45,7 @@
 				%>
 				<tr>
 					<td><%=offreEmploi.getId()%></td>
-					<td><%=new SimpleDateFormat("dd MMM yyyy").format(offreEmploi.getDateDepot())%></td>
+					<td><%=Utils.date2String(offreEmploi.getDateDepot())%></td>
 					<td><a
 						href="infos_entreprise.jsp?id=<%=offreEmploi.getEntrepriseBean().getId()%>"><%=offreEmploi.getEntrepriseBean().getNom()%></a></td>
 					<td><a
@@ -61,4 +61,4 @@
 
 </div>
 
-<%@include file="footer.jsp"%>
+<%@include file="../footer.jsp"%>

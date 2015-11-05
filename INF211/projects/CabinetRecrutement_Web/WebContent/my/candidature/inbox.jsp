@@ -24,11 +24,11 @@
 	IServiceMessageOffreEmploi serviceMessageOffreEmploi = (IServiceMessageOffreEmploi) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceMessageOffreEmploi");
 
-	List<MessageCandidature> messagesCandidature = serviceMessageCandidature.listeDesMessagesCandidatureByEntreprise(Integer.parseInt(id));
-	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi.listeDesMessageOffreEmploiByEntreprise(Integer.parseInt(id));
+	List<MessageCandidature> messagesCandidature = serviceMessageCandidature.listeDesMessagesCandidatureByCandidat(Integer.parseInt(id));
+	List<MessageOffreEmploi> messagesOffreEmploi = serviceMessageOffreEmploi.listeDesMessageOffreEmploiByCandidat(Integer.parseInt(id));
 %>
 
-<%@include file="header.jsp"%>
+<%@include file="../../header.jsp"%>
 
 <div class="container main-container">
 
@@ -99,4 +99,4 @@
 </div>
 <!-- /.container -->
 
-<%@include file="footer.jsp"%>
+<%@include file="../../footer.jsp"%>
