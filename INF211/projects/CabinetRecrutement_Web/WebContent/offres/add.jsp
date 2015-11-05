@@ -57,7 +57,7 @@
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='<%= AssetsLocator.urlForServlet("AjoutOffre") %>'>
+				action='<%= AssetsLocator.urlForServlet("AjoutOffreEmploi") %>'>
 				<%
 					if (isUpdate) {
 				%>

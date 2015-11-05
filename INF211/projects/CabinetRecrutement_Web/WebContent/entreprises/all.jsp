@@ -21,9 +21,16 @@
 
 	<div class="row above-table-row">
 		<span class="col-md-11 above-table-title">Liste des entreprises
-			référencées</span> <span class="col-md-1"><a
+			référencées</span>
+		<%
+			if (!isLogged) {
+		%>
+		<span class="col-md-1"><a
 			href="<%=AssetsLocator.urlForJSP("entreprises/add")%>"
 			class="btn btn-default">Ajouter</a></span>
+		<%
+			}
+		%>
 	</div>
 
 	<div class="row">
@@ -40,7 +47,8 @@
 				%>
 				<tr>
 					<td>ENT_<%=entreprise.getId()%></td>
-					<td><a href="<%=AssetsLocator.urlForJSP("entreprises/info", entreprise.getId()) %>"><%=entreprise.getNom()%></a></td>
+					<td><a
+						href="<%=AssetsLocator.urlForJSP("entreprises/info", entreprise.getId())%>"><%=entreprise.getNom()%></a></td>
 					<td><%=entreprise.getAdressePostale()%></td>
 					<td><%=entreprise.getOffreEmplois().size()%></td>
 				</tr>

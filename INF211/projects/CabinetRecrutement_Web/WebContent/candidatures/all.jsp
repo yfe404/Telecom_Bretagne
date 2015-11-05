@@ -1,4 +1,5 @@
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
+<%@page
+	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -21,8 +22,16 @@
 
 	<div class="row above-table-row">
 		<span class="col-md-11 above-table-title">Liste des
-			candidatures</span> <span class="col-md-1"><a
-			href="<%= AssetsLocator.urlForJSP("candidatures/add") %>" class="btn btn-default">Ajouter</a></span>
+			candidatures</span>
+		<%
+			if (!isLogged) {
+		%>
+		<span class="col-md-1"><a
+			href="<%=AssetsLocator.urlForJSP("candidatures/add")%>"
+			class="btn btn-default">Ajouter</a></span>
+		<%
+			}
+		%>
 	</div>
 
 	<div class="row">
@@ -44,9 +53,9 @@
 					<td><%=candidature.getId()%></td>
 					<td><%=Utils.date2String(candidature.getDateDepot())%></td>
 					<td><a
-						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId()) %>"><%=candidature.getNom()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId())%>"><%=candidature.getNom()%></a></td>
 					<td><a
-						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId()) %>"><%=candidature.getPrenom()%></a></td>
+						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId())%>"><%=candidature.getPrenom()%></a></td>
 					<td><%=candidature.getAdressePostale()%></td>
 					<td><%=candidature.getAdresseEmail()%></td>
 					<td><%=candidature.getNiveauQualificationBean().getIntitule()%></td>

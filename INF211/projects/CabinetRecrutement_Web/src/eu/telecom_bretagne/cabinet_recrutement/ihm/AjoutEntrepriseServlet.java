@@ -63,7 +63,7 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 			session.setAttribute("errorMessage", e.getLocalizedMessage());
 		} finally {
 			if (id == null) {
-				response.sendRedirect(AssetsLocator.urlForJSP("enteprises/all"));
+				response.sendRedirect(AssetsLocator.urlForJSP("entreprises/all"));
 			} else {
 				response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/index"));
 			}

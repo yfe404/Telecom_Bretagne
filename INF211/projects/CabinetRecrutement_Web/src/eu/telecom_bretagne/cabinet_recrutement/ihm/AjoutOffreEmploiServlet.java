@@ -54,7 +54,7 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 			serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmploi");
 		} catch (Exception e) {
 			session.setAttribute("errorMessage", e.getLocalizedMessage());
-			response.sendRedirect(AssetsLocator.urlForJSP("offres/all"));
+			response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/offres"));
 		}
 
 		try {
@@ -81,7 +81,7 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 		} catch (Exception e) {
 			session.setAttribute("errorMessage", e.getLocalizedMessage());
 		} finally {
-			response.sendRedirect(AssetsLocator.urlForJSP("offres/all"));
+			response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/offres"));
 		}
 
 	}

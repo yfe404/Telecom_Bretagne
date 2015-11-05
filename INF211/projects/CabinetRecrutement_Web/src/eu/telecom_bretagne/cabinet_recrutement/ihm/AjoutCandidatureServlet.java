@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
 
 /**
@@ -46,7 +47,7 @@ public class AjoutCandidatureServlet extends HttpServlet {
 			String adressePostale = request.getParameter("adressePostale");
 			String cv = request.getParameter("cv");
 			Date dateDepot = new Date();
-			Date dateNaissance = new Date(request.getParameter("dateNaissance"));
+			Date dateNaissance = Utils.string2Date(request.getParameter("dateNaissance"));
 			String nom = request.getParameter("nom");
 			String prenom = request.getParameter("prenom");
 			Integer idNiveauQualification = Integer.parseInt(request.getParameter("niveauQualification"));

@@ -41,15 +41,16 @@ public class SupprimerOffreEmploiServlet extends HttpServlet {
 				IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmploi");
 				OffreEmploi offreEmploi = serviceOffreEmploi.getOffreEmploi(Integer.parseInt(id));
 
-				if (session.getAttribute("userType").equals("entreprise") && offreEmploi.getEntrepriseBean().getId() == userId) {
+				Integer i = offreEmploi.getEntrepriseBean().getId();
+
+				if (session.getAttribute("userType").equals("entreprise") && offreEmploi.getEntrepriseBean().getId().equals(userId)) {
 					serviceOffreEmploi.supprimerOffreEmploi(id);
+					response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/offres"));
 				} else {
 					RedirectionHelper.redirectUnauthorized(session, response);
-					return;
 				}
 			} catch(Exception e) {
 				session.setAttribute("errorMessage", e.getLocalizedMessage());
-			} finally {
 				response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/offres"));
 			}
 		}

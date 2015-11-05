@@ -153,7 +153,7 @@
 			<div class="row">
 				<div class="col-md-7">
 					<span class="glyphicon glyphicon-exclamation" aria-hidden="true"></span>
-					Une erreur s'est produite : <%=session.getAttribute("errorMessage")%>
+					<strong>Une erreur s'est produite :</strong> <%=session.getAttribute("errorMessage")%>
 				</div>
 			</div>
 		</div>

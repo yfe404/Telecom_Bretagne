@@ -83,7 +83,7 @@
 						href="<%=AssetsLocator.urlForJSP("offres/add", offreEmploi.getId())%>"><span
 							class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a> <a
 						class="icon-action"
-						href="<%=AssetsLocator.urlForServlet("SupprimerOffre", offreEmploi.getId())%>"><span
+						href="<%=AssetsLocator.urlForServlet("SupprimerOffreEmploi", offreEmploi.getId())%>"><span
 							class="glyphicon glyphicon-remove" aria-hidden="true"></span></a></td>
 				</tr>
 				<%
