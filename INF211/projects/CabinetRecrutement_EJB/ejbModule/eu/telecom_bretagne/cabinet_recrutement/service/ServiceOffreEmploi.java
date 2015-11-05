@@ -1,6 +1,7 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -8,7 +9,9 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import eu.telecom_bretagne.cabinet_recrutement.data.dao.NiveauQualificationDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.OffreEmploiDAO;
+import eu.telecom_bretagne.cabinet_recrutement.data.dao.SecteurActiviteDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
@@ -27,6 +30,12 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 	@EJB
 	private OffreEmploiDAO offreEmploiDAO;
 
+	@EJB
+	private NiveauQualificationDAO niveauQualificationDAO;
+
+	@EJB
+	private SecteurActiviteDAO secteurActiviteDAO;
+
 	public ServiceOffreEmploi() {
 		// Default constructor
 	}
@@ -41,7 +50,7 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 	public List<OffreEmploi> listeDesOffresEmploi() {
 		return offreEmploiDAO.findAll();
 	}
-	
+
 	@Override
 	public List<OffreEmploi> listeDesOffresEmploi(int idEntreprise) {
 		return offreEmploiDAO.findByEntreprise(idEntreprise);
@@ -59,8 +68,8 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 	@Override
 	public void ajoutOffreEmploi(String titre, String descriptionMission,
 			String profilRecherche, Entreprise entreprise,
-			NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites) {
+			Integer idNiveauQualification,
+			String[] idSecteurActivites) {
 
 		OffreEmploi offreEmploi = new OffreEmploi();
 
@@ -68,31 +77,56 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 		offreEmploi.setDescriptionMission(descriptionMission);
 		offreEmploi.setProfilRecherche(profilRecherche);
 		offreEmploi.setEntrepriseBean(entreprise);
-		offreEmploi.setNiveauQualificationBean(niveauQualificationBean);
-		offreEmploi.setSecteurActivites(secteurActivites);
 		offreEmploi.setDateDepot(new Date());
+		
+		NiveauQualification niveauQualification = niveauQualificationDAO.findById(idNiveauQualification);
+		offreEmploi.setNiveauQualificationBean(niveauQualification);
+
+		offreEmploi.setSecteurActivites(new HashSet<SecteurActivite>());
+		for (String idSecteurActivite : idSecteurActivites) {
+			SecteurActivite secteurActivite = secteurActiviteDAO.findById(Integer.parseInt(idSecteurActivite));
+			offreEmploi.getSecteurActivites().add(secteurActivite);
+		}
 
 		offreEmploiDAO.persist(offreEmploi);
+		
+		for (String idSecteurActivite : idSecteurActivites) {
+			SecteurActivite secteurActivite = secteurActiviteDAO.findById(Integer.parseInt(idSecteurActivite));
+			secteurActivite.getOffreEmplois().add(offreEmploi);
+			secteurActiviteDAO.update(secteurActivite);
+		}
 	}
 
 
 	@Override
 	public void miseAJourOffreEmploi(String id, String titre,
 			String descriptionMission, String profilRecherche, Entreprise entreprise,
-			NiveauQualification niveauQualificationBean,
-			Set<SecteurActivite> secteurActivites) {
+			Integer idNiveauQualification,
+			String[] idSecteurActivites) {
 
 
 		OffreEmploi offreEmploi = offreEmploiDAO.findById(Integer.parseInt(id));
 		if (offreEmploi != null){
-
+			for (SecteurActivite secteurActivite : offreEmploi.getSecteurActivites()) {
+				secteurActivite.getOffreEmplois().remove(offreEmploi);
+				secteurActiviteDAO.update(secteurActivite);
+			}
+			
 			offreEmploi.setTitre(titre);
 			offreEmploi.setDescriptionMission(descriptionMission);
 			offreEmploi.setProfilRecherche(profilRecherche);
 			offreEmploi.setEntrepriseBean(entreprise);
-			offreEmploi.setNiveauQualificationBean(niveauQualificationBean);
-			offreEmploi.setSecteurActivites(secteurActivites);
 			offreEmploi.setDateDepot(new Date());
+
+			NiveauQualification niveauQualification = niveauQualificationDAO.findById(idNiveauQualification);
+			offreEmploi.setNiveauQualificationBean(niveauQualification);
+			
+			for (String secteurActiviteId : idSecteurActivites) {
+				SecteurActivite secteurActivite = secteurActiviteDAO.findById(new Integer(secteurActiviteId));
+				offreEmploi.getSecteurActivites().add(secteurActivite);
+				secteurActivite.getOffreEmplois().add(offreEmploi);
+				secteurActiviteDAO.update(secteurActivite);
+			}
 
 			offreEmploiDAO.update(offreEmploi);
 		}

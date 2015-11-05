@@ -64,18 +64,11 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 
 			Entreprise entreprise = serviceEntreprise.getEntreprise((Integer) session.getAttribute("userId"));
 
-			NiveauQualification niveauQualificationBean = serviceIndexation.getNiveauQualification(Integer.parseInt(request.getParameter("niveauQualification")));
-
-			Set<SecteurActivite> secteursActivite = new HashSet<>();
-			for (String secteurActiviteId : request.getParameterValues("secteursActivite")) {
-				secteursActivite.add(serviceIndexation.getSecteurActiviteById(Integer.parseInt(secteurActiviteId)));
-			}
-
 			if (id == null)
 			{
-				serviceOffreEmploi.ajoutOffreEmploi(titre, descriptionMission, profilRecherche, entreprise, niveauQualificationBean, secteursActivite);
+				serviceOffreEmploi.ajoutOffreEmploi(titre, descriptionMission, profilRecherche, entreprise, Integer.parseInt(request.getParameter("niveauQualification")), request.getParameterValues("secteursActivite"));
 			}else{
-				serviceOffreEmploi.miseAJourOffreEmploi(id, titre, descriptionMission, profilRecherche, entreprise, niveauQualificationBean, secteursActivite);
+				serviceOffreEmploi.miseAJourOffreEmploi(id, titre, descriptionMission, profilRecherche, entreprise, Integer.parseInt(request.getParameter("niveauQualification")), request.getParameterValues("secteursActivite"));
 			} 
 
 		} catch (Exception e) {

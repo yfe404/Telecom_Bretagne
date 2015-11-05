@@ -26,7 +26,7 @@
 
 	<div class="row above-table-row">
 		<span class="col-md-11 above-table-title">Information sur la
-			candidature de : <%=candidature.getPrenom()%>&nbsp;<%=candidature.getNom()%></span>
+			candidature de <%=candidature.getPrenom()%>&nbsp;<%=candidature.getNom()%></span>
 	</div>
 
 	<div class="row">

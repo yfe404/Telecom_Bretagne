@@ -32,6 +32,7 @@
 		IServiceCandidature serviceCandidature = (IServiceCandidature) ServicesLocator
 				.getInstance().getRemoteInterface("ServiceCandidature");
 		candidature = serviceCandidature.getCandidature(userId);
+		isUpdate = true;
 	}
 	
 	// Liste des entreprises
@@ -91,7 +92,7 @@
 					<div class="col-sm-8">
 						<input class="form-control" type='date' name='dateNaissance'
 							id="inputDateNaissance"
-							value="<%=isUpdate ? candidature.getDateNaissance() : ""%>" />
+							value="<%=isUpdate ? Utils.date2String(candidature.getDateNaissance()) : ""%>" />
 					</div>
 				</div>
 

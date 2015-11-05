@@ -109,6 +109,10 @@
 							class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
 							Mon Espace <span class="caret"></span></a>
 						<ul class="dropdown-menu">
+						<li><a
+								href="<%= AssetsLocator.urlForJSP("candidatures/add") %>"><span
+									class="glyphicon glyphicon-user" aria-hidden="true"></span>
+									Ma candidature</a></li>
 							<li><a
 								href="<%= AssetsLocator.urlForJSP("my/candidature/inbox") %>"><span
 									class="glyphicon glyphicon-comment" aria-hidden="true"></span>

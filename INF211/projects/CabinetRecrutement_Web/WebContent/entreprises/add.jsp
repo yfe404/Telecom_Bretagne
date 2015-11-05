@@ -18,6 +18,7 @@
 		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
 				.getRemoteInterface("ServiceEntreprise");
 		entreprise = serviceEntreprise.getEntreprise(userId);
+		isUpdate = true;
 	}
 %>
 
