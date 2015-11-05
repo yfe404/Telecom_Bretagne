@@ -1,5 +1,4 @@
-<%@page
-	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.SecurityHelper"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -13,7 +12,7 @@
 
 <%
 	if (!isEntreprise) {
-		SecurityHelper.redirectUnauthorized(session, response);
+		RedirectionHelper.redirectUnauthorized(session, response);
 		return;
 	}
 

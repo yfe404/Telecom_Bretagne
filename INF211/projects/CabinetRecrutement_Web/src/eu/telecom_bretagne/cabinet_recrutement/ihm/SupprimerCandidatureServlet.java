@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
-import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
 
 /**
  * Servlet implementation class SupprimerCandidatureServlet
@@ -22,10 +21,7 @@ public class SupprimerCandidatureServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SupprimerCandidatureServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    public SupprimerCandidatureServlet() { super(); }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,8 +45,6 @@ public class SupprimerCandidatureServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 
 }

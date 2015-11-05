@@ -9,7 +9,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.model.MessageCandidature;
-import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 
 
 /**

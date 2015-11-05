@@ -17,7 +17,6 @@ import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
-import eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmploi;
 

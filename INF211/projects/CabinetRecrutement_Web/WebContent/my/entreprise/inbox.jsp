@@ -1,4 +1,4 @@
-<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.SecurityHelper"%>
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.data.model.MessageOffreEmploi"%>
@@ -21,7 +21,7 @@
 
 <%
 	if (!isEntreprise) {
-		SecurityHelper.redirectUnauthorized(session, response);
+		RedirectionHelper.redirectUnauthorized(session, response);
 		return;
 	}
 

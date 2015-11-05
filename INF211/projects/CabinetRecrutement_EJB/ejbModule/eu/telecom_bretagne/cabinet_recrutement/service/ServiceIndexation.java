@@ -1,7 +1,6 @@
 package eu.telecom_bretagne.cabinet_recrutement.service;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.ejb.EJB;

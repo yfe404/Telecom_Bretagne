@@ -3,7 +3,6 @@ package eu.telecom_bretagne.cabinet_recrutement.service;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -13,7 +12,6 @@ import eu.telecom_bretagne.cabinet_recrutement.data.dao.CandidatureDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.NiveauQualificationDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.dao.SecteurActiviteDAO;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
-import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 

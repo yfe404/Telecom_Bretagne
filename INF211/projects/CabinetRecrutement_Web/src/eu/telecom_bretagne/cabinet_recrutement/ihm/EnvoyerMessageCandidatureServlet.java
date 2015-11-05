@@ -15,7 +15,6 @@ import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageCandidature;
-import eu.telecom_bretagne.cabinet_recrutement.service.IServiceMessageOffreEmploi;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmploi;
 
 /**
@@ -29,17 +28,12 @@ public class EnvoyerMessageCandidatureServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EnvoyerMessageCandidatureServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    public EnvoyerMessageCandidatureServlet() { super(); }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

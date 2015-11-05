@@ -2,22 +2,17 @@ package eu.telecom_bretagne.cabinet_recrutement.ihm;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
-import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
-import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
-import eu.telecom_bretagne.cabinet_recrutement.service.IServiceIndexation;
 
 /**
  * Servlet implementation class AjoutCandidatureServlet
@@ -29,22 +24,18 @@ public class AjoutCandidatureServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AjoutCandidatureServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public AjoutCandidatureServlet() { super(); }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String id = request.getParameter("id");
 
 		IServiceCandidature serviceCandidature = null;
@@ -64,15 +55,14 @@ public class AjoutCandidatureServlet extends HttpServlet {
 			if (id == null)
 			{
 				serviceCandidature.ajoutCandidature(adresseEmail, adressePostale, cv, dateDepot, dateNaissance, nom, prenom, idNiveauQualification, idSecteursActivite);
-			}else{
+			} else {
 				serviceCandidature.miseAJourCandidature(id, adresseEmail, adressePostale, cv, dateNaissance, nom, prenom, idNiveauQualification, idSecteursActivite);
 			}
 
-		} catch (ServicesLocatorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			session.setAttribute("errorMessage", e.getLocalizedMessage());
 		} finally {
-			response.sendRedirect("liste_candidatures.jsp");
+			response.sendRedirect(AssetsLocator.urlForJSP("candidatures/all"));
 		}
 
 	}

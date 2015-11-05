@@ -7,21 +7,19 @@
                 eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils,
                 eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise,
                 eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise"%>
-<%
-	Entreprise entreprise = null;
-
-	String id = request.getParameter("id");
-	boolean isUpdate = (id != null);
-
-	if (isUpdate) {
-		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator
-				.getInstance().getRemoteInterface("ServiceEntreprise");
-		entreprise = serviceEntreprise.getEntreprise(Integer
-				.parseInt(id));
-	}
-%>
 
 <%@include file="../header.jsp"%>
+
+<%
+	Entreprise entreprise = null;
+	boolean isUpdate = false;
+
+	if (isEntreprise) {
+		IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
+				.getRemoteInterface("ServiceEntreprise");
+		entreprise = serviceEntreprise.getEntreprise(userId);
+	}
+%>
 
 <div class="container main-container">
 	<div class="row">
@@ -33,11 +31,11 @@
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='AjoutEntrepriseServlet'>
+				action='<%=AssetsLocator.urlForServlet("AjoutEntreprise")%>'>
 				<%
 					if (isUpdate) {
 				%>
-				<input type='hidden' value="<%=isUpdate ? id : ""%>" name='id'>
+				<input type='hidden' value="<%=userId%>" name='id'>
 				<%
 					}
 				%>

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
-import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceOffreEmploi;
 
 /**
@@ -22,10 +21,7 @@ public class SupprimerOffreEmploiServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SupprimerOffreEmploiServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    public SupprimerOffreEmploiServlet() { super(); }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,9 +45,7 @@ public class SupprimerOffreEmploiServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 
 
 }

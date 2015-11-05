@@ -7,10 +7,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import eu.telecom_bretagne.cabinet_recrutement.data.model.Entreprise;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
-import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise;
 
 /**
@@ -23,30 +24,29 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AjoutEntrepriseServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	public AjoutEntrepriseServlet() { super(); }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 
 		String id = request.getParameter("id");
-		IServiceEntreprise serviceEntreprise =  null;
+		Integer userId = (Integer) session.getAttribute("userId");
 
-		// TODO CHECK userId and userType in session if update
+		if (id != null && userId != null && userId != Integer.parseInt(id)) {
+			RedirectionHelper.redirectUnauthorized(session, response);
+			return;
+		}
 
 		try {
-			serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
+			IServiceEntreprise serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 
 			String nom = request.getParameter("nom");
 			String descriptif = request.getParameter("descriptif");
@@ -59,14 +59,13 @@ public class AjoutEntrepriseServlet extends HttpServlet {
 				serviceEntreprise.miseAJourEntreprise(id, nom, descriptif, adresse_postale);
 			}
 
-		} catch (ServicesLocatorException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (Exception e) {
+			session.setAttribute("errorMessage", e.getLocalizedMessage());
 		} finally {
 			if (id == null) {
-				response.sendRedirect("liste_entreprises.jsp");
+				response.sendRedirect(AssetsLocator.urlForJSP("enteprises/all"));
 			} else {
-				response.sendRedirect("mon_entreprise.jsp");
+				response.sendRedirect(AssetsLocator.urlForJSP("my/entreprise/index"));
 			}
 		}
 
