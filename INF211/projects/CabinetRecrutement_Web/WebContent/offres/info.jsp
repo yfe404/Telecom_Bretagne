@@ -15,12 +15,7 @@
 <%@include file="../header.jsp"%>
 
 <%
-	Integer idCandidature = null;
 	Integer idOffreEmploi = Integer.parseInt(request.getParameter("id"));
-
-	if (isCandidat) {
-		idCandidature = (Integer) session.getAttribute("userId");
-	}
 
 	IServiceOffreEmploi serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance()
 			.getRemoteInterface("ServiceOffreEmploi");
@@ -29,8 +24,6 @@
 	IServiceIndexation serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance()
 			.getRemoteInterface("ServiceIndexation");
 %>
-
-
 
 <div class="container main-container">
 
@@ -75,10 +68,10 @@
 			</dl>
 
 			<%
-				if (isCandidat && serviceIndexation.isCandidatureMatchingOffreEmploi(idCandidature, idOffreEmploi)) {
+				if (isCandidat && serviceIndexation.isCandidatureMatchingOffreEmploi(userId, idOffreEmploi)) {
 			%>
-			<a class="btn"
-				href="<%=AssetsLocator.urlForJSP("candidatures/message")%>?idCandidature=<%=idCandidature%>&=idOffreEmploi=<%=idOffreEmploi%>">Candidater</a>
+			<a class="btn btn-default"
+				href="<%=AssetsLocator.urlForJSP("entreprises/message")%>?idOffreEmploi=<%=idOffreEmploi%>">Candidater</a>
 			<%
 				}
 			%>

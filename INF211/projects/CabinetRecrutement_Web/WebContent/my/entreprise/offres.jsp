@@ -74,7 +74,7 @@
 						<%
 							for (Candidature candidature : matchingCandidatures) {
 						%> <a
-						href="<%=AssetsLocator.urlForJSP("candidatures/message")%>?idCandidature=<%=candidature.getId()%>%idOffreEmploi=<%=offreEmploi.getId()%>"><%=candidature.getPrenom()%><%=candidature.getNom()%></a>
+						href="<%=AssetsLocator.urlForJSP("candidatures/message")%>?idCandidature=<%=candidature.getId()%>&idOffreEmploi=<%=offreEmploi.getId()%>"><%=candidature.getPrenom()%> <%=candidature.getNom()%></a>
 						<%
 							}
 						%>

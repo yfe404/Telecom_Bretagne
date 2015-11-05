@@ -48,10 +48,10 @@ public class EnvoyerMessageCandidatureServlet extends HttpServlet {
 			serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance().getRemoteInterface("ServiceCandidature");
 			serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmploi");
 
-			Candidature candidature = serviceCandidature.getCandidature(Integer.parseInt(request.getParameter("numeroCandidature")));
-			OffreEmploi offreEmploi = serviceOffreEmploi.getOffreEmploi(Integer.parseInt(request.getParameter("numeroOffreEmploi")));
+			Candidature candidature = serviceCandidature.getCandidature(Integer.parseInt(request.getParameter("idCandidature")));
+			OffreEmploi offreEmploi = serviceOffreEmploi.getOffreEmploi(Integer.parseInt(request.getParameter("idOffreEmploi")));
 
-			String corpsMessage = request.getParameter("corpsMessage");
+			String corpsMessage = request.getParameter("message");
 			Date dateEnvoi = new Date();
 
 			serviceMessageCandidature.ajoutMessageCandidature(offreEmploi, candidature, corpsMessage, dateEnvoi);

@@ -21,7 +21,7 @@
 		IServiceCandidature _serviceCandidature = (IServiceCandidature) ServicesLocator.getInstance()
 				.getRemoteInterface("ServiceCandidature");
 		Candidature _candidature = _serviceCandidature.getCandidature(userId);
-		displayName = _candidature.getPrenom() + _candidature.getNom();
+		displayName = _candidature.getPrenom() + " " + _candidature.getNom();
 	} else if (isEntreprise) {
 		IServiceEntreprise _serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance()
 				.getRemoteInterface("ServiceEntreprise");
@@ -110,7 +110,7 @@
 							Mon Espace <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a
-								href="<%= AssetsLocator.urlForJSP("my/candidat/inbox") %>"><span
+								href="<%= AssetsLocator.urlForJSP("my/candidature/inbox") %>"><span
 									class="glyphicon glyphicon-comment" aria-hidden="true"></span>
 									Messages</a></li>
 						</ul></li>

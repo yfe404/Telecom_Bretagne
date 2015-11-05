@@ -72,9 +72,7 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 		offreEmploi.setSecteurActivites(secteurActivites);
 		offreEmploi.setDateDepot(new Date());
 
-
-		offreEmploiDAO.persist(offreEmploi);		
-
+		offreEmploiDAO.persist(offreEmploi);
 	}
 
 
