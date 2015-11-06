@@ -1,7 +1,9 @@
 package eu.telecom_bretagne.cabinet_recrutement.data.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.Set;
 
 

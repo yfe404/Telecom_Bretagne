@@ -121,6 +121,7 @@ public class ServiceOffreEmploi implements IServiceOffreEmploi
 			NiveauQualification niveauQualification = niveauQualificationDAO.findById(idNiveauQualification);
 			offreEmploi.setNiveauQualificationBean(niveauQualification);
 			
+			offreEmploi.setSecteurActivites(new HashSet<SecteurActivite>());
 			for (String secteurActiviteId : idSecteurActivites) {
 				SecteurActivite secteurActivite = secteurActiviteDAO.findById(new Integer(secteurActiviteId));
 				offreEmploi.getSecteurActivites().add(secteurActivite);

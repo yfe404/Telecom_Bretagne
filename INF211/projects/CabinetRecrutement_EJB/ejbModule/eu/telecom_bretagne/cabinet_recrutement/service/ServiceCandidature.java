@@ -107,6 +107,7 @@ public class ServiceCandidature implements IServiceCandidature
 			NiveauQualification niveauQualification = niveauQualificationDAO.findById(idNiveauQualification);
 			candidature.setNiveauQualificationBean(niveauQualification);
 
+			candidature.setSecteurActivites(new HashSet<SecteurActivite>());
 			for (String secteurActiviteId : idSecteurActivites) {
 				SecteurActivite secteurActivite = secteurActiviteDAO.findById(new Integer(secteurActiviteId));
 				candidature.getSecteurActivites().add(secteurActivite);

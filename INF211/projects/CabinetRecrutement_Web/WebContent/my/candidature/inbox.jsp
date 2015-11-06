@@ -1,3 +1,4 @@
+<%@page import="eu.telecom_bretagne.cabinet_recrutement.front.utils.RedirectionHelper"%>
 <%@page
 	import="eu.telecom_bretagne.cabinet_recrutement.front.utils.Utils"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -21,6 +22,11 @@
 <%@include file="../../header.jsp"%>
 
 <%
+	if (!isCandidat) {
+		RedirectionHelper.redirectUnauthorized(session, response);
+		return;
+	}
+
 	IServiceMessageCandidature serviceMessageCandidature = (IServiceMessageCandidature) ServicesLocator
 			.getInstance().getRemoteInterface("ServiceMessageCandidature");
 	IServiceMessageOffreEmploi serviceMessageOffreEmploi = (IServiceMessageOffreEmploi) ServicesLocator

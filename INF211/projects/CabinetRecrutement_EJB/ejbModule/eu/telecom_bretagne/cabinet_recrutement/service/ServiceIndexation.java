@@ -100,4 +100,27 @@ public class ServiceIndexation implements IServiceIndexation{
 		return false;
 	}
 
+	@Override
+	public List<OffreEmploi> getMatchingOffreEmploiForCandidatures(
+			int idCandidature) {
+		List<OffreEmploi> matchingOffres = new ArrayList<>();
+		List<OffreEmploi> allOffres = offreEmploiDAO.findAll();
+		Candidature candidature = candidatureDAO.findById(idCandidature);
+
+		if (candidature != null) {
+			for (OffreEmploi offreEmploi : allOffres) {
+				if (offreEmploi.getNiveauQualificationBean().equals(candidature.getNiveauQualificationBean())) {
+					for (SecteurActivite secteurActivite : offreEmploi.getSecteurActivites()) {
+						if (candidature.getSecteurActivites().contains(secteurActivite)) {
+							matchingOffres.add(offreEmploi);
+							break;
+						}
+					}
+				}
+			}
+		}
+
+		return matchingOffres;
+	}
+
 }

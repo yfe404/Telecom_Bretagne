@@ -57,7 +57,7 @@
 			<br />
 
 			<form class="form-horizontal" method='post'
-				action='<%= AssetsLocator.urlForServlet("AjoutOffreEmploi") %>'>
+				action='<%=AssetsLocator.urlForServlet("AjoutOffreEmploi")%>'>
 				<%
 					if (isUpdate) {
 				%>
@@ -102,7 +102,11 @@
 							<%
 								for (NiveauQualification niveauQualification : niveauxQualification) {
 							%>
-							<option value=<%=niveauQualification.getId()%>><%=niveauQualification.getIntitule()%></option>
+							<option
+								<%if (isUpdate
+						&& offreEmploi.getNiveauQualificationBean().getId()
+								.equals(niveauQualification.getId())) {%>
+								selected="selected" <%}%> value=<%=niveauQualification.getId()%>><%=niveauQualification.getIntitule()%></option>
 							<%
 								}
 							%>
@@ -114,19 +118,27 @@
 					<label for="inputSecteursActivite" class="col-sm-4 control-label">Secteurs
 						d'Activité</label>
 					<div class="col-sm-8">
-						<%
+						<%							
 							for (SecteurActivite secteurActivite : secteursActivite) {
+								boolean checked = false;
+								if (isUpdate) {
+									for (SecteurActivite s : offreEmploi.getSecteurActivites()) {
+										if (s.getId().equals(secteurActivite.getId())) {
+											checked = true;
+										}
+									}
+								}
 						%>
-						<label class="checkbox-inline"> <input type="checkbox"
-							name="secteursActivite" value="<%=secteurActivite.getId()%>">
-							<%=secteurActivite.getIntitule()%>
+						<label class="checkbox-inline"> <input <%= checked ? "checked='checked'" : "" %>
+							type="checkbox" name="secteursActivite"
+							value="<%=secteurActivite.getId()%>"> <%=secteurActivite.getIntitule()%>
 						</label>
 						<%
 							}
 						%>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-default">Envoyer</button>

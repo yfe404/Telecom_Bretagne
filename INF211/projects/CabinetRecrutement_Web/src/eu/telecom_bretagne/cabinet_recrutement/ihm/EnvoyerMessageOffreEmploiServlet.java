@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
+import eu.telecom_bretagne.cabinet_recrutement.front.utils.AssetsLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocator;
 import eu.telecom_bretagne.cabinet_recrutement.front.utils.ServicesLocatorException;
 import eu.telecom_bretagne.cabinet_recrutement.service.IServiceCandidature;
@@ -62,7 +63,7 @@ public class EnvoyerMessageOffreEmploiServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			response.sendRedirect(""); /** @todo remplir avec la bonne redirection **/
+			response.sendRedirect(AssetsLocator.urlForJSP("my/candidature/inbox")); /** @todo remplir avec la bonne redirection **/
 		}
 
 	}

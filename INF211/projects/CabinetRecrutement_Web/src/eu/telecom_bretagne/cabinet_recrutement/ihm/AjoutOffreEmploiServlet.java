@@ -44,12 +44,10 @@ public class AjoutOffreEmploiServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String id = request.getParameter("id");
 
-		IServiceIndexation serviceIndexation = null;
 		IServiceEntreprise serviceEntreprise = null;
 		IServiceOffreEmploi serviceOffreEmploi = null;
 
 		try {
-			serviceIndexation = (IServiceIndexation) ServicesLocator.getInstance().getRemoteInterface("ServiceIndexation");
 			serviceEntreprise = (IServiceEntreprise) ServicesLocator.getInstance().getRemoteInterface("ServiceEntreprise");
 			serviceOffreEmploi = (IServiceOffreEmploi) ServicesLocator.getInstance().getRemoteInterface("ServiceOffreEmploi");
 		} catch (Exception e) {

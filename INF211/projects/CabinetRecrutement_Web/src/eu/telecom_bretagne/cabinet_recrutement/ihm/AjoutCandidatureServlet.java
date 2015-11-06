@@ -63,7 +63,11 @@ public class AjoutCandidatureServlet extends HttpServlet {
 		} catch (Exception e) {
 			session.setAttribute("errorMessage", e.getLocalizedMessage());
 		} finally {
-			response.sendRedirect(AssetsLocator.urlForJSP("candidatures/all"));
+			if (id == null) {
+				response.sendRedirect(AssetsLocator.urlForJSP("candidatures/all"));
+			} else {
+				response.sendRedirect(AssetsLocator.urlForJSP("candidatures/add"));
+			}
 		}
 
 	}

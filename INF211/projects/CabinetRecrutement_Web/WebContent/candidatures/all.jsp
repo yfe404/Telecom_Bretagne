@@ -52,10 +52,8 @@
 				<tr>
 					<td><%=candidature.getId()%></td>
 					<td><%=Utils.date2String(candidature.getDateDepot())%></td>
-					<td><a
-						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId())%>"><%=candidature.getNom()%></a></td>
-					<td><a
-						href="<%=AssetsLocator.urlForJSP("candidatures/info", candidature.getId())%>"><%=candidature.getPrenom()%></a></td>
+					<td><%=candidature.getNom()%></td>
+					<td><%=candidature.getPrenom()%></td>
 					<td><%=candidature.getAdressePostale()%></td>
 					<td><%=candidature.getAdresseEmail()%></td>
 					<td><%=candidature.getNiveauQualificationBean().getIntitule()%></td>

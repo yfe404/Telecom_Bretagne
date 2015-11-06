@@ -130,7 +130,11 @@
 							<%
 								for (NiveauQualification niveauQualification : niveauxQualification) {
 							%>
-							<option value=<%=niveauQualification.getId()%>><%=niveauQualification.getIntitule()%></option>
+							<option
+								<%if (isUpdate
+						&& candidature.getNiveauQualificationBean().getId()
+								.equals(niveauQualification.getId())) {%>
+								selected="selected" <%}%> value=<%=niveauQualification.getId()%>><%=niveauQualification.getIntitule()%></option>
 							<%
 								}
 							%>
@@ -142,12 +146,20 @@
 					<label for="inputSecteursActivite" class="col-sm-4 control-label">Secteurs
 						d'Activité</label>
 					<div class="col-sm-8">
-						<%
+						<%							
 							for (SecteurActivite secteurActivite : secteursActivite) {
+								boolean checked = false;
+								if (isUpdate) {
+									for (SecteurActivite s : candidature.getSecteurActivites()) {
+										if (s.getId().equals(secteurActivite.getId())) {
+											checked = true;
+										}
+									}
+								}
 						%>
-						<label class="checkbox-inline"> <input type="checkbox"
-							name="secteursActivite" value="<%=secteurActivite.getId()%>">
-							<%=secteurActivite.getIntitule()%>
+						<label class="checkbox-inline"> <input <%= checked ? "checked='checked'" : "" %>
+							type="checkbox" name="secteursActivite"
+							value="<%=secteurActivite.getId()%>"> <%=secteurActivite.getIntitule()%>
 						</label>
 						<%
 							}
@@ -158,6 +170,11 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-default">Envoyer</button>
+						<% if (isUpdate) { %>
+						<a
+							href="<%=AssetsLocator.urlForServlet("SupprimerCandidature") %>?id=<%=userId%>"
+							class="btn btn-danger">Supprimer </a>
+						<% } %>
 					</div>
 				</div>
 			</form>

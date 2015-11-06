@@ -6,6 +6,7 @@ import javax.ejb.Remote;
 
 import eu.telecom_bretagne.cabinet_recrutement.data.model.Candidature;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.NiveauQualification;
+import eu.telecom_bretagne.cabinet_recrutement.data.model.OffreEmploi;
 import eu.telecom_bretagne.cabinet_recrutement.data.model.SecteurActivite;
 
 @Remote
@@ -15,5 +16,6 @@ public interface IServiceIndexation {
 	SecteurActivite getSecteurActiviteById(int id);
 	NiveauQualification getNiveauQualification(int id);
 	List<Candidature> getMatchingCandidaturesForOffreEmploi(int idOffreEmploi);
+	List<OffreEmploi> getMatchingOffreEmploiForCandidatures(int idCandidature);
 	Boolean isCandidatureMatchingOffreEmploi(int idCandidature, int idOffreEmploi);
 }
